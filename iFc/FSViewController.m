@@ -46,6 +46,11 @@
     [self.view addSubview:_tableView];
     WEAKSELF
     
+    MONActivityIndicatorView *indicatorView = [[MONActivityIndicatorView alloc] init];
+    indicatorView.center = [[UIApplication sharedApplication].delegate window].center;
+    [self.view addSubview:indicatorView];
+    [indicatorView startAnimating];
+
 
     PFQuery *query = [PFQuery queryWithClassName:@"Type"];
     [query whereKey:@"fid" equalTo:@0];
@@ -60,6 +65,7 @@
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
+        [indicatorView stopAnimating];
     }];
     
 	// Do any additional setup after loading the view, typically from a nib.

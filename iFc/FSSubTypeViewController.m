@@ -30,7 +30,6 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self scrollViewDidScroll:nil];
 }
 
 - (void)viewDidLoad
@@ -39,21 +38,28 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStylePlain];
-    _tableView.delegate = self;
-    _tableView.dataSource = self;
-    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    _tableView.backgroundColor = [UIColor clearColor];
-    
-    [self.view addSubview:_tableView];
+
     
     WEAKSELF
     NSLog(@"self.fid:%@",self.fid);
     // Do any additional setup after loading the view.
     PFQuery *query = [PFQuery queryWithClassName:@"Type"];
     [query whereKey:@"fid" equalTo:self.fid];
+    [query orderByAscending:@"priority"];
+    MONActivityIndicatorView *indicatorView = [[MONActivityIndicatorView alloc] init];
+    indicatorView.center = [[UIApplication sharedApplication].delegate window].center;
+    [self.view addSubview:indicatorView];
+    [indicatorView startAnimating];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
+            weakSelf.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStylePlain];
+            weakSelf.tableView.delegate = self;
+            weakSelf.tableView.dataSource = self;
+            weakSelf.tableView.separatorColor = [UIColor colorWithRed:140./255. green:153./255. blue:169./255. alpha:1.f];
+            weakSelf.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+            weakSelf.tableView.backgroundColor = [UIColor clearColor];
+            
+            [self.view addSubview:weakSelf.tableView];
             weakSelf.quaryArr = [[NSArray alloc] initWithArray:objects];
             // The find succeeded.
             NSLog(@"Successfully retrieved %d scores.", objects.count);
@@ -63,6 +69,7 @@
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
+        [indicatorView stopAnimating];
     }];
 }
 
@@ -82,36 +89,39 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    return 130.f;
+    return 85.f;
 
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"parallaxCell";
-    JBParallaxCell *cell = [[JBParallaxCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-    
+    PFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[PFTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    cell.backgroundColor = [UIColor clearColor];
     
     PFObject *object = _quaryArr[indexPath.row];
     
     UIView *boxView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height)];
-    
-//    cell.textLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 69, 179, 21)];
-    cell.textLabel.frame =CGRectMake(10, 69, 179, 21);
-    cell.textLabel.textColor = [UIColor whiteColor];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(60, 0, 179, 85)];
+    label.textColor = [UIColor colorWithRed:140./255. green:153./255. blue:169./255. alpha:1.f];
+    label.font = [UIFont fontWithName:@"Avenir-LightOblique" size:16.f];
     if ([[FSConfig getCurrentLanguage] isEqualToString:@"zh-Hans"]) {
-        cell.titleLabel.text = object[@"name_cn"];
+        label.text = object[@"name_cn"];
     }else if ([[FSConfig getCurrentLanguage] isEqualToString:@"zh-Hant"]){
-        cell.titleLabel.text = object[@"name_hk"];
+        label.text = object[@"name_hk"];
     }else{
-        cell.titleLabel.text = @"name_en";
+        label.text = object[@"name_en"];
     }
-
-    cell.parallaxImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, -41, cell.frame.size.width, 200)];
-    cell.parallaxImage.image = [UIImage imageNamed:@"placeholder2"];
-    [cell.parallaxImage sendSubviewToBack:cell.parallaxImage];
-    [cell.contentView addSubview:boxView];
-//    [boxView addSubview:cell.parallaxImage];
+    [cell.contentView addSubview:label];
+    PFImageView *imageView = [[PFImageView alloc] initWithFrame:CGRectMake(10, 10, 46.5f, 65.f)];
+    imageView.image = [UIImage imageNamed:@"placeholder"];
+    imageView.file = (PFFile*)object[@"imageFile"];
+    [imageView loadInBackground:^(UIImage *image, NSError *error) {
+    }];
+    [cell.contentView addSubview:imageView];
     [cell.contentView sendSubviewToBack:boxView];
     
     
@@ -119,15 +129,6 @@
     return cell;
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    // Get visible cells on table view.
-    NSArray *visibleCells = [self.tableView visibleCells];
-    
-    for (JBParallaxCell *cell in visibleCells) {
-        [cell cellOnTableView:self.tableView didScrollOnView:self.view];
-    }
-}
 
 - (void)didReceiveMemoryWarning
 {

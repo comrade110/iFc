@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>91F9894B-77D9-4DD5-824C-3417411395AB</string>
+	<key>IDESourceControlProjectName</key>
+	<string>iFc</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>9D782A31-1DAC-4A5B-B2C0-BD9D418199D1</key>
+		<string>https://github.com/comrade110/iFc.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>iFc.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>9D782A31-1DAC-4A5B-B2C0-BD9D418199D1</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/comrade110/iFc.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>9D782A31-1DAC-4A5B-B2C0-BD9D418199D1</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>9D782A31-1DAC-4A5B-B2C0-BD9D418199D1</string>
+			<key>IDESourceControlWCCName</key>
+			<string>iFc</string>
+		</dict>
+	</array>
+</dict>
+</plist>

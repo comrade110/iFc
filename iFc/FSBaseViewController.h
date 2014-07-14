@@ -11,6 +11,7 @@
 #import "FSConfig.h"
 #import "UIButton+Block.h"
 #import "UIViewController+MMDrawerController.h"
+#import "MONActivityIndicatorView.h"
 
 @interface FSBaseViewController : UIViewController
 

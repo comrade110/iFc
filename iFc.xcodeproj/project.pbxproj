@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BEEDCB1819741974009B4F0B /* FSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDCB1719741974009B4F0B /* FSViewController.m */; };
+		BEEDCB1E19742634009B4F0B /* MONActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDCB1C19742634009B4F0B /* MONActivityIndicatorView.m */; };
 		D396F5531973AD5200F21999 /* nav_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D396F5521973AD5200F21999 /* nav_bg@2x.png */; };
 		D396F5551973B50C00F21999 /* pulDrawer.png in Resources */ = {isa = PBXBuildFile; fileRef = D396F5541973B50C00F21999 /* pulDrawer.png */; };
 		D396F5601973B5C100F21999 /* UILabel+attributed.m in Sources */ = {isa = PBXBuildFile; fileRef = D396F5571973B5C100F21999 /* UILabel+attributed.m */; };
@@ -32,7 +34,6 @@
 		D3B80F851973718E005F0832 /* FSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B80F841973718E005F0832 /* FSAppDelegate.m */; };
 		D3B80F881973718E005F0832 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3B80F861973718E005F0832 /* Main_iPhone.storyboard */; };
 		D3B80F8B1973718E005F0832 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3B80F891973718E005F0832 /* Main_iPad.storyboard */; };
-		D3B80F8E1973718E005F0832 /* FSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B80F8D1973718E005F0832 /* FSViewController.m */; };
 		D3B80F901973718E005F0832 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3B80F8F1973718E005F0832 /* Images.xcassets */; };
 		D3B80F971973718E005F0832 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B80F961973718E005F0832 /* XCTest.framework */; };
 		D3B80F981973718E005F0832 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B80F741973718E005F0832 /* Foundation.framework */; };
@@ -70,6 +71,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BEEDCB1619741974009B4F0B /* FSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSViewController.h; path = iFc/FSViewController.h; sourceTree = SOURCE_ROOT; };
+		BEEDCB1719741974009B4F0B /* FSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSViewController.m; path = iFc/FSViewController.m; sourceTree = SOURCE_ROOT; };
+		BEEDCB1B19742634009B4F0B /* MONActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MONActivityIndicatorView.h; sourceTree = "<group>"; };
+		BEEDCB1C19742634009B4F0B /* MONActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MONActivityIndicatorView.m; sourceTree = "<group>"; };
 		D396F5521973AD5200F21999 /* nav_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_bg@2x.png"; sourceTree = "<group>"; };
 		D396F5541973B50C00F21999 /* pulDrawer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pulDrawer.png; sourceTree = "<group>"; };
 		D396F5561973B5C100F21999 /* UILabel+attributed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+attributed.h"; sourceTree = "<group>"; };
@@ -114,8 +119,6 @@
 		D3B80F841973718E005F0832 /* FSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSAppDelegate.m; sourceTree = "<group>"; };
 		D3B80F871973718E005F0832 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		D3B80F8A1973718E005F0832 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		D3B80F8C1973718E005F0832 /* FSViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FSViewController.h; path = ../../FSViewController.h; sourceTree = "<group>"; };
-		D3B80F8D1973718E005F0832 /* FSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FSViewController.m; path = ../../FSViewController.m; sourceTree = "<group>"; };
 		D3B80F8F1973718E005F0832 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D3B80F951973718E005F0832 /* iFcTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iFcTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3B80F961973718E005F0832 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -190,6 +193,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BEEDCB1919742634009B4F0B /* MONActivityIndicatorView */ = {
+			isa = PBXGroup;
+			children = (
+				BEEDCB1B19742634009B4F0B /* MONActivityIndicatorView.h */,
+				BEEDCB1C19742634009B4F0B /* MONActivityIndicatorView.m */,
+			);
+			path = MONActivityIndicatorView;
+			sourceTree = "<group>";
+		};
 		D396F5651973B68900F21999 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,8 +239,8 @@
 		D396F5841973C6F000F21999 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				D3B80F8C1973718E005F0832 /* FSViewController.h */,
-				D3B80F8D1973718E005F0832 /* FSViewController.m */,
+				BEEDCB1619741974009B4F0B /* FSViewController.h */,
+				BEEDCB1719741974009B4F0B /* FSViewController.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -357,6 +369,7 @@
 		D3B80FD4197378D4005F0832 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				BEEDCB1919742634009B4F0B /* MONActivityIndicatorView */,
 				D396F5561973B5C100F21999 /* UILabel+attributed.h */,
 				D396F5571973B5C100F21999 /* UILabel+attributed.m */,
 				D396F5581973B5C100F21999 /* UIButton+Block.h */,
@@ -479,10 +492,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3B80FB71973758F005F0832 /* FSBaseViewController.m in Sources */,
+				BEEDCB1E19742634009B4F0B /* MONActivityIndicatorView.m in Sources */,
 				D396F5731973B69300F21999 /* MMDrawerVisualState.m in Sources */,
 				D3B80F811973718E005F0832 /* main.m in Sources */,
 				D396F5751973B69300F21999 /* UIViewController+MMDrawerController.m in Sources */,
 				D396F5881973C72200F21999 /* JBParallaxCell.m in Sources */,
+				BEEDCB1819741974009B4F0B /* FSViewController.m in Sources */,
 				D396F5601973B5C100F21999 /* UILabel+attributed.m in Sources */,
 				D396F5711973B69300F21999 /* MMDrawerBarButtonItem.m in Sources */,
 				D3B80F851973718E005F0832 /* FSAppDelegate.m in Sources */,
@@ -495,7 +510,6 @@
 				D396F5721973B69300F21999 /* MMDrawerController.m in Sources */,
 				D396F5781973B6FC00F21999 /* FSMenuViewController.m in Sources */,
 				D396F5821973C58000F21999 /* FSSubTypeViewController.m in Sources */,
-				D3B80F8E1973718E005F0832 /* FSViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
