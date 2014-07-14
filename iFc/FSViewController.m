@@ -7,8 +7,13 @@
 //
 
 #import "FSViewController.h"
+#import "MMDrawerBarButtonItem.h"
+#import "FSSubTypeViewController.h"
 
-@interface FSViewController ()
+@interface FSViewController ()<UITableViewDelegate,UITableViewDataSource>
+
+@property(nonatomic,strong) UITableView *tableView;
+@property(nonatomic,strong) NSArray *quaryArr;
 
 @end
 
@@ -17,8 +22,143 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor mainBgColor];
+    self.title = @"Home";
+//    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav_bg"] forBarMetrics:UIBarMetricsDefault];
+    
+    
+    [self setupLeftMenuButton];
+//    UIButton *leftBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 24, 23)];
+//    [leftBtn setImage:[UIImage imageNamed:@"pullDrawer"] forState:UIControlStateNormal];
+//    [leftBtn handleControlWithBlock:^{
+//        
+//    }];
+//    
+//    MMDrawerBarButtonItem * leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithCustomView:leftBtn];
+//    [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
+    
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 50, self.view.frame.size.width, self.view.frame.size.height-50) style:UITableViewStylePlain];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _tableView.backgroundColor = [UIColor clearColor];
+    
+    [self.view addSubview:_tableView];
+    WEAKSELF
+    
+
+    PFQuery *query = [PFQuery queryWithClassName:@"Type"];
+    [query whereKey:@"fid" equalTo:@0];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            weakSelf.quaryArr = [[NSArray alloc] initWithArray:objects];
+            // The find succeeded.
+            NSLog(@"Successfully retrieved %d scores.", objects.count);
+            // Do something with the found objects
+            [weakSelf.tableView reloadData];
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+    
 	// Do any additional setup after loading the view, typically from a nib.
 }
+
+-(void)setupLeftMenuButton{
+    MMDrawerBarButtonItem * leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
+    [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
+}
+
+-(void)leftDrawerButtonPress:(id)sender{
+    [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+
+
+    return _quaryArr.count;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    return 190.f;
+
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    cell.backgroundColor = [UIColor clearColor];
+
+    
+    
+    PFObject *object = _quaryArr[indexPath.row];
+    // Configure the cell
+    
+    
+    UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(35.f, 0, 250, 150)];
+    backView.backgroundColor = [UIColor mainCellColor];
+    backView.layer.cornerRadius = 5.f;
+    backView.layer.borderWidth = .5f;
+    backView.layer.borderColor = [[UIColor colorWithWhite:220./255. alpha:1.f] CGColor];
+    backView.layer.shadowOffset = CGSizeMake(0, 3);
+    backView.layer.shadowOpacity = .1f;
+    backView.layer.shadowColor = [UIColor grayColor].CGColor;
+    
+    UIView *boxView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 250, 150)];
+    boxView.layer.cornerRadius = 5.f;
+    boxView.layer.borderWidth = .5f;
+    boxView.layer.borderColor = [[UIColor clearColor] CGColor];
+    boxView.clipsToBounds = YES;
+    boxView.layer.masksToBounds = YES;
+    [backView addSubview:boxView];
+    
+    PFImageView *imageView = [[PFImageView alloc] init];
+    imageView.frame = CGRectMake(0, 0, backView.frame.size.width, backView.frame.size.height - 40);
+    imageView.image = [UIImage imageNamed:@"placeholder"];
+    imageView.file = (PFFile*)object[@"imageFile"];
+    [imageView loadInBackground];
+    [boxView addSubview:imageView];
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 110, 250, 40)];
+    label.font = [UIFont fontWithName:@"Avenir-LightOblique" size:16.f];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.textColor = [UIColor grayColor];
+    if ([[FSConfig getCurrentLanguage] isEqualToString:@"zh-Hans"]) {
+        label.text = object[@"name_cn"];
+    }else if ([[FSConfig getCurrentLanguage] isEqualToString:@"zh-Hant"]){
+        label.text = object[@"name_hk"];
+    }else{
+        label.text = object[@"name_en"];
+    }
+    
+    [backView addSubview:label];
+    
+    [cell.contentView addSubview:backView];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    return cell;
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    PFObject *object = _quaryArr[indexPath.row];
+    FSSubTypeViewController *subTypeVC = [[FSSubTypeViewController alloc] init];
+    subTypeVC.fid = object[@"cid"];
+    [self.navigationController pushViewController:subTypeVC animated:YES];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
