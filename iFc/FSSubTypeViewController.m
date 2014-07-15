@@ -8,6 +8,8 @@
 
 #import "FSSubTypeViewController.h"
 #import "JBParallaxCell.h"
+#import "InstagramCollectionViewController.h"
+#import "InstagramThumbnailCollectionViewController.h"
 
 @interface FSSubTypeViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
 
@@ -36,9 +38,8 @@
 {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor mainBgColor];
     
-
     
     WEAKSELF
     NSLog(@"self.fid:%@",self.fid);
@@ -55,7 +56,7 @@
             weakSelf.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStylePlain];
             weakSelf.tableView.delegate = self;
             weakSelf.tableView.dataSource = self;
-            weakSelf.tableView.separatorColor = [UIColor colorWithRed:140./255. green:153./255. blue:169./255. alpha:1.f];
+            weakSelf.tableView.separatorColor = [UIColor colorWithRed:140./255. green:153./255. blue:169./255. alpha:.5f];
             weakSelf.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
             weakSelf.tableView.backgroundColor = [UIColor clearColor];
             
@@ -129,6 +130,16 @@
     return cell;
 }
 
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    PFObject *object = _quaryArr[indexPath.row];
+    
+     InstagramCollectionViewController *instagramCollectionViewController = [InstagramThumbnailCollectionViewController sharedInstagramCollectionViewControllerWithObjectId:object.objectId];
+    
+    [self.navigationController pushViewController:instagramCollectionViewController animated:YES];
+
+}
 
 - (void)didReceiveMemoryWarning
 {

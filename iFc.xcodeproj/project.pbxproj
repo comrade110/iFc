@@ -26,6 +26,13 @@
 		D396F5821973C58000F21999 /* FSSubTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D396F5811973C58000F21999 /* FSSubTypeViewController.m */; };
 		D396F5881973C72200F21999 /* JBParallaxCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D396F5871973C72200F21999 /* JBParallaxCell.m */; };
 		D396F58A1973CF5500F21999 /* placeholder2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D396F5891973CF5500F21999 /* placeholder2@2x.png */; };
+		D3B4FDF31974C7D20078B05E /* InstagramCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B4FDEE1974C7D20078B05E /* InstagramCollectionViewController.m */; };
+		D3B4FDF41974C7D20078B05E /* InstagramPictureCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B4FDF01974C7D20078B05E /* InstagramPictureCollectionViewController.m */; };
+		D3B4FDF51974C7D20078B05E /* InstagramThumbnailCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B4FDF21974C7D20078B05E /* InstagramThumbnailCollectionViewController.m */; };
+		D3B4FDF81974C7DD0078B05E /* InstagramCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B4FDF71974C7DD0078B05E /* InstagramCell.m */; };
+		D3B4FDFF1974C7E40078B05E /* InstagramMediaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B4FDFA1974C7E40078B05E /* InstagramMediaModel.m */; };
+		D3B4FE001974C7E40078B05E /* InstagramMediaModel+XHMediaControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B4FDFC1974C7E40078B05E /* InstagramMediaModel+XHMediaControl.m */; };
+		D3B4FE011974C7E40078B05E /* XHInstagramStoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B4FDFE1974C7E40078B05E /* XHInstagramStoreManager.m */; };
 		D3B80F751973718E005F0832 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B80F741973718E005F0832 /* Foundation.framework */; };
 		D3B80F771973718E005F0832 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B80F761973718E005F0832 /* CoreGraphics.framework */; };
 		D3B80F791973718E005F0832 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B80F781973718E005F0832 /* UIKit.framework */; };
@@ -107,6 +114,20 @@
 		D396F5861973C72200F21999 /* JBParallaxCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBParallaxCell.h; sourceTree = "<group>"; };
 		D396F5871973C72200F21999 /* JBParallaxCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBParallaxCell.m; sourceTree = "<group>"; };
 		D396F5891973CF5500F21999 /* placeholder2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placeholder2@2x.png"; sourceTree = "<group>"; };
+		D3B4FDED1974C7D20078B05E /* InstagramCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramCollectionViewController.h; sourceTree = "<group>"; };
+		D3B4FDEE1974C7D20078B05E /* InstagramCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramCollectionViewController.m; sourceTree = "<group>"; };
+		D3B4FDEF1974C7D20078B05E /* InstagramPictureCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramPictureCollectionViewController.h; sourceTree = "<group>"; };
+		D3B4FDF01974C7D20078B05E /* InstagramPictureCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramPictureCollectionViewController.m; sourceTree = "<group>"; };
+		D3B4FDF11974C7D20078B05E /* InstagramThumbnailCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramThumbnailCollectionViewController.h; sourceTree = "<group>"; };
+		D3B4FDF21974C7D20078B05E /* InstagramThumbnailCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramThumbnailCollectionViewController.m; sourceTree = "<group>"; };
+		D3B4FDF61974C7DD0078B05E /* InstagramCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramCell.h; sourceTree = "<group>"; };
+		D3B4FDF71974C7DD0078B05E /* InstagramCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramCell.m; sourceTree = "<group>"; };
+		D3B4FDF91974C7E40078B05E /* InstagramMediaModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramMediaModel.h; sourceTree = "<group>"; };
+		D3B4FDFA1974C7E40078B05E /* InstagramMediaModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramMediaModel.m; sourceTree = "<group>"; };
+		D3B4FDFB1974C7E40078B05E /* InstagramMediaModel+XHMediaControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "InstagramMediaModel+XHMediaControl.h"; sourceTree = "<group>"; };
+		D3B4FDFC1974C7E40078B05E /* InstagramMediaModel+XHMediaControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "InstagramMediaModel+XHMediaControl.m"; sourceTree = "<group>"; };
+		D3B4FDFD1974C7E40078B05E /* XHInstagramStoreManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHInstagramStoreManager.h; sourceTree = "<group>"; };
+		D3B4FDFE1974C7E40078B05E /* XHInstagramStoreManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHInstagramStoreManager.m; sourceTree = "<group>"; };
 		D3B80F711973718E005F0832 /* iFc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iFc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3B80F741973718E005F0832 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D3B80F761973718E005F0832 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -230,6 +251,7 @@
 		D396F5831973C6E200F21999 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				D3B4FDEC1974C7C50078B05E /* PreviewList */,
 				D396F5851973C6FF00F21999 /* SubType */,
 				D396F5841973C6F000F21999 /* Home */,
 			);
@@ -254,6 +276,27 @@
 				D396F5871973C72200F21999 /* JBParallaxCell.m */,
 			);
 			path = SubType;
+			sourceTree = "<group>";
+		};
+		D3B4FDEC1974C7C50078B05E /* PreviewList */ = {
+			isa = PBXGroup;
+			children = (
+				D3B4FDF91974C7E40078B05E /* InstagramMediaModel.h */,
+				D3B4FDFA1974C7E40078B05E /* InstagramMediaModel.m */,
+				D3B4FDFB1974C7E40078B05E /* InstagramMediaModel+XHMediaControl.h */,
+				D3B4FDFC1974C7E40078B05E /* InstagramMediaModel+XHMediaControl.m */,
+				D3B4FDFD1974C7E40078B05E /* XHInstagramStoreManager.h */,
+				D3B4FDFE1974C7E40078B05E /* XHInstagramStoreManager.m */,
+				D3B4FDF61974C7DD0078B05E /* InstagramCell.h */,
+				D3B4FDF71974C7DD0078B05E /* InstagramCell.m */,
+				D3B4FDED1974C7D20078B05E /* InstagramCollectionViewController.h */,
+				D3B4FDEE1974C7D20078B05E /* InstagramCollectionViewController.m */,
+				D3B4FDEF1974C7D20078B05E /* InstagramPictureCollectionViewController.h */,
+				D3B4FDF01974C7D20078B05E /* InstagramPictureCollectionViewController.m */,
+				D3B4FDF11974C7D20078B05E /* InstagramThumbnailCollectionViewController.h */,
+				D3B4FDF21974C7D20078B05E /* InstagramThumbnailCollectionViewController.m */,
+			);
+			path = PreviewList;
 			sourceTree = "<group>";
 		};
 		D3B80F681973718E005F0832 = {
@@ -493,15 +536,22 @@
 			files = (
 				D3B80FB71973758F005F0832 /* FSBaseViewController.m in Sources */,
 				BEEDCB1E19742634009B4F0B /* MONActivityIndicatorView.m in Sources */,
+				D3B4FE001974C7E40078B05E /* InstagramMediaModel+XHMediaControl.m in Sources */,
 				D396F5731973B69300F21999 /* MMDrawerVisualState.m in Sources */,
 				D3B80F811973718E005F0832 /* main.m in Sources */,
 				D396F5751973B69300F21999 /* UIViewController+MMDrawerController.m in Sources */,
 				D396F5881973C72200F21999 /* JBParallaxCell.m in Sources */,
+				D3B4FDF51974C7D20078B05E /* InstagramThumbnailCollectionViewController.m in Sources */,
 				BEEDCB1819741974009B4F0B /* FSViewController.m in Sources */,
+				D3B4FDF31974C7D20078B05E /* InstagramCollectionViewController.m in Sources */,
+				D3B4FE011974C7E40078B05E /* XHInstagramStoreManager.m in Sources */,
 				D396F5601973B5C100F21999 /* UILabel+attributed.m in Sources */,
+				D3B4FDF81974C7DD0078B05E /* InstagramCell.m in Sources */,
 				D396F5711973B69300F21999 /* MMDrawerBarButtonItem.m in Sources */,
+				D3B4FDF41974C7D20078B05E /* InstagramPictureCollectionViewController.m in Sources */,
 				D3B80F851973718E005F0832 /* FSAppDelegate.m in Sources */,
 				D396F5631973B5C100F21999 /* NSString+size.m in Sources */,
+				D3B4FDFF1974C7E40078B05E /* InstagramMediaModel.m in Sources */,
 				D396F5741973B69300F21999 /* MMExampleDrawerVisualStateManager.m in Sources */,
 				D396F5611973B5C100F21999 /* UIButton+Block.m in Sources */,
 				D396F5641973B5C100F21999 /* NSObject+Objects.m in Sources */,
