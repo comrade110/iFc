@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BEE778D81975728D000CB8AC /* ADFlipTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE778D51975728D000CB8AC /* ADFlipTransition.m */; };
+		BEE778D91975728D000CB8AC /* UICollectionViewController+ADFlipTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE778D71975728D000CB8AC /* UICollectionViewController+ADFlipTransition.m */; };
+		BEE778DC197572B5000CB8AC /* UIViewController+ADFlipTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE778DB197572B5000CB8AC /* UIViewController+ADFlipTransition.m */; };
+		BEE778E019757335000CB8AC /* FSEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE778DF19757335000CB8AC /* FSEditorViewController.m */; };
+		BEE778E319757400000CB8AC /* UIView+CaptureImage.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE778E219757400000CB8AC /* UIView+CaptureImage.m */; };
 		BEEDCB1819741974009B4F0B /* FSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDCB1719741974009B4F0B /* FSViewController.m */; };
 		BEEDCB1E19742634009B4F0B /* MONActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDCB1C19742634009B4F0B /* MONActivityIndicatorView.m */; };
 		D396F5531973AD5200F21999 /* nav_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D396F5521973AD5200F21999 /* nav_bg@2x.png */; };
@@ -78,6 +83,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BEE778D41975728D000CB8AC /* ADFlipTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADFlipTransition.h; sourceTree = "<group>"; };
+		BEE778D51975728D000CB8AC /* ADFlipTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADFlipTransition.m; sourceTree = "<group>"; };
+		BEE778D61975728D000CB8AC /* UICollectionViewController+ADFlipTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionViewController+ADFlipTransition.h"; sourceTree = "<group>"; };
+		BEE778D71975728D000CB8AC /* UICollectionViewController+ADFlipTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionViewController+ADFlipTransition.m"; sourceTree = "<group>"; };
+		BEE778DA197572B5000CB8AC /* UIViewController+ADFlipTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ADFlipTransition.h"; sourceTree = "<group>"; };
+		BEE778DB197572B5000CB8AC /* UIViewController+ADFlipTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ADFlipTransition.m"; sourceTree = "<group>"; };
+		BEE778DE19757335000CB8AC /* FSEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSEditorViewController.h; sourceTree = "<group>"; };
+		BEE778DF19757335000CB8AC /* FSEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSEditorViewController.m; sourceTree = "<group>"; };
+		BEE778E119757400000CB8AC /* UIView+CaptureImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CaptureImage.h"; sourceTree = "<group>"; };
+		BEE778E219757400000CB8AC /* UIView+CaptureImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CaptureImage.m"; sourceTree = "<group>"; };
 		BEEDCB1619741974009B4F0B /* FSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSViewController.h; path = iFc/FSViewController.h; sourceTree = SOURCE_ROOT; };
 		BEEDCB1719741974009B4F0B /* FSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSViewController.m; path = iFc/FSViewController.m; sourceTree = SOURCE_ROOT; };
 		BEEDCB1B19742634009B4F0B /* MONActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MONActivityIndicatorView.h; sourceTree = "<group>"; };
@@ -214,6 +229,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BEE778D319757109000CB8AC /* ADFlipTransition */ = {
+			isa = PBXGroup;
+			children = (
+				BEE778E119757400000CB8AC /* UIView+CaptureImage.h */,
+				BEE778E219757400000CB8AC /* UIView+CaptureImage.m */,
+				BEE778DA197572B5000CB8AC /* UIViewController+ADFlipTransition.h */,
+				BEE778DB197572B5000CB8AC /* UIViewController+ADFlipTransition.m */,
+				BEE778D41975728D000CB8AC /* ADFlipTransition.h */,
+				BEE778D51975728D000CB8AC /* ADFlipTransition.m */,
+				BEE778D61975728D000CB8AC /* UICollectionViewController+ADFlipTransition.h */,
+				BEE778D71975728D000CB8AC /* UICollectionViewController+ADFlipTransition.m */,
+			);
+			path = ADFlipTransition;
+			sourceTree = "<group>";
+		};
+		BEE778DD19757316000CB8AC /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				BEE778DE19757335000CB8AC /* FSEditorViewController.h */,
+				BEE778DF19757335000CB8AC /* FSEditorViewController.m */,
+			);
+			path = Edit;
+			sourceTree = "<group>";
+		};
 		BEEDCB1919742634009B4F0B /* MONActivityIndicatorView */ = {
 			isa = PBXGroup;
 			children = (
@@ -251,6 +290,7 @@
 		D396F5831973C6E200F21999 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				BEE778DD19757316000CB8AC /* Edit */,
 				D3B4FDEC1974C7C50078B05E /* PreviewList */,
 				D396F5851973C6FF00F21999 /* SubType */,
 				D396F5841973C6F000F21999 /* Home */,
@@ -412,6 +452,7 @@
 		D3B80FD4197378D4005F0832 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				BEE778D319757109000CB8AC /* ADFlipTransition */,
 				BEEDCB1919742634009B4F0B /* MONActivityIndicatorView */,
 				D396F5561973B5C100F21999 /* UILabel+attributed.h */,
 				D396F5571973B5C100F21999 /* UILabel+attributed.m */,
@@ -545,16 +586,21 @@
 				BEEDCB1819741974009B4F0B /* FSViewController.m in Sources */,
 				D3B4FDF31974C7D20078B05E /* InstagramCollectionViewController.m in Sources */,
 				D3B4FE011974C7E40078B05E /* XHInstagramStoreManager.m in Sources */,
+				BEE778D91975728D000CB8AC /* UICollectionViewController+ADFlipTransition.m in Sources */,
 				D396F5601973B5C100F21999 /* UILabel+attributed.m in Sources */,
 				D3B4FDF81974C7DD0078B05E /* InstagramCell.m in Sources */,
+				BEE778D81975728D000CB8AC /* ADFlipTransition.m in Sources */,
 				D396F5711973B69300F21999 /* MMDrawerBarButtonItem.m in Sources */,
 				D3B4FDF41974C7D20078B05E /* InstagramPictureCollectionViewController.m in Sources */,
+				BEE778E319757400000CB8AC /* UIView+CaptureImage.m in Sources */,
 				D3B80F851973718E005F0832 /* FSAppDelegate.m in Sources */,
 				D396F5631973B5C100F21999 /* NSString+size.m in Sources */,
 				D3B4FDFF1974C7E40078B05E /* InstagramMediaModel.m in Sources */,
 				D396F5741973B69300F21999 /* MMExampleDrawerVisualStateManager.m in Sources */,
 				D396F5611973B5C100F21999 /* UIButton+Block.m in Sources */,
+				BEE778DC197572B5000CB8AC /* UIViewController+ADFlipTransition.m in Sources */,
 				D396F5641973B5C100F21999 /* NSObject+Objects.m in Sources */,
+				BEE778E019757335000CB8AC /* FSEditorViewController.m in Sources */,
 				D396F5621973B5C100F21999 /* UIAlertView+Block.m in Sources */,
 				D3B80FD719737955005F0832 /* FSConfig.m in Sources */,
 				D396F5721973B69300F21999 /* MMDrawerController.m in Sources */,

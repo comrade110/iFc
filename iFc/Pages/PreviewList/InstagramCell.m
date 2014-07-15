@@ -14,6 +14,16 @@
 - (void)setEntity:(PFObject *)entity andIndexPath:(NSIndexPath *)index {
     [self setupCell];
     _entity = entity;
+    if (_entity[@"previewData"]) {
+        self.imageView.file = _entity[@"previewData"];
+        UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        indicatorView.center = self.imageView.center;
+        [self.contentView addSubview:indicatorView];
+        [indicatorView startAnimating];
+        [self.imageView loadInBackground:^(UIImage *image, NSError *error) {
+            [indicatorView stopAnimating];
+        }];
+    }
 //    
 //    if (_entity.photo) {
 //        [self.thumbnailButton setBackgroundImage:_entity.photo forState:UIControlStateNormal];
@@ -88,6 +98,11 @@
 //        _userProfileImageView.layer.masksToBounds = YES;
 //        _userProfileImageView.layer.cornerRadius = 17.5;
 //    }
+    if (!_imageView) {
+        _imageView = [[PFImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+        _imageView.image = [UIImage imageNamed:@"placeholder"];
+        [self.contentView addSubview:_imageView];
+    }
 }
 
 #pragma mark - life cycle

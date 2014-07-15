@@ -14,6 +14,7 @@
 
 
 @property (nonatomic, assign) PFObject *entity;
+@property (nonatomic, strong) PFImageView *imageView;
 @property (nonatomic, assign) NSIndexPath *indexPath;
 @property (nonatomic, assign) BOOL showThumbnail;
 

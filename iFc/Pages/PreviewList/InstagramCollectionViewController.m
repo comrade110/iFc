@@ -7,6 +7,8 @@
 //
 
 #import "InstagramCollectionViewController.h"
+#import "UICollectionViewController+ADFlipTransition.h"
+#import "FSEditorViewController.h"
 #import <Parse/Parse.h>
 
 
@@ -162,17 +164,12 @@ static NSString * const kXHInstagramFooter = @"InstagramFooter";
 #pragma mark - UICollectionViewDelegate
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *instagramCell =  [collectionView dequeueReusableCellWithReuseIdentifier:kXHInstagramCell forIndexPath:indexPath];
-    
+    InstagramCell *instagramCell =  [collectionView dequeueReusableCellWithReuseIdentifier:kXHInstagramCell forIndexPath:indexPath];
     
     if ([self.mediaArray count] > 0) {
          PFObject* entity = [self.mediaArray objectAtIndex:indexPath.row];
-        imageView.frame = CGRectMake(0, 0, instagramCell.frame.size.width, instagramCell.frame.size.width);
-        imageView.image = [UIImage imageNamed:@"placeholder"];
-        imageView.file = entity[@"previewData"];
-        [imageView loadInBackground:^(UIImage *image, NSError *error) {
-        }];
-        [instagramCell.contentView addSubview:imageView];
+        [instagramCell setEntity:entity andIndexPath:indexPath];
+
         
     }
     NSLog(@"indexrow:%d indexsection:%d",indexPath.row,indexPath.section);
@@ -206,6 +203,16 @@ static NSString * const kXHInstagramFooter = @"InstagramFooter";
     [foot addSubview:self.activityIndicator];
     
     return foot;
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    InstagramCell *cell = (InstagramCell*)[self.collectionView cellForItemAtIndexPath:indexPath];
+    FSEditorViewController *editorVC = [[FSEditorViewController alloc] init];
+    editorVC.bgImg = cell.imageView.image;
+    [self flipToViewController:editorVC fromItemAtIndexPath:indexPath withSourceSnapshotImage:cell.imageView.image andDestinationSnapshot:cell.imageView.image withCompletion:^{
+        
+      }];
+    
 }
 
 @end
