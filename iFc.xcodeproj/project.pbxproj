@@ -31,6 +31,11 @@
 		D396F5821973C58000F21999 /* FSSubTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D396F5811973C58000F21999 /* FSSubTypeViewController.m */; };
 		D396F5881973C72200F21999 /* JBParallaxCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D396F5871973C72200F21999 /* JBParallaxCell.m */; };
 		D396F58A1973CF5500F21999 /* placeholder2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D396F5891973CF5500F21999 /* placeholder2@2x.png */; };
+		D3A9626A19761DCD007C561C /* CurledViewBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D3A9626519761DCD007C561C /* CurledViewBase.m */; };
+		D3A9626B19761DCD007C561C /* UIButton+Curled.m in Sources */ = {isa = PBXBuildFile; fileRef = D3A9626719761DCD007C561C /* UIButton+Curled.m */; };
+		D3A9626C19761DCD007C561C /* UIImageView+Curled.m in Sources */ = {isa = PBXBuildFile; fileRef = D3A9626919761DCD007C561C /* UIImageView+Curled.m */; };
+		D3A9627019763F99007C561C /* SinglePicManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D3A9626F19763F99007C561C /* SinglePicManager.m */; };
+		D3A9627419764593007C561C /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3A9627319764593007C561C /* DACircularProgressView.m */; };
 		D3B4FDF31974C7D20078B05E /* InstagramCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B4FDEE1974C7D20078B05E /* InstagramCollectionViewController.m */; };
 		D3B4FDF41974C7D20078B05E /* InstagramPictureCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B4FDF01974C7D20078B05E /* InstagramPictureCollectionViewController.m */; };
 		D3B4FDF51974C7D20078B05E /* InstagramThumbnailCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B4FDF21974C7D20078B05E /* InstagramThumbnailCollectionViewController.m */; };
@@ -129,6 +134,16 @@
 		D396F5861973C72200F21999 /* JBParallaxCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBParallaxCell.h; sourceTree = "<group>"; };
 		D396F5871973C72200F21999 /* JBParallaxCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBParallaxCell.m; sourceTree = "<group>"; };
 		D396F5891973CF5500F21999 /* placeholder2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placeholder2@2x.png"; sourceTree = "<group>"; };
+		D3A9626419761DCD007C561C /* CurledViewBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurledViewBase.h; sourceTree = "<group>"; };
+		D3A9626519761DCD007C561C /* CurledViewBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurledViewBase.m; sourceTree = "<group>"; };
+		D3A9626619761DCD007C561C /* UIButton+Curled.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Curled.h"; sourceTree = "<group>"; };
+		D3A9626719761DCD007C561C /* UIButton+Curled.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Curled.m"; sourceTree = "<group>"; };
+		D3A9626819761DCD007C561C /* UIImageView+Curled.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Curled.h"; sourceTree = "<group>"; };
+		D3A9626919761DCD007C561C /* UIImageView+Curled.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Curled.m"; sourceTree = "<group>"; };
+		D3A9626E19763F99007C561C /* SinglePicManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinglePicManager.h; sourceTree = "<group>"; };
+		D3A9626F19763F99007C561C /* SinglePicManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinglePicManager.m; sourceTree = "<group>"; };
+		D3A9627219764593007C561C /* DACircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACircularProgressView.h; sourceTree = "<group>"; };
+		D3A9627319764593007C561C /* DACircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACircularProgressView.m; sourceTree = "<group>"; };
 		D3B4FDED1974C7D20078B05E /* InstagramCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramCollectionViewController.h; sourceTree = "<group>"; };
 		D3B4FDEE1974C7D20078B05E /* InstagramCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramCollectionViewController.m; sourceTree = "<group>"; };
 		D3B4FDEF1974C7D20078B05E /* InstagramPictureCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramPictureCollectionViewController.h; sourceTree = "<group>"; };
@@ -318,6 +333,37 @@
 			path = SubType;
 			sourceTree = "<group>";
 		};
+		D3A9626319761DCD007C561C /* curledView */ = {
+			isa = PBXGroup;
+			children = (
+				D3A9626419761DCD007C561C /* CurledViewBase.h */,
+				D3A9626519761DCD007C561C /* CurledViewBase.m */,
+				D3A9626619761DCD007C561C /* UIButton+Curled.h */,
+				D3A9626719761DCD007C561C /* UIButton+Curled.m */,
+				D3A9626819761DCD007C561C /* UIImageView+Curled.h */,
+				D3A9626919761DCD007C561C /* UIImageView+Curled.m */,
+			);
+			path = curledView;
+			sourceTree = "<group>";
+		};
+		D3A9626D19763F6E007C561C /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				D3A9626E19763F99007C561C /* SinglePicManager.h */,
+				D3A9626F19763F99007C561C /* SinglePicManager.m */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		D3A9627119764593007C561C /* DACircularProgress */ = {
+			isa = PBXGroup;
+			children = (
+				D3A9627219764593007C561C /* DACircularProgressView.h */,
+				D3A9627319764593007C561C /* DACircularProgressView.m */,
+			);
+			path = DACircularProgress;
+			sourceTree = "<group>";
+		};
 		D3B4FDEC1974C7C50078B05E /* PreviewList */ = {
 			isa = PBXGroup;
 			children = (
@@ -387,6 +433,7 @@
 		D3B80F7A1973718E005F0832 /* iFc */ = {
 			isa = PBXGroup;
 			children = (
+				D3A9626D19763F6E007C561C /* Manager */,
 				D396F5831973C6E200F21999 /* Pages */,
 				D396F5761973B6FC00F21999 /* FSMenuViewController.h */,
 				D396F5771973B6FC00F21999 /* FSMenuViewController.m */,
@@ -452,6 +499,8 @@
 		D3B80FD4197378D4005F0832 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				D3A9627119764593007C561C /* DACircularProgress */,
+				D3A9626319761DCD007C561C /* curledView */,
 				BEE778D319757109000CB8AC /* ADFlipTransition */,
 				BEEDCB1919742634009B4F0B /* MONActivityIndicatorView */,
 				D396F5561973B5C100F21999 /* UILabel+attributed.h */,
@@ -575,6 +624,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3A9626A19761DCD007C561C /* CurledViewBase.m in Sources */,
 				D3B80FB71973758F005F0832 /* FSBaseViewController.m in Sources */,
 				BEEDCB1E19742634009B4F0B /* MONActivityIndicatorView.m in Sources */,
 				D3B4FE001974C7E40078B05E /* InstagramMediaModel+XHMediaControl.m in Sources */,
@@ -587,6 +637,7 @@
 				D3B4FDF31974C7D20078B05E /* InstagramCollectionViewController.m in Sources */,
 				D3B4FE011974C7E40078B05E /* XHInstagramStoreManager.m in Sources */,
 				BEE778D91975728D000CB8AC /* UICollectionViewController+ADFlipTransition.m in Sources */,
+				D3A9627419764593007C561C /* DACircularProgressView.m in Sources */,
 				D396F5601973B5C100F21999 /* UILabel+attributed.m in Sources */,
 				D3B4FDF81974C7DD0078B05E /* InstagramCell.m in Sources */,
 				BEE778D81975728D000CB8AC /* ADFlipTransition.m in Sources */,
@@ -605,7 +656,10 @@
 				D3B80FD719737955005F0832 /* FSConfig.m in Sources */,
 				D396F5721973B69300F21999 /* MMDrawerController.m in Sources */,
 				D396F5781973B6FC00F21999 /* FSMenuViewController.m in Sources */,
+				D3A9627019763F99007C561C /* SinglePicManager.m in Sources */,
+				D3A9626C19761DCD007C561C /* UIImageView+Curled.m in Sources */,
 				D396F5821973C58000F21999 /* FSSubTypeViewController.m in Sources */,
+				D3A9626B19761DCD007C561C /* UIButton+Curled.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -758,6 +812,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: hongxiang chen (TPW4A222GA)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -776,6 +831,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: hongxiang chen (TPW4A222GA)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

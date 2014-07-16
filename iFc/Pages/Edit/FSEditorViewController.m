@@ -8,7 +8,11 @@
 
 #import "FSEditorViewController.h"
 
-@interface FSEditorViewController ()
+@interface FSEditorViewController (){
+
+    SEL showProgress;
+
+}
 
 @end
 
@@ -29,7 +33,36 @@
     
     PFImageView *imageView = [[PFImageView alloc] initWithFrame:self.view.frame];
     imageView.image = _bgImg;
+    imageView.file = [[SinglePicManager manager] entity][@"imageData"];
+    
+    DACircularProgressView *progressView = [[DACircularProgressView alloc] initWithFrame:CGRectMake(0, 0, 40.0f, 40.0f)];
+    progressView.center = imageView.center;
+    progressView.progress=0.0f;
+    progressView.hidden = YES;
+    [imageView addSubview:progressView];
+    
+    //创建一个调度时间,相对于默认时钟或修改现有的调度时间。
+    //设置时间为2
+    double delayInSeconds = 0.8;
+    //创建一个调度时间,相对于默认时钟或修改现有的调度时间。
+    dispatch_time_t delayInNanoSeconds =dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    //推迟两纳秒执行
+    dispatch_queue_t concurrentQueue =dispatch_get_main_queue();
+    dispatch_after(delayInNanoSeconds, concurrentQueue, ^(void){
+        progressView.hidden = NO;
+    });
+
+    
+    [imageView.file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        if (!error) {
+            imageView.image = [UIImage imageWithData:data];
+        }
+        [progressView removeFromSuperview];
+    } progressBlock:^(int percentDone) {
+        progressView.progress=(float)percentDone/100;
+    }];
     [self.view addSubview:imageView];
+    
     
     
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeContactAdd];
@@ -41,6 +74,7 @@
     }];
     
     [self.view addSubview:btn];
+    
     // Do any additional setup after loading the view.
 }
 

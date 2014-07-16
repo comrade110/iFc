@@ -8,6 +8,7 @@
 
 #import "InstagramCell.h"
 #import <QuartzCore/QuartzCore.h>
+#import "UIImageView+Curled.h"
 
 @implementation InstagramCell
 
@@ -21,6 +22,11 @@
         [self.contentView addSubview:indicatorView];
         [indicatorView startAnimating];
         [self.imageView loadInBackground:^(UIImage *image, NSError *error) {
+            if (error) {
+                NSLog(@"caio");
+            }
+            
+            [_imageView setImage:image borderWidth:5.0 shadowDepth:5.0 controlPointXOffset:10 controlPointYOffset:80];
             [indicatorView stopAnimating];
         }];
     }
@@ -64,6 +70,8 @@
 }
 
 - (void)setupCell {
+    
+    self.backgroundColor = [UIColor clearColor];
 //    if (!_thumbnailButton) {
 //        _thumbnailButton = [UIButton buttonWithType:UIButtonTypeCustom];
 //    }
@@ -100,7 +108,9 @@
 //    }
     if (!_imageView) {
         _imageView = [[PFImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
-        _imageView.image = [UIImage imageNamed:@"placeholder"];
+//        _imageView.image = [UIImage imageNamed:@"placeholder"];
+        [_imageView setContentMode:UIViewContentModeScaleToFill];
+        [_imageView setImage:[UIImage imageNamed:@"placeholder"] borderWidth:5.0 shadowDepth:10.0 controlPointXOffset:30.0 controlPointYOffset:80.0];
         [self.contentView addSubview:_imageView];
     }
 }

@@ -90,7 +90,7 @@ static NSString * const kXHInstagramFooter = @"InstagramFooter";
 
 - (void)_setupCollectionView {
     [self.collectionView registerClass:[InstagramCell class] forCellWithReuseIdentifier:kXHInstagramCell];
-    [self.collectionView setBackgroundColor:[UIColor whiteColor]];
+    [self.collectionView setBackgroundColor:[UIColor mainBgColor]];
     [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:kXHInstagramFooter];
 }
 
@@ -98,9 +98,7 @@ static NSString * const kXHInstagramFooter = @"InstagramFooter";
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.title = @"Instagram";
-     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:kXHInstagramCell];
     self.curPage = 0;
-    
     
     [self _setupCollectionView];
 }
@@ -128,7 +126,7 @@ static NSString * const kXHInstagramFooter = @"InstagramFooter";
         }];
     }else{
         [self.instagramStoreManager mediaWithPage:self.curPage localDownloadDataSourceCompled:^(NSArray *mediaArray, NSError *error) {
-            
+            self.curPage ++;
             NSUInteger a = [self.mediaArray count];
             [self.mediaArray addObjectsFromArray:mediaArray];
             
@@ -209,6 +207,7 @@ static NSString * const kXHInstagramFooter = @"InstagramFooter";
     InstagramCell *cell = (InstagramCell*)[self.collectionView cellForItemAtIndexPath:indexPath];
     FSEditorViewController *editorVC = [[FSEditorViewController alloc] init];
     editorVC.bgImg = cell.imageView.image;
+    [SinglePicManager manager].entity = cell.entity;
     [self flipToViewController:editorVC fromItemAtIndexPath:indexPath withSourceSnapshotImage:cell.imageView.image andDestinationSnapshot:cell.imageView.image withCompletion:^{
         
       }];

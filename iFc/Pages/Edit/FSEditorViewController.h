@@ -8,9 +8,11 @@
 
 #import "FSBaseViewController.h"
 #import "UIViewController+ADFlipTransition.h"
+#import "DACircularProgressView.h"
 
 @interface FSEditorViewController : FSBaseViewController
 
 @property(nonatomic,strong) UIImage *bgImg;
+@property(nonatomic,strong) NSString *objectId;
 
 @end
