@@ -35,3 +35,12 @@
 }
 
 @end
+
+
+@implementation UIFont (customSystemFont)
+
++(UIFont*)fsFontWithSize:(CGFloat)size{
+    return [UIFont fontWithName:@"Avenir-LightOblique" size:size];
+}
+
+@end;

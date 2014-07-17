@@ -209,7 +209,7 @@ static NSString * const kXHInstagramFooter = @"InstagramFooter";
     editorVC.bgImg = cell.imageView.image;
     [SinglePicManager manager].entity = cell.entity;
     [self flipToViewController:editorVC fromItemAtIndexPath:indexPath withSourceSnapshotImage:cell.imageView.image andDestinationSnapshot:cell.imageView.image withCompletion:^{
-        
+         [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
       }];
     
 }

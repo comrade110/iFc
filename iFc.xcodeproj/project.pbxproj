@@ -36,6 +36,7 @@
 		D3A9626C19761DCD007C561C /* UIImageView+Curled.m in Sources */ = {isa = PBXBuildFile; fileRef = D3A9626919761DCD007C561C /* UIImageView+Curled.m */; };
 		D3A9627019763F99007C561C /* SinglePicManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D3A9626F19763F99007C561C /* SinglePicManager.m */; };
 		D3A9627419764593007C561C /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3A9627319764593007C561C /* DACircularProgressView.m */; };
+		D3ABA6D9197796CE0082A5B2 /* EditorButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D3ABA6D8197796CE0082A5B2 /* EditorButton.m */; };
 		D3B4FDF31974C7D20078B05E /* InstagramCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B4FDEE1974C7D20078B05E /* InstagramCollectionViewController.m */; };
 		D3B4FDF41974C7D20078B05E /* InstagramPictureCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B4FDF01974C7D20078B05E /* InstagramPictureCollectionViewController.m */; };
 		D3B4FDF51974C7D20078B05E /* InstagramThumbnailCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B4FDF21974C7D20078B05E /* InstagramThumbnailCollectionViewController.m */; };
@@ -144,6 +145,8 @@
 		D3A9626F19763F99007C561C /* SinglePicManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinglePicManager.m; sourceTree = "<group>"; };
 		D3A9627219764593007C561C /* DACircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACircularProgressView.h; sourceTree = "<group>"; };
 		D3A9627319764593007C561C /* DACircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACircularProgressView.m; sourceTree = "<group>"; };
+		D3ABA6D7197796CE0082A5B2 /* EditorButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditorButton.h; sourceTree = "<group>"; };
+		D3ABA6D8197796CE0082A5B2 /* EditorButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditorButton.m; sourceTree = "<group>"; };
 		D3B4FDED1974C7D20078B05E /* InstagramCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramCollectionViewController.h; sourceTree = "<group>"; };
 		D3B4FDEE1974C7D20078B05E /* InstagramCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramCollectionViewController.m; sourceTree = "<group>"; };
 		D3B4FDEF1974C7D20078B05E /* InstagramPictureCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramPictureCollectionViewController.h; sourceTree = "<group>"; };
@@ -264,6 +267,8 @@
 			children = (
 				BEE778DE19757335000CB8AC /* FSEditorViewController.h */,
 				BEE778DF19757335000CB8AC /* FSEditorViewController.m */,
+				D3ABA6D7197796CE0082A5B2 /* EditorButton.h */,
+				D3ABA6D8197796CE0082A5B2 /* EditorButton.m */,
 			);
 			path = Edit;
 			sourceTree = "<group>";
@@ -633,6 +638,7 @@
 				D396F5751973B69300F21999 /* UIViewController+MMDrawerController.m in Sources */,
 				D396F5881973C72200F21999 /* JBParallaxCell.m in Sources */,
 				D3B4FDF51974C7D20078B05E /* InstagramThumbnailCollectionViewController.m in Sources */,
+				D3ABA6D9197796CE0082A5B2 /* EditorButton.m in Sources */,
 				BEEDCB1819741974009B4F0B /* FSViewController.m in Sources */,
 				D3B4FDF31974C7D20078B05E /* InstagramCollectionViewController.m in Sources */,
 				D3B4FE011974C7E40078B05E /* XHInstagramStoreManager.m in Sources */,

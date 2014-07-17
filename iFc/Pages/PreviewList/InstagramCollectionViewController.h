@@ -11,7 +11,7 @@
 #import "XHInstagramStoreManager.h"
 #import "FSBaseViewController.h"
 
-#define kXHISIPAD ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+
 #define showAlert(Title, Message, CancelButton) UIAlertView * alert = [[UIAlertView alloc] initWithTitle:Title message:Message delegate:nil cancelButtonTitle:CancelButton otherButtonTitles:nil, nil]; \
 [alert show];
 

@@ -64,7 +64,7 @@
     cell.backgroundColor = [UIColor clearColor];
     cell.textLabel.text = self.menuArray[indexPath.section];
     cell.textLabel.textColor = [UIColor lightGrayColor];
-    cell.textLabel.font = [UIFont fontWithName:@"Avenir-LightOblique" size:16.f];
+    cell.textLabel.font = [UIFont fsFontWithSize:16.f];
     return cell;
 
 }

@@ -100,6 +100,11 @@
     PFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[PFTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }else{
+    
+        for (UIView *subView in cell.contentView.subviews) {
+            [subView removeFromSuperview];
+        }
     }
     cell.backgroundColor = [UIColor clearColor];
     
@@ -108,7 +113,7 @@
     UIView *boxView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height)];
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(60, 0, 179, 85)];
     label.textColor = [UIColor colorWithRed:140./255. green:153./255. blue:169./255. alpha:1.f];
-    label.font = [UIFont fontWithName:@"Avenir-LightOblique" size:16.f];
+    label.font = [UIFont fsFontWithSize:16.f];
     if ([[FSConfig getCurrentLanguage] isEqualToString:@"zh-Hans"]) {
         label.text = object[@"name_cn"];
     }else if ([[FSConfig getCurrentLanguage] isEqualToString:@"zh-Hant"]){

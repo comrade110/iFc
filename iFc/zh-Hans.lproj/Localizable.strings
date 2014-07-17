@@ -9,3 +9,9 @@
 
 "normal" = "normal";
 "animal" = "animal";
+"Choose Photo" = "选择照片";
+"Cancel" = "取消";
+"Back" = "返回";
+"Save" = "保存";
+"Use Photo from Library" = "从相册选取照片";
+"Take Photo with Camera" = "用相机拍照";

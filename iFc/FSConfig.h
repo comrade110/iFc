@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #define WEAKSELF typeof(self) __weak weakSelf = self;
+#define FSWINDOW [[[UIApplication sharedApplication] delegate] window]
 
 @interface FSConfig : NSObject
 
@@ -21,4 +22,8 @@
 @interface UIColor (customSystemColor)
 +(UIColor*)mainBgColor;
 +(UIColor*)mainCellColor;
+@end
+
+@interface UIFont (customSystemFont)
++(UIFont*)fsFontWithSize:(CGFloat)size;
 @end
