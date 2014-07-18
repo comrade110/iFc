@@ -8,6 +8,8 @@
 
 #import "FSEditorViewController.h"
 #import "EditorButton.h"
+#import "UIView+Frame.h"
+#import "UIImage+Utility.h"
 
 #define IMAGESIZE 2
 
@@ -16,11 +18,21 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
 @interface FSEditorViewController ()<UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate,UIGestureRecognizerDelegate>{
 
     SEL showProgress;
+    EditorButton *closeBtn;
+    EditorButton *editBtn;
+    EditorButton *getPhotoBtn;
+    EditorButton *saveBtn;
+    UISlider *saturationSlider;
+    UISlider *brightnessSlider;
+    UISlider *contrastSlider;
+    
 
 }
 @property(nonatomic,strong) PFImageView *imageView;
 @property(nonatomic,strong) UIImageView *userImageView;
-@property(nonatomic,strong) UIImageView *usershadowImageView;
+@property(nonatomic,strong) UIView *usershadowImageView;
+@property(nonatomic,strong) UIImage *thumnailImage;
+@property(nonatomic,strong) UIImageView *tempView;
 @property (retain, nonatomic) UIPanGestureRecognizer *panRecognizer;
 @property (retain, nonatomic) UIRotationGestureRecognizer *rotationRecognizer;
 @property (retain, nonatomic) UIPinchGestureRecognizer *pinchRecognizer;
@@ -34,6 +46,9 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
 @property(nonatomic,assign) CGPoint rotationCenter;
 @property(nonatomic,assign) CGPoint scaleCenter;
 @property(nonatomic,assign) CGFloat scale;
+
+
+
 
 @end
 
@@ -68,6 +83,15 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     progressView.hidden = YES;
     [_imageView addSubview:progressView];
     
+    
+    // 返回按钮
+    UIButton *backBtn = [[UIButton alloc] initWithFrame:CGRectMake(20, 20, 35, 35)];
+    [backBtn setImage:[UIImage imageNamed:@"edit_back"] forState:UIControlStateNormal];
+    [backBtn handleControlWithBlock:^{
+        [self dismissFlipWithCompletion:NULL];
+    }];
+    [self.view addSubview:backBtn];
+    
     //创建一个调度时间,相对于默认时钟或修改现有的调度时间。
     //设置时间为2
     double delayInSeconds = 0.8;
@@ -83,6 +107,9 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     [_imageView.file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         if (!error) {
             weakSelf.imageView.image = [UIImage imageWithData:data];
+        }else{
+            alert(@"Connection failed, please try again later.");
+            [self dismissFlipWithCompletion:NULL];
         }
         [progressView removeFromSuperview];
     } progressBlock:^(int percentDone) {
@@ -105,6 +132,8 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Build Views
+
 -(void)buildUserImageView{
 
     self.userImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width/IMAGESIZE, self.view.frame.size.height/IMAGESIZE)];
@@ -126,10 +155,14 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
 
     
     // 半透明图层
-    self.usershadowImageView = [[UIImageView alloc] initWithFrame:self.userImageView.frame];
+    self.usershadowImageView = [[UIView alloc] initWithFrame:self.userImageView.frame];
     self.usershadowImageView.frame = _userImageView.frame;
-    self.usershadowImageView.alpha = .2f;
+    self.usershadowImageView.backgroundColor = [UIColor clearColor];
     self.usershadowImageView.userInteractionEnabled = NO;
+    
+    self.tempView = [[UIImageView alloc] initWithFrame:self.userImageView.frame];
+    [self.usershadowImageView addSubview:_tempView];
+    
     [self.usershadowImageView addGestureRecognizer:_panRecognizer];
     [self.usershadowImageView addGestureRecognizer:_pinchRecognizer];
     [self.usershadowImageView addGestureRecognizer:_rotationRecognizer];
@@ -145,32 +178,171 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     [self.view addSubview:toolsView];
     [self.view bringSubviewToFront:toolsView];
     
-    
-    // 返回按钮
-    EditorButton *backBtn = [[EditorButton alloc] initWithFrame:CGRectMake(10, 3, 44, 44)];
-    [backBtn setTitle:NSLocalizedString(@"Back", nil) forState:UIControlStateNormal];
-    [toolsView addSubview:backBtn];
-    [backBtn handleControlWithBlock:^{
-        [self dismissFlipWithCompletion:NULL];
-        
-    }];
+
     
     // 照片按钮
-    EditorButton *getPhotoBtn = [[EditorButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-22, 3, 44, 44)];
+    getPhotoBtn = [[EditorButton alloc] initWithFrame:CGRectMake(10, 3, 44, 44)];
     [getPhotoBtn setTitle:NSLocalizedString(@"Photo", nil) forState:UIControlStateNormal];
     [getPhotoBtn handleControlWithBlock:^{
         UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Choose Photo" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Use Photo from Library",@"Take Photo with Camera", nil];
         actionSheet.delegate = self;
-        [actionSheet showInView:self.view];
+        [actionSheet showInView:self.view.window];
     }];
     [toolsView addSubview:getPhotoBtn];
     
+    //编辑按钮
+    closeBtn = [[EditorButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
+    [closeBtn setTitle:NSLocalizedString(@"Done", nil) forState:UIControlStateNormal];
+    closeBtn.hidden = YES;
+    [closeBtn handleControlWithBlock:^{
+        editBtn.hidden = NO;
+        closeBtn.hidden = YES;
+        
+        getPhotoBtn.hidden = NO;
+        saveBtn.hidden = NO;
+        [UIView transitionFromView:closeBtn
+                            toView:editBtn
+                          duration: 1.f
+                           options: UIViewAnimationOptionTransitionFlipFromLeft+UIViewAnimationOptionCurveEaseInOut
+                        completion:^(BOOL finished) {
+                            if (finished) {
+                            }
+                        }
+         ];
+        [saturationSlider.superview removeFromSuperview];
+        [brightnessSlider.superview removeFromSuperview];
+        [contrastSlider.superview removeFromSuperview];
+        NSLog(@"saturationSlider:%@",saturationSlider);
+        
+    }];
+//    [toolsView addSubview:closeBtn];
+    
+    editBtn = [[EditorButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
+    [editBtn setTitle:NSLocalizedString(@"Edit", nil) forState:UIControlStateNormal];
+    [editBtn handleControlWithBlock:^{
+        if (!self.userImageView.image) {
+            alert(@"Need to add a photo first before editing");
+            return ;
+        }
+        [self adjustmentViewBulid];
+        closeBtn.hidden = NO;
+        editBtn.hidden = YES;
+        getPhotoBtn.hidden = YES;
+        saveBtn.hidden = YES;
+        [UIView transitionFromView:editBtn
+                            toView:closeBtn
+                          duration: 1.f
+                           options: UIViewAnimationOptionTransitionFlipFromLeft+UIViewAnimationOptionCurveEaseInOut
+                        completion:^(BOOL finished) {
+                            if (finished) {
+                            }
+                        }
+         ];
+
+        _thumnailImage = [self.userImageView.image resize:self.userImageView.frame.size];
+    }];
+//    [toolsView addSubview:editBtn];
+    
+    UIView *boxView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-22, 3, 44, 44)];
+    [boxView addSubview:closeBtn];
+    [boxView addSubview:editBtn];
+    
+    [toolsView addSubview:boxView];
+    
+    
     //保存按钮
-    EditorButton *saveBtn = [[EditorButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 54, 3, 44, 44)];
+    saveBtn = [[EditorButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 54, 3, 44, 44)];
     [saveBtn setTitle:NSLocalizedString(@"Save", nil) forState:UIControlStateNormal];
     [toolsView addSubview:saveBtn];
 
 }
+
+-(void)adjustmentViewBulid{
+
+    saturationSlider = [[UISlider alloc] initWithFrame:CGRectMake(10, 0, 260, 35)];
+    [self sliderWithValue:1 minimumValue:0 maximumValue:2 image:@"saturation.png" withSlider:saturationSlider action:@selector(sliderDidChange:)];
+    saturationSlider.superview.center = CGPointMake(self.view.width/2, self.view.bottom-80);
+    
+    
+    brightnessSlider = [[UISlider alloc] initWithFrame:CGRectMake(10, 0, 260, 35)];
+    [self sliderWithValue:0 minimumValue:-1 maximumValue:1 image:@"brightness.png" withSlider:brightnessSlider action:@selector(sliderDidChange:)];
+    brightnessSlider.superview.center = CGPointMake(20, saturationSlider.superview.top - 150);
+    brightnessSlider.superview.transform = CGAffineTransformMakeRotation(-M_PI * 90 / 180.0f);
+    
+    
+    contrastSlider =[[UISlider alloc] initWithFrame:CGRectMake(10, 0, 260, 35)];
+    [self sliderWithValue:1 minimumValue:0.5 maximumValue:1.5 image:@"contrast.png" withSlider:contrastSlider action:@selector(sliderDidChange:)];
+    contrastSlider.superview.center = CGPointMake(300, brightnessSlider.superview.center.y);
+    contrastSlider.superview.transform = CGAffineTransformMakeRotation(-M_PI * 90 / 180.0f);
+
+}
+
+#pragma mark- action
+
+- (void)sliderWithValue:(CGFloat)value minimumValue:(CGFloat)min maximumValue:(CGFloat)max image:(NSString*)imageName withSlider:(UISlider*)slider action:(SEL)action
+{
+    [slider setThumbImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+    [slider setThumbImage:[UIImage imageNamed:imageName] forState:UIControlStateHighlighted];
+    UIView *container = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 280, slider.height)];
+    container.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.3];
+    container.layer.cornerRadius = slider.height/2;
+    
+    slider.continuous = YES;
+    [slider addTarget:self action:action forControlEvents:UIControlEventValueChanged];
+    
+    slider.maximumValue = max;
+    slider.minimumValue = min;
+    slider.value = value;
+    
+    [container addSubview:slider];
+    [self.view insertSubview:container aboveSubview:self.tempView];
+    
+}
+
+
+
+- (void)sliderDidChange:(UISlider*)sender
+{
+    static BOOL inProgress = NO;
+    
+    if(inProgress){ return; }
+    inProgress = YES;
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        UIImage *image = [self filteredImage:_thumnailImage];
+        [self.userImageView performSelectorOnMainThread:@selector(setImage:) withObject:image waitUntilDone:NO];
+        inProgress = NO;
+    });
+}
+
+- (UIImage*)filteredImage:(UIImage*)image
+{
+    CIImage *ciImage = [[CIImage alloc] initWithImage:image];
+    CIFilter *filter = [CIFilter filterWithName:@"CIColorControls" keysAndValues:kCIInputImageKey, ciImage, nil];
+    
+    [filter setDefaults];
+    [filter setValue:[NSNumber numberWithFloat:saturationSlider.value] forKey:@"inputSaturation"];
+    
+    filter = [CIFilter filterWithName:@"CIExposureAdjust" keysAndValues:kCIInputImageKey, [filter outputImage], nil];
+    [filter setDefaults];
+    CGFloat brightness = 2*brightnessSlider.value;
+    [filter setValue:[NSNumber numberWithFloat:brightness] forKey:@"inputEV"];
+    
+    filter = [CIFilter filterWithName:@"CIGammaAdjust" keysAndValues:kCIInputImageKey, [filter outputImage], nil];
+    [filter setDefaults];
+    CGFloat contrast   = contrastSlider.value*contrastSlider.value;
+    [filter setValue:[NSNumber numberWithFloat:contrast] forKey:@"inputPower"];
+    
+    CIContext *context = [CIContext contextWithOptions:nil];
+    CIImage *outputImage = [filter outputImage];
+    CGImageRef cgImage = [context createCGImage:outputImage fromRect:[outputImage extent]];
+    
+    UIImage *result = [UIImage imageWithCGImage:cgImage];
+    
+    CGImageRelease(cgImage);
+    return result;
+}
+
 
 #pragma mark UIGestureRecognizer Delegate
 
@@ -232,6 +404,10 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
         [recognizer setTranslation:CGPointMake(0, 0) inView:self.view];
     }
     
+    if (recognizer.state == UIGestureRecognizerStateEnded){
+        
+        _tempView.alpha = 0.f;
+    }
 }
 
 - (void)rotationImage:(UIRotationGestureRecognizer*)recognizer {
@@ -252,6 +428,10 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
         
         recognizer.rotation = 0;
     }
+    if (recognizer.state == UIGestureRecognizerStateEnded){
+        
+        _tempView.alpha = 0.f;
+    }
 }
 - (void)changeImage:(UIPinchGestureRecognizer*)recognizer {
 //    [self.view sendSubviewToBack:self.userImageView];
@@ -271,6 +451,10 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
         
         recognizer.scale = 1;
     }
+    if (recognizer.state == UIGestureRecognizerStateEnded){
+        
+        _tempView.alpha = 0.f;
+    }
     
 }
 - (void)handleTouches:(NSSet*)touches
@@ -288,30 +472,27 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [self handleTouches:[event allTouches]];
+    if (_tempView.alpha == .0f) {
+        _tempView.alpha = 0.1f;
+    }
+
 }
 
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
     [self handleTouches:[event allTouches]];
-    self.usershadowImageView.alpha = .2f;
+    if (_tempView.alpha == .0f) {
+        _tempView.alpha = 0.1f;
+    }
 }
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     [self handleTouches:[event allTouches]];
-    self.usershadowImageView.alpha = 0.001f;
 }
 
 -(void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
     [self handleTouches:[event allTouches]];
-    self.usershadowImageView.hidden = 0.001f;
 }
 
--(void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event{
-    
-    self.usershadowImageView.alpha = .2f;
-}
--(void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event{
-
-}
 
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
@@ -381,7 +562,9 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     
     self.userImageView.image = info[@"UIImagePickerControllerOriginalImage"];
     [self.userImageView setUserInteractionEnabled:YES];
-    self.usershadowImageView.image = self.userImageView.image;
+    _tempView.alpha = .1f;
+    _tempView.image = self.userImageView.image;
+
     [self.usershadowImageView setUserInteractionEnabled:YES];
     [picker dismissViewControllerAnimated:YES completion:^{
         

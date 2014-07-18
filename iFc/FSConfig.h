@@ -27,3 +27,6 @@
 @interface UIFont (customSystemFont)
 +(UIFont*)fsFontWithSize:(CGFloat)size;
 @end
+
+
+extern void alert(NSString* msg);

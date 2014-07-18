@@ -63,6 +63,7 @@
             [weakSelf.tableView reloadData];
         } else {
             // Log details of the failure
+            alert(@"Connection failed, please try again later.");
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
         [indicatorView stopAnimating];

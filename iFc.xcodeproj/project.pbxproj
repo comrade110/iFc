@@ -14,6 +14,20 @@
 		BEE778E319757400000CB8AC /* UIView+CaptureImage.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE778E219757400000CB8AC /* UIView+CaptureImage.m */; };
 		BEEDCB1819741974009B4F0B /* FSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDCB1719741974009B4F0B /* FSViewController.m */; };
 		BEEDCB1E19742634009B4F0B /* MONActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDCB1C19742634009B4F0B /* MONActivityIndicatorView.m */; };
+		D339D5DA1978D30D002E1A4B /* tiaose@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D339D5D91978D30D002E1A4B /* tiaose@2x.png */; };
+		D339D5DE1978FCB1002E1A4B /* edit_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D339D5DD1978FCB1002E1A4B /* edit_back@2x.png */; };
+		D339D5EA19790095002E1A4B /* CLClassList.m in Sources */ = {isa = PBXBuildFile; fileRef = D339D5E119790095002E1A4B /* CLClassList.m */; };
+		D339D5EB19790095002E1A4B /* CLSplineInterpolator.m in Sources */ = {isa = PBXBuildFile; fileRef = D339D5E319790095002E1A4B /* CLSplineInterpolator.m */; };
+		D339D5EC19790095002E1A4B /* UIDevice+SystemVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = D339D5E519790095002E1A4B /* UIDevice+SystemVersion.m */; };
+		D339D5ED19790095002E1A4B /* UIImage+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = D339D5E719790095002E1A4B /* UIImage+Utility.m */; };
+		D339D5EE19790095002E1A4B /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = D339D5E919790095002E1A4B /* UIView+Frame.m */; };
+		D339D5F519790220002E1A4B /* brightness.png in Resources */ = {isa = PBXBuildFile; fileRef = D339D5EF19790220002E1A4B /* brightness.png */; };
+		D339D5F619790220002E1A4B /* brightness@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D339D5F019790220002E1A4B /* brightness@2x.png */; };
+		D339D5F719790220002E1A4B /* contrast.png in Resources */ = {isa = PBXBuildFile; fileRef = D339D5F119790220002E1A4B /* contrast.png */; };
+		D339D5F819790220002E1A4B /* contrast@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D339D5F219790220002E1A4B /* contrast@2x.png */; };
+		D339D5F919790220002E1A4B /* saturation.png in Resources */ = {isa = PBXBuildFile; fileRef = D339D5F319790220002E1A4B /* saturation.png */; };
+		D339D5FA19790220002E1A4B /* saturation@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D339D5F419790220002E1A4B /* saturation@2x.png */; };
+		D339D5FD19792630002E1A4B /* CMSCoinView.m in Sources */ = {isa = PBXBuildFile; fileRef = D339D5FC19792630002E1A4B /* CMSCoinView.m */; };
 		D396F5531973AD5200F21999 /* nav_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D396F5521973AD5200F21999 /* nav_bg@2x.png */; };
 		D396F5551973B50C00F21999 /* pulDrawer.png in Resources */ = {isa = PBXBuildFile; fileRef = D396F5541973B50C00F21999 /* pulDrawer.png */; };
 		D396F5601973B5C100F21999 /* UILabel+attributed.m in Sources */ = {isa = PBXBuildFile; fileRef = D396F5571973B5C100F21999 /* UILabel+attributed.m */; };
@@ -103,6 +117,26 @@
 		BEEDCB1719741974009B4F0B /* FSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSViewController.m; path = iFc/FSViewController.m; sourceTree = SOURCE_ROOT; };
 		BEEDCB1B19742634009B4F0B /* MONActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MONActivityIndicatorView.h; sourceTree = "<group>"; };
 		BEEDCB1C19742634009B4F0B /* MONActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MONActivityIndicatorView.m; sourceTree = "<group>"; };
+		D339D5D91978D30D002E1A4B /* tiaose@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tiaose@2x.png"; sourceTree = "<group>"; };
+		D339D5DD1978FCB1002E1A4B /* edit_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit_back@2x.png"; sourceTree = "<group>"; };
+		D339D5E019790095002E1A4B /* CLClassList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLClassList.h; sourceTree = "<group>"; };
+		D339D5E119790095002E1A4B /* CLClassList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLClassList.m; sourceTree = "<group>"; };
+		D339D5E219790095002E1A4B /* CLSplineInterpolator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLSplineInterpolator.h; sourceTree = "<group>"; };
+		D339D5E319790095002E1A4B /* CLSplineInterpolator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLSplineInterpolator.m; sourceTree = "<group>"; };
+		D339D5E419790095002E1A4B /* UIDevice+SystemVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+SystemVersion.h"; sourceTree = "<group>"; };
+		D339D5E519790095002E1A4B /* UIDevice+SystemVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+SystemVersion.m"; sourceTree = "<group>"; };
+		D339D5E619790095002E1A4B /* UIImage+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Utility.h"; sourceTree = "<group>"; };
+		D339D5E719790095002E1A4B /* UIImage+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Utility.m"; sourceTree = "<group>"; };
+		D339D5E819790095002E1A4B /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
+		D339D5E919790095002E1A4B /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
+		D339D5EF19790220002E1A4B /* brightness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brightness.png; sourceTree = "<group>"; };
+		D339D5F019790220002E1A4B /* brightness@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brightness@2x.png"; sourceTree = "<group>"; };
+		D339D5F119790220002E1A4B /* contrast.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contrast.png; sourceTree = "<group>"; };
+		D339D5F219790220002E1A4B /* contrast@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "contrast@2x.png"; sourceTree = "<group>"; };
+		D339D5F319790220002E1A4B /* saturation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = saturation.png; sourceTree = "<group>"; };
+		D339D5F419790220002E1A4B /* saturation@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "saturation@2x.png"; sourceTree = "<group>"; };
+		D339D5FB19792630002E1A4B /* CMSCoinView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMSCoinView.h; sourceTree = "<group>"; };
+		D339D5FC19792630002E1A4B /* CMSCoinView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMSCoinView.m; sourceTree = "<group>"; };
 		D396F5521973AD5200F21999 /* nav_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_bg@2x.png"; sourceTree = "<group>"; };
 		D396F5541973B50C00F21999 /* pulDrawer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pulDrawer.png; sourceTree = "<group>"; };
 		D396F5561973B5C100F21999 /* UILabel+attributed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+attributed.h"; sourceTree = "<group>"; };
@@ -282,6 +316,23 @@
 			path = MONActivityIndicatorView;
 			sourceTree = "<group>";
 		};
+		D339D5DF19790095002E1A4B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				D339D5E019790095002E1A4B /* CLClassList.h */,
+				D339D5E119790095002E1A4B /* CLClassList.m */,
+				D339D5E219790095002E1A4B /* CLSplineInterpolator.h */,
+				D339D5E319790095002E1A4B /* CLSplineInterpolator.m */,
+				D339D5E419790095002E1A4B /* UIDevice+SystemVersion.h */,
+				D339D5E519790095002E1A4B /* UIDevice+SystemVersion.m */,
+				D339D5E619790095002E1A4B /* UIImage+Utility.h */,
+				D339D5E719790095002E1A4B /* UIImage+Utility.m */,
+				D339D5E819790095002E1A4B /* UIView+Frame.h */,
+				D339D5E919790095002E1A4B /* UIView+Frame.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		D396F5651973B68900F21999 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
@@ -393,8 +444,8 @@
 		D3B80F681973718E005F0832 = {
 			isa = PBXGroup;
 			children = (
-				D3B80FB4197374BF005F0832 /* Resources */,
 				D3B80F7A1973718E005F0832 /* iFc */,
+				D3B80FB4197374BF005F0832 /* Resources */,
 				D3B80F9C1973718E005F0832 /* iFcTests */,
 				D3B80F731973718E005F0832 /* Frameworks */,
 				D3B80F721973718E005F0832 /* Products */,
@@ -491,6 +542,14 @@
 		D3B80FB4197374BF005F0832 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D339D5EF19790220002E1A4B /* brightness.png */,
+				D339D5F019790220002E1A4B /* brightness@2x.png */,
+				D339D5F119790220002E1A4B /* contrast.png */,
+				D339D5F219790220002E1A4B /* contrast@2x.png */,
+				D339D5F319790220002E1A4B /* saturation.png */,
+				D339D5F419790220002E1A4B /* saturation@2x.png */,
+				D339D5DD1978FCB1002E1A4B /* edit_back@2x.png */,
+				D339D5D91978D30D002E1A4B /* tiaose@2x.png */,
 				D396F5541973B50C00F21999 /* pulDrawer.png */,
 				D396F5521973AD5200F21999 /* nav_bg@2x.png */,
 				D3B80FDA1973A048005F0832 /* placeholder@2x.png */,
@@ -504,6 +563,9 @@
 		D3B80FD4197378D4005F0832 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				D339D5FB19792630002E1A4B /* CMSCoinView.h */,
+				D339D5FC19792630002E1A4B /* CMSCoinView.m */,
+				D339D5DF19790095002E1A4B /* Utils */,
 				D3A9627119764593007C561C /* DACircularProgress */,
 				D3A9626319761DCD007C561C /* curledView */,
 				BEE778D319757109000CB8AC /* ADFlipTransition */,
@@ -604,13 +666,21 @@
 				D3B80F8B1973718E005F0832 /* Main_iPad.storyboard in Resources */,
 				D396F5531973AD5200F21999 /* nav_bg@2x.png in Resources */,
 				D3B80F901973718E005F0832 /* Images.xcassets in Resources */,
+				D339D5F619790220002E1A4B /* brightness@2x.png in Resources */,
+				D339D5DE1978FCB1002E1A4B /* edit_back@2x.png in Resources */,
+				D339D5F719790220002E1A4B /* contrast.png in Resources */,
 				D3B80FDB1973A048005F0832 /* placeholder@2x.png in Resources */,
 				D396F57B1973BD4600F21999 /* Localizable.strings in Resources */,
 				D3B80F881973718E005F0832 /* Main_iPhone.storyboard in Resources */,
+				D339D5F919790220002E1A4B /* saturation.png in Resources */,
+				D339D5F519790220002E1A4B /* brightness.png in Resources */,
+				D339D5F819790220002E1A4B /* contrast@2x.png in Resources */,
 				D3B80FD919739745005F0832 /* cellBg.png in Resources */,
 				D396F58A1973CF5500F21999 /* placeholder2@2x.png in Resources */,
+				D339D5FA19790220002E1A4B /* saturation@2x.png in Resources */,
 				D396F5551973B50C00F21999 /* pulDrawer.png in Resources */,
 				D3B80F7F1973718E005F0832 /* InfoPlist.strings in Resources */,
+				D339D5DA1978D30D002E1A4B /* tiaose@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -630,12 +700,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3A9626A19761DCD007C561C /* CurledViewBase.m in Sources */,
+				D339D5EA19790095002E1A4B /* CLClassList.m in Sources */,
 				D3B80FB71973758F005F0832 /* FSBaseViewController.m in Sources */,
 				BEEDCB1E19742634009B4F0B /* MONActivityIndicatorView.m in Sources */,
 				D3B4FE001974C7E40078B05E /* InstagramMediaModel+XHMediaControl.m in Sources */,
 				D396F5731973B69300F21999 /* MMDrawerVisualState.m in Sources */,
 				D3B80F811973718E005F0832 /* main.m in Sources */,
 				D396F5751973B69300F21999 /* UIViewController+MMDrawerController.m in Sources */,
+				D339D5EB19790095002E1A4B /* CLSplineInterpolator.m in Sources */,
 				D396F5881973C72200F21999 /* JBParallaxCell.m in Sources */,
 				D3B4FDF51974C7D20078B05E /* InstagramThumbnailCollectionViewController.m in Sources */,
 				D3ABA6D9197796CE0082A5B2 /* EditorButton.m in Sources */,
@@ -650,7 +722,10 @@
 				D396F5711973B69300F21999 /* MMDrawerBarButtonItem.m in Sources */,
 				D3B4FDF41974C7D20078B05E /* InstagramPictureCollectionViewController.m in Sources */,
 				BEE778E319757400000CB8AC /* UIView+CaptureImage.m in Sources */,
+				D339D5EC19790095002E1A4B /* UIDevice+SystemVersion.m in Sources */,
+				D339D5EE19790095002E1A4B /* UIView+Frame.m in Sources */,
 				D3B80F851973718E005F0832 /* FSAppDelegate.m in Sources */,
+				D339D5ED19790095002E1A4B /* UIImage+Utility.m in Sources */,
 				D396F5631973B5C100F21999 /* NSString+size.m in Sources */,
 				D3B4FDFF1974C7E40078B05E /* InstagramMediaModel.m in Sources */,
 				D396F5741973B69300F21999 /* MMExampleDrawerVisualStateManager.m in Sources */,
@@ -662,6 +737,7 @@
 				D3B80FD719737955005F0832 /* FSConfig.m in Sources */,
 				D396F5721973B69300F21999 /* MMDrawerController.m in Sources */,
 				D396F5781973B6FC00F21999 /* FSMenuViewController.m in Sources */,
+				D339D5FD19792630002E1A4B /* CMSCoinView.m in Sources */,
 				D3A9627019763F99007C561C /* SinglePicManager.m in Sources */,
 				D3A9626C19761DCD007C561C /* UIImageView+Curled.m in Sources */,
 				D396F5821973C58000F21999 /* FSSubTypeViewController.m in Sources */,

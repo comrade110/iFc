@@ -13,5 +13,10 @@
 "Cancel" = "取消";
 "Back" = "返回";
 "Save" = "保存";
+"OK" = "确定";
+"Edit" = "编辑";
+"Done" = "完成";
+"Connection failed, please try again later." = "连接失败，请稍后再试";
+"Need to add a photo first before editing" = "在编辑前需要先添加一张照片";
 "Use Photo from Library" = "从相册选取照片";
 "Take Photo with Camera" = "用相机拍照";
