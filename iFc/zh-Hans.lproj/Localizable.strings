@@ -16,6 +16,7 @@
 "OK" = "确定";
 "Edit" = "编辑";
 "Done" = "完成";
+"Saved successfully" = "保存成功";
 "Connection failed, please try again later." = "连接失败，请稍后再试";
 "Need to add a photo first before editing" = "在编辑前需要先添加一张照片";
 "Use Photo from Library" = "从相册选取照片";

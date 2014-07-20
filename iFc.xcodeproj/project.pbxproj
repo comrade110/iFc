@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BEC14065197BA63D009643D1 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC14064197BA63D009643D1 /* MBProgressHUD.m */; };
 		BEE778D81975728D000CB8AC /* ADFlipTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE778D51975728D000CB8AC /* ADFlipTransition.m */; };
 		BEE778D91975728D000CB8AC /* UICollectionViewController+ADFlipTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE778D71975728D000CB8AC /* UICollectionViewController+ADFlipTransition.m */; };
 		BEE778DC197572B5000CB8AC /* UIViewController+ADFlipTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE778DB197572B5000CB8AC /* UIViewController+ADFlipTransition.m */; };
@@ -103,6 +104,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BEC14063197BA63D009643D1 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		BEC14064197BA63D009643D1 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		BEE778D41975728D000CB8AC /* ADFlipTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADFlipTransition.h; sourceTree = "<group>"; };
 		BEE778D51975728D000CB8AC /* ADFlipTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADFlipTransition.m; sourceTree = "<group>"; };
 		BEE778D61975728D000CB8AC /* UICollectionViewController+ADFlipTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionViewController+ADFlipTransition.h"; sourceTree = "<group>"; };
@@ -281,6 +284,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BEC14062197BA636009643D1 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				BEC14063197BA63D009643D1 /* MBProgressHUD.h */,
+				BEC14064197BA63D009643D1 /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
 		BEE778D319757109000CB8AC /* ADFlipTransition */ = {
 			isa = PBXGroup;
 			children = (
@@ -563,6 +575,7 @@
 		D3B80FD4197378D4005F0832 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				BEC14062197BA636009643D1 /* MBProgressHUD */,
 				D339D5FB19792630002E1A4B /* CMSCoinView.h */,
 				D339D5FC19792630002E1A4B /* CMSCoinView.m */,
 				D339D5DF19790095002E1A4B /* Utils */,
@@ -717,6 +730,7 @@
 				BEEDCB1819741974009B4F0B /* FSViewController.m in Sources */,
 				D3B4FDF31974C7D20078B05E /* InstagramCollectionViewController.m in Sources */,
 				D3B4FE011974C7E40078B05E /* XHInstagramStoreManager.m in Sources */,
+				BEC14065197BA63D009643D1 /* MBProgressHUD.m in Sources */,
 				BEE778D91975728D000CB8AC /* UICollectionViewController+ADFlipTransition.m in Sources */,
 				D3A9627419764593007C561C /* DACircularProgressView.m in Sources */,
 				D396F5601973B5C100F21999 /* UILabel+attributed.m in Sources */,

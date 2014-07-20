@@ -10,6 +10,7 @@
 #import "EditorButton.h"
 #import "UIView+Frame.h"
 #import "UIImage+Utility.h"
+#import "MBProgressHUD.h"
 
 #define IMAGESIZE 2
 
@@ -25,9 +26,13 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     UISlider *saturationSlider;
     UISlider *brightnessSlider;
     UISlider *contrastSlider;
+    MBProgressHUD *hud;
     
 
 }
+
+@property(nonatomic,strong) UIView *saveView;   //For save
+
 @property(nonatomic,strong) PFImageView *imageView;
 @property(nonatomic,strong) UIImageView *userImageView;
 @property(nonatomic,strong) UIView *usershadowImageView;
@@ -74,54 +79,76 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     [super viewDidLoad];
     
     self.imageView = [[PFImageView alloc] initWithFrame:self.view.frame];
+    self.saveView = [[UIView alloc] initWithFrame:self.view.frame];
+    [self.view addSubview:_saveView];
+    [self.view sendSubviewToBack:_saveView];
+    
+    hud = [MBProgressHUD showHUDAddedTo:self.imageView animated:YES];
+    hud.labelText = @"Loading";
+    
     _imageView.image = _bgImg;
     _imageView.file = [[SinglePicManager manager] entity][@"imageData"];
     
-    DACircularProgressView *progressView = [[DACircularProgressView alloc] initWithFrame:CGRectMake(0, 0, 40.0f, 40.0f)];
-    progressView.center = _imageView.center;
-    progressView.progress=0.0f;
-    progressView.hidden = YES;
-    [_imageView addSubview:progressView];
+//    DACircularProgressView *progressView = [[DACircularProgressView alloc] initWithFrame:CGRectMake(0, 0, 40.0f, 40.0f)];
+//    progressView.center = _imageView.center;
+//    progressView.progress=0.0f;
+//    progressView.hidden = YES;
+//    [_imageView addSubview:progressView];
+//    
     
-    
-    // 返回按钮
-    UIButton *backBtn = [[UIButton alloc] initWithFrame:CGRectMake(20, 20, 35, 35)];
-    [backBtn setImage:[UIImage imageNamed:@"edit_back"] forState:UIControlStateNormal];
-    [backBtn handleControlWithBlock:^{
-        [self dismissFlipWithCompletion:NULL];
-    }];
-    [self.view addSubview:backBtn];
+
     
     //创建一个调度时间,相对于默认时钟或修改现有的调度时间。
     //设置时间为2
-    double delayInSeconds = 0.8;
-    //创建一个调度时间,相对于默认时钟或修改现有的调度时间。
-    dispatch_time_t delayInNanoSeconds =dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-    //推迟两纳秒执行
-    dispatch_queue_t concurrentQueue =dispatch_get_main_queue();
-    dispatch_after(delayInNanoSeconds, concurrentQueue, ^(void){
-        progressView.hidden = NO;
-    });
+//    double delayInSeconds = 0.8;
+//    //创建一个调度时间,相对于默认时钟或修改现有的调度时间。
+//    dispatch_time_t delayInNanoSeconds =dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+//    //推迟两纳秒执行
+//    dispatch_queue_t concurrentQueue =dispatch_get_main_queue();
+//    dispatch_after(delayInNanoSeconds, concurrentQueue, ^(void){
+//        progressView.hidden = NO;
+//    });
 
     WEAKSELF
+
+    
+    NSLog(@"sdasdasda:%@",_imageView.file.url);
     [_imageView.file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        [hud hide:YES];
         if (!error) {
             weakSelf.imageView.image = [UIImage imageWithData:data];
         }else{
-            alert(@"Connection failed, please try again later.");
+            alert(NSLocalizedString(@"Connection failed, please try again later.", nil));
             [self dismissFlipWithCompletion:NULL];
         }
-        [progressView removeFromSuperview];
+//        [progressView removeFromSuperview];
     } progressBlock:^(int percentDone) {
-        progressView.progress=(float)percentDone/100;
+        if (hud.mode == MBProgressHUDModeIndeterminate) {
+            hud.mode = MBProgressHUDModeDeterminate;
+        }
+//        if (progressView.hidden) {
+//            progressView.hidden = NO;
+//        }
+        hud.progress = (float)percentDone/100;
+//        progressView.progress=(float)percentDone/100;
     }];
-    [self.view addSubview:weakSelf.imageView];
+    [self.saveView addSubview:weakSelf.imageView];
     
     //用户导入的图片
     [self buildUserImageView];
     
     //  底部工具栏
     [self bulidToolsView];
+    
+    // 返回按钮
+    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    backBtn.frame = CGRectMake(20, 20, 35, 35);
+    [backBtn setImage:[UIImage imageNamed:@"edit_back"] forState:UIControlStateNormal];
+    
+    [backBtn handleControlWithBlock:^{
+        [self dismissFlipWithCompletion:NULL];
+    }];
+    [self.view insertSubview:backBtn aboveSubview:_imageView];
     
     // Do any additional setup after loading the view.
 }
@@ -137,9 +164,9 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
 -(void)buildUserImageView{
 
     self.userImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width/IMAGESIZE, self.view.frame.size.height/IMAGESIZE)];
-    [self.view addSubview:_userImageView];
+    [self.saveView addSubview:_userImageView];
     
-    [self.view sendSubviewToBack:self.userImageView];
+    [self.saveView sendSubviewToBack:self.userImageView];
     
     self.userImageView.userInteractionEnabled = NO;
     
@@ -184,9 +211,8 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     getPhotoBtn = [[EditorButton alloc] initWithFrame:CGRectMake(10, 3, 44, 44)];
     [getPhotoBtn setTitle:NSLocalizedString(@"Photo", nil) forState:UIControlStateNormal];
     [getPhotoBtn handleControlWithBlock:^{
-        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Choose Photo" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Use Photo from Library",@"Take Photo with Camera", nil];
-        actionSheet.delegate = self;
-        [actionSheet showInView:self.view.window];
+
+        [self pushedNewBtn];
     }];
     [toolsView addSubview:getPhotoBtn];
     
@@ -243,7 +269,7 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     }];
 //    [toolsView addSubview:editBtn];
     
-    UIView *boxView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-22, 3, 44, 44)];
+    UIView *boxView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-21, 2, 45, 45)];
     [boxView addSubview:closeBtn];
     [boxView addSubview:editBtn];
     
@@ -253,6 +279,9 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     //保存按钮
     saveBtn = [[EditorButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 54, 3, 44, 44)];
     [saveBtn setTitle:NSLocalizedString(@"Save", nil) forState:UIControlStateNormal];
+    [saveBtn handleControlWithBlock:^{
+        [self pushedSaveBtn];
+    }];
     [toolsView addSubview:saveBtn];
 
 }
@@ -278,6 +307,48 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
 }
 
 #pragma mark- action
+
+
+-(void)pushedNewBtn{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Choose Photo" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Use Photo from Library", nil),NSLocalizedString(@"Take Photo with Camera", nil), nil];
+    actionSheet.delegate = self;
+    [actionSheet showInView:self.view.window];
+}
+
+- (void)pushedSaveBtn
+{
+    if(_userImageView.image){
+        NSArray *excludedActivityTypes = @[UIActivityTypeAssignToContact, UIActivityTypeCopyToPasteboard, UIActivityTypeMessage];
+        
+        UIActivityViewController *activityView = [[UIActivityViewController alloc] initWithActivityItems:@[[self mergeImage]] applicationActivities:nil];
+        
+        activityView.excludedActivityTypes = excludedActivityTypes;
+        activityView.completionHandler = ^(NSString *activityType, BOOL completed){
+            if(completed && [activityType isEqualToString:UIActivityTypeSaveToCameraRoll]){
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Saved successfully", nil) message:nil delegate:nil cancelButtonTitle:NSLocalizedString(@"OK",nil) otherButtonTitles:nil];
+                [alert show];
+            }
+        };
+        
+        [self presentViewController:activityView animated:YES completion:nil];
+    }
+    else{
+        [self pushedNewBtn];
+    }
+}
+
+-(UIImage *)mergeImage
+{
+    UIGraphicsBeginImageContext(self.saveView.bounds.size);
+    [self.saveView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *MergedImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return MergedImage;
+
+}
+
+
+//TODO: slider
 
 - (void)sliderWithValue:(CGFloat)value minimumValue:(CGFloat)min maximumValue:(CGFloat)max image:(NSString*)imageName withSlider:(UISlider*)slider action:(SEL)action
 {
@@ -557,15 +628,29 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     }
 
 }
-
+- (void)image:(UIImage *)image didFinishSavingWithError:
+(NSError *)error contextInfo:(void *)contextInfo;
+{
+    // Handle the end of the image write process
+    if (error)
+        alert([NSString stringWithFormat:@"Error writing to photo album: %@",
+               [error localizedDescription]]);
+}
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
-    
-    self.userImageView.image = info[@"UIImagePickerControllerOriginalImage"];
+    UIImage *image = info[@"UIImagePickerControllerOriginalImage"];
+    self.userImageView.image = image;
     [self.userImageView setUserInteractionEnabled:YES];
     _tempView.alpha = .1f;
     _tempView.image = self.userImageView.image;
 
     [self.usershadowImageView setUserInteractionEnabled:YES];
+    
+    //image from camera storage
+    if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
+        
+        UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+        
+    }
     [picker dismissViewControllerAnimated:YES completion:^{
         
     }];
