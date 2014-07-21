@@ -10,6 +10,6 @@
 
 @interface FSSubTypeViewController : FSBaseViewController
 
-@property(nonatomic,strong) NSString *fid;
+@property(nonatomic,strong) NSNumber *fid;
 
 @end

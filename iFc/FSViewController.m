@@ -13,6 +13,7 @@
 @interface FSViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic,strong) UITableView *tableView;
+@property(nonatomic,strong) NSArray *imageArr;
 @property(nonatomic,strong) NSArray *quaryArr;
 
 @end
@@ -44,31 +45,31 @@
     _tableView.backgroundColor = [UIColor clearColor];
     
     [self.view addSubview:_tableView];
-    WEAKSELF
-    
-    MONActivityIndicatorView *indicatorView = [[MONActivityIndicatorView alloc] init];
-    indicatorView.center = [[UIApplication sharedApplication].delegate window].center;
-    [self.view addSubview:indicatorView];
-    [indicatorView startAnimating];
-
-
-    PFQuery *query = [PFQuery queryWithClassName:@"Type"];
-    [query whereKey:@"fid" equalTo:@0];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            weakSelf.quaryArr = [[NSArray alloc] initWithArray:objects];
-            // The find succeeded.
-            NSLog(@"Successfully retrieved %d scores.", objects.count);
-            // Do something with the found objects
-            [weakSelf.tableView reloadData];
-        } else {
-            // Log details of the failure
-            alert(@"Connection failed, please try again later.");
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-        [indicatorView stopAnimating];
-    }];
-    
+    self.imageArr = @[
+                      @"peple_bg",
+                      @"animal_bg"
+                      ];
+    self.quaryArr = @[
+                      NSLocalizedString(@"normal", nil),
+                      NSLocalizedString(@"animal", nil)
+                      ];
+//    PFQuery *query = [PFQuery queryWithClassName:@"Type"];
+//    [query whereKey:@"fid" equalTo:@0];
+//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        if (!error) {
+//            weakSelf.quaryArr = [[NSArray alloc] initWithArray:objects];
+//            // The find succeeded.
+//            NSLog(@"Successfully retrieved %d scores.", objects.count);
+//            // Do something with the found objects
+//            [weakSelf.tableView reloadData];
+//        } else {
+//            // Log details of the failure
+//            alert(@"Connection failed, please try again later.");
+//            NSLog(@"Error: %@ %@", error, [error userInfo]);
+//        }
+//        [indicatorView stopAnimating];
+//    }];
+//    
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -107,11 +108,7 @@
     }
     cell.backgroundColor = [UIColor clearColor];
 
-    
-    
-    PFObject *object = _quaryArr[indexPath.row];
     // Configure the cell
-    
     
     UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(35.f, 0, 250, 150)];
     backView.backgroundColor = [UIColor mainCellColor];
@@ -130,24 +127,17 @@
     boxView.layer.masksToBounds = YES;
     [backView addSubview:boxView];
     
-    PFImageView *imageView = [[PFImageView alloc] init];
+    UIImageView *imageView = [[UIImageView alloc] init];
     imageView.frame = CGRectMake(0, 0, backView.frame.size.width, backView.frame.size.height - 40);
-    imageView.image = [UIImage imageNamed:@"placeholder"];
-    imageView.file = (PFFile*)object[@"imageFile"];
-    [imageView loadInBackground];
+    imageView.image = [UIImage imageNamed:_imageArr[indexPath.row]];
     [boxView addSubview:imageView];
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 110, 250, 40)];
     label.font = [UIFont fontWithName:@"Avenir-LightOblique" size:16.f];
     label.textAlignment = NSTextAlignmentCenter;
     label.textColor = [UIColor grayColor];
-    if ([[FSConfig getCurrentLanguage] isEqualToString:@"zh-Hans"]) {
-        label.text = object[@"name_cn"];
-    }else if ([[FSConfig getCurrentLanguage] isEqualToString:@"zh-Hant"]){
-        label.text = object[@"name_hk"];
-    }else{
-        label.text = object[@"name_en"];
-    }
+    label.text = _quaryArr[indexPath.row];
+
     
     [backView addSubview:label];
     
@@ -160,9 +150,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PFObject *object = _quaryArr[indexPath.row];
     FSSubTypeViewController *subTypeVC = [[FSSubTypeViewController alloc] init];
-    subTypeVC.fid = object[@"cid"];
+    subTypeVC.fid = [NSNumber numberWithInt:(int)indexPath.row+1];
     [self.navigationController pushViewController:subTypeVC animated:YES];
 }
 

@@ -19,6 +19,30 @@
     return currentLanguage;
 }
 
++(float)getFilePath{
+    //文件管理
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    //缓存路径
+    
+    NSArray *cachePaths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory,NSUserDomainMask, YES);
+    
+    NSString *cacheDir = [cachePaths objectAtIndex:0];
+    NSArray *cacheFileList;
+    NSEnumerator *cacheEnumerator;
+    NSString *cacheFilePath;
+    double cacheFolderSize = 0;
+    cacheFileList = [fileManager subpathsOfDirectoryAtPath:cacheDir error:nil];
+    cacheEnumerator = [cacheFileList objectEnumerator];
+    while (cacheFilePath = [cacheEnumerator nextObject]) {
+        NSDictionary *cacheFileAttributes = [fileManager attributesOfItemAtPath:[cacheDir stringByAppendingPathComponent:cacheFilePath] error:nil];
+        cacheFolderSize += [cacheFileAttributes fileSize];
+    }
+    //单位MB
+    NSLog(@"cacheFolderSize:%f",cacheFolderSize/1024/1024);
+    return cacheFolderSize/1024/1024;
+}
+
 @end
 
 

@@ -8,10 +8,15 @@
 
 #import "FSMenuViewController.h"
 
-@interface FSMenuViewController ()
+@interface FSMenuViewController (){
+
+    MBProgressHUD *hud;
+
+}
 
 @property(nonatomic,strong) UITableView *tableView;
 @property(nonatomic,strong) NSArray *menuArray;
+@property(nonatomic,copy) NSString *cachedData;
 
 @end
 
@@ -26,10 +31,26 @@
     return self;
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+
+
+    self.cachedData  = [NSString stringWithFormat:@"Clear Cached (%.1fMB)",[FSConfig getFilePath]];
+    if (_tableView) {
+        [self resetMenuArray];
+        [_tableView reloadData];
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 //    self.view.backgroundColor = [UIColor colorWithWhite:1.f/255.f alpha:1.f];
+    
+    if (!self.cachedData) {
+        
+        self.cachedData  = [NSString stringWithFormat:@"Clear Cached (%.1fMB)",[FSConfig getFilePath]];
+    }
+    [self resetMenuArray];
     
     self.tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStyleGrouped];
     _tableView.backgroundColor = [UIColor colorWithWhite:60.f/255.f alpha:1.f];
@@ -37,8 +58,6 @@
     _tableView.dataSource = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableView];
-    
-    self.menuArray = @[@"Home",@"UserCenter",@"About",@"History",@"Rate",@"Setting"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,6 +65,60 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(void)resetMenuArray{
+
+    self.menuArray = @[
+                       @[@"Home"],
+                       @[
+                           @"Rate",
+                           @"Tell Friends",
+                           @"Upgrade",
+                           _cachedData,
+                           ],
+                       @[@"Copyright"],
+                       ];
+    [_tableView reloadData];
+}
+
+-(void)clearCache{
+    
+
+    hud = [MBProgressHUD showHUDAddedTo:FSWINDOW animated:YES];
+    hud.labelText = NSLocalizedString(@"Waiting", nil);
+    dispatch_async(
+                   dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+                   , ^{
+                       NSString *cachPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory,NSUserDomainMask, YES) objectAtIndex:0];
+                       
+                       NSArray *files = [[NSFileManager defaultManager] subpathsAtPath:cachPath];
+                       NSLog(@"files :%ld",[files count]);
+                       for (NSString *p in files) {
+                           NSError *error;
+                           NSString *path = [cachPath stringByAppendingPathComponent:p];
+                           if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
+                               [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
+                           }
+                           if (error) {
+                               [hud setLabelText: NSLocalizedString(@"Error", nil)];
+                               [hud hide:YES afterDelay:.5f];
+                           }
+                       }
+
+                       [self performSelectorOnMainThread:@selector(clearCacheSuccess) withObject:nil waitUntilDone:YES];}
+                   );
+
+}
+
+-(void)clearCacheSuccess
+{
+    self.cachedData  = @"Clear Cached (0.0MB)";
+    [hud setLabelText: NSLocalizedString(@"Done", nil)];
+    [hud hide:YES afterDelay:.5f];
+    [self resetMenuArray];
+    [self.tableView reloadData];
+}
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -55,16 +128,16 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return [self.menuArray[section] count];
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
     cell.backgroundColor = [UIColor clearColor];
-    cell.textLabel.text = self.menuArray[indexPath.section];
+    cell.textLabel.text = self.menuArray[indexPath.section][indexPath.row];
     cell.textLabel.textColor = [UIColor lightGrayColor];
-    cell.textLabel.font = [UIFont fsFontWithSize:16.f];
+    cell.textLabel.font = [UIFont fsFontWithSize:14.f];
     return cell;
 
 }
@@ -73,15 +146,42 @@
 
     switch (indexPath.section) {
         case 0:{
-            [self.mm_drawerController setCenterViewController:[NSClassFromString(@"FSHomeViewController") new] withFullCloseAnimation:YES completion:^(BOOL b) {
+            UIViewController * centerViewController =  [NSClassFromString(@"FSViewController") new];
+            
+            UINavigationController * navigationController = [[UINavigationController alloc] initWithRootViewController:centerViewController];
+            
+            [navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav_bg"] forBarMetrics:UIBarMetricsDefault];
+            [self.mm_drawerController setCenterViewController:navigationController withFullCloseAnimation:YES completion:^(BOOL b) {
                 
             }];
         }
             break;
         case 1:{
-            [self.mm_drawerController setCenterViewController:[NSClassFromString(@"FSBasicViewController") new] withFullCloseAnimation:YES completion:^(BOOL b) {
+            switch (indexPath.row) {
+                case 0:{
                 
-            }];
+                }
+                    
+                    break;
+                case 1:
+                    
+                    break;
+                case 2:
+                    
+                    break;
+                case 3:{
+                
+                    [self clearCache];
+                }
+                    
+                    break;
+                case 4:
+                    
+                    break;
+                    
+                default:
+                    break;
+            }
         }
             break;
         default:

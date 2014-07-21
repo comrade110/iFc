@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MBProgressHUD.h"
 
 #define WEAKSELF typeof(self) __weak weakSelf = self;
 #define FSWINDOW [[[UIApplication sharedApplication] delegate] window]
@@ -15,6 +16,9 @@
 
 
 +(NSString *) getCurrentLanguage;
+
+//TODO: 获得缓存文件大小
++(float)getFilePath;
 
 @end
 
