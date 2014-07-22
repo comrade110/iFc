@@ -317,16 +317,19 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
 
 - (void)pushedSaveBtn
 {
-    if(_userImageView.image){
-        NSArray *excludedActivityTypes = @[UIActivityTypeAssignToContact, UIActivityTypeCopyToPasteboard, UIActivityTypeMessage];
+    if(!_userImageView.image){
+        NSArray *excludedActivityTypes = @[UIActivityTypePostToVimeo,UIActivityTypeMessage];
         
         UIActivityViewController *activityView = [[UIActivityViewController alloc] initWithActivityItems:@[[self mergeImage]] applicationActivities:nil];
-        
+
         activityView.excludedActivityTypes = excludedActivityTypes;
         activityView.completionHandler = ^(NSString *activityType, BOOL completed){
             if(completed && [activityType isEqualToString:UIActivityTypeSaveToCameraRoll]){
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Saved successfully", nil) message:nil delegate:nil cancelButtonTitle:NSLocalizedString(@"OK",nil) otherButtonTitles:nil];
                 [alert show];
+            }else if ([activityType isEqualToString:UIActivityTypePostToFacebook]){
+                
+                
             }
         };
         
@@ -628,8 +631,7 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     }
 
 }
-- (void)image:(UIImage *)image didFinishSavingWithError:
-(NSError *)error contextInfo:(void *)contextInfo;
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo;
 {
     // Handle the end of the image write process
     if (error)

@@ -116,13 +116,14 @@ static NSString * const kXHInstagramFooter = @"InstagramFooter";
         [self.instagramStoreManager mediaWithPage:self.curPage localDownloadDataSourceCompled:^(NSArray *mediaArray, NSError *error) {
             if (error || mediaArray.count == 0) {
                 showAlert(@"Instagram", @"No results found", @"OK");
-                [self.activityIndicator stopAnimating];
             }else{
                 [self.mediaArray addObjectsFromArray:mediaArray];
                 [self.collectionView reloadData];
             }
             self.downloading = NO;
             self.curPage ++;
+            
+            [self.activityIndicator stopAnimating];
         }];
     }else{
         [self.instagramStoreManager mediaWithPage:self.curPage localDownloadDataSourceCompled:^(NSArray *mediaArray, NSError *error) {
@@ -144,11 +145,12 @@ static NSString * const kXHInstagramFooter = @"InstagramFooter";
             self.downloading = NO;
             
             if (mediaArray.count == 0) {
-                [self.activityIndicator stopAnimating];
                 self.activityIndicator.hidden = YES;
                 self.hideFooter = YES;
                 [self.collectionView reloadData];
             }
+            
+            [self.activityIndicator stopAnimating];
         }];
     }
 }
@@ -170,7 +172,7 @@ static NSString * const kXHInstagramFooter = @"InstagramFooter";
 
         
     }
-    NSLog(@"indexrow:%d indexsection:%d",indexPath.row,indexPath.section);
+    
     if (indexPath.row == [self.mediaArray count] - 1 && !self.downloading) {
         [self downloadDataSource];
     }

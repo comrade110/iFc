@@ -13,11 +13,19 @@
 #import "MMDrawerController.h"
 #import "MMDrawerVisualState.h"
 #import "MMExampleDrawerVisualStateManager.h"
+#import "UMSocial.h"
 
 @implementation FSAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    
+    [UMSocialData setAppKey:@"53ce1fc656240bfcee0271d3"];
+    
+    [UMSocialFacebookHandler setFacebookAppID:@"281155815400938" shareFacebookWithURL:@"http://www.umeng.com/social"];
+    [UMSocialTwitterHandler openTwitter];
+    [UMSocialInstagramHandler openInstagramWithScale:NO paddingColor:[UIColor blackColor]];
     
     // ****************************************************************************
     // Uncomment and fill in with your Parse credentials:
@@ -93,6 +101,19 @@
     [self.window makeKeyAndVisible];
     
     return YES;
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    return  [UMSocialSnsService handleOpenURL:url];
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation
+{
+    return  [UMSocialSnsService handleOpenURL:url];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

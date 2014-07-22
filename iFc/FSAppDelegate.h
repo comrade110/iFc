@@ -7,6 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UMSocialFacebookHandler.h"
+#import "UMSocialTwitterHandler.h"
+#import "UMSocialInstagramHandler.h"
+
 
 @interface FSAppDelegate : UIResponder <UIApplicationDelegate>
 
