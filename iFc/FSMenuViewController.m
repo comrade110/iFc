@@ -178,7 +178,7 @@
                     
                     break;
                 case 1:{
-                    [UMSocialSnsService presentSnsIconSheetView:self
+                    [UMSocialSnsService presentSnsController:self
                                                          appKey:@"53ce1fc656240bfcee0271d3"
                                                       shareText:@"lalalal"
                                                      shareImage:nil

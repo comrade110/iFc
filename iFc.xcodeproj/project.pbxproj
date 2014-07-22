@@ -1100,7 +1100,7 @@
 					"$(PROJECT_DIR)/iFc/Libs/Twitter",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "5a8d80d1-ebc2-49f4-99c9-9594a37c97ec";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1128,7 +1128,7 @@
 					"$(PROJECT_DIR)/iFc/Libs/Twitter",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "5a8d80d1-ebc2-49f4-99c9-9594a37c97ec";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -61,7 +61,7 @@
             weakSelf.tableView.backgroundColor = [UIColor clearColor];
             
             [self.view addSubview:weakSelf.tableView];
-            weakSelf.quaryArr = [[NSArray alloc] initWithArray:objects];
+            weakSelf.quaryArr = objects;
             // The find succeeded.
             NSLog(@"Successfully retrieved %d scores.", objects.count);
             // Do something with the found objects
