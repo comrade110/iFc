@@ -9,9 +9,8 @@
 #import "FSViewController.h"
 #import "MMDrawerBarButtonItem.h"
 #import "FSSubTypeViewController.h"
-#import "UMSocial.h"
 
-@interface FSViewController ()<UITableViewDelegate,UITableViewDataSource,UMSocialUIDelegate>
+@interface FSViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic,strong) UITableView *tableView;
 @property(nonatomic,strong) NSArray *imageArr;
@@ -151,30 +150,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [UMSocialSnsService presentSnsIconSheetView:self
-                                         appKey:@"53ce1fc656240bfcee0271d3"
-                                      shareText:@"lalalal"
-                                     shareImage:nil
-                                shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToQQ,UMShareToFacebook,UMShareToTwitter,UMShareToInstagram,nil]
-                                       delegate:self];
-    return;
+
     FSSubTypeViewController *subTypeVC = [[FSSubTypeViewController alloc] init];
     subTypeVC.fid = [NSNumber numberWithInt:(int)indexPath.row+1];
     [self.navigationController pushViewController:subTypeVC animated:YES];
 }
 
--(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
-{
-    NSLog(@"response:%@",response);
-    //根据`responseCode`得到发送结果,如果分享成功
-    if(response.responseCode == UMSResponseCodeSuccess)
-    {
-        //得到分享到的微博平台名
-        alert([NSString stringWithFormat:@"share to sns name is %@",[[response.data allKeys] objectAtIndex:0]]);
-    }else{
-        alert(@"Send failed");
-    }
-}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

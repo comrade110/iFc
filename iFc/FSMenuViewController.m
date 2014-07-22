@@ -7,8 +7,9 @@
 //
 
 #import "FSMenuViewController.h"
+#import "UMSocial.h"
 
-@interface FSMenuViewController (){
+@interface FSMenuViewController ()<UMSocialUIDelegate>{
 
     MBProgressHUD *hud;
 
@@ -120,6 +121,19 @@
 }
 
 
+-(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
+{
+    NSLog(@"response:%@",response);
+    //根据`responseCode`得到发送结果,如果分享成功
+    if(response.responseCode == UMSResponseCodeSuccess)
+    {
+        //得到分享到的微博平台名
+        alert([NSString stringWithFormat:@"share to sns name is %@",[[response.data allKeys] objectAtIndex:0]]);
+    }else{
+        alert(@"Send failed");
+    }
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     
@@ -164,7 +178,12 @@
                     
                     break;
                 case 1:{
-                
+                    [UMSocialSnsService presentSnsIconSheetView:self
+                                                         appKey:@"53ce1fc656240bfcee0271d3"
+                                                      shareText:@"lalalal"
+                                                     shareImage:nil
+                                                shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToQQ,UMShareToFacebook,UMShareToTwitter,UMShareToInstagram,nil]
+                                                       delegate:self];
                 }
                     
                     break;
