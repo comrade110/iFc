@@ -23,7 +23,7 @@
     
     [UMSocialData setAppKey:@"53ce1fc656240bfcee0271d3"];
     
-    [UMSocialFacebookHandler setFacebookAppID:@"281155815400938" shareFacebookWithURL:@"http://www.umeng.com/social"];
+    [UMSocialFacebookHandler setFacebookAppID:@"1533652706857414" shareFacebookWithURL:@"http://www.umeng.com/social"];
     [UMSocialTwitterHandler openTwitter];
     [UMSocialInstagramHandler openInstagramWithScale:NO paddingColor:[UIColor blackColor]];
     
