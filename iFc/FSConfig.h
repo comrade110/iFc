@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "MBProgressHUD.h"
 
+#define MY_BANNER_UNIT_ID @"ca-app-pub-4053211758441927/7334362495"
+
 #define WEAKSELF typeof(self) __weak weakSelf = self;
 #define FSWINDOW [[[UIApplication sharedApplication] delegate] window]
 

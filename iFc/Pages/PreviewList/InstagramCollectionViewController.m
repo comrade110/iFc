@@ -10,13 +10,17 @@
 #import "UICollectionViewController+ADFlipTransition.h"
 #import "FSEditorViewController.h"
 #import <Parse/Parse.h>
+#import "GADBannerView.h"
+#import "UIView+Frame.h"
 
 
 static NSString * const kXHInstagramFooter = @"InstagramFooter";
 
-@interface InstagramCollectionViewController (){
+@interface InstagramCollectionViewController ()<GADBannerViewDelegate>{
 
     PFImageView *imageView;
+    GADBannerView *bannerView_;
+    UIView *bottomADView;
 
 }
 
@@ -99,13 +103,41 @@ static NSString * const kXHInstagramFooter = @"InstagramFooter";
 	// Do any additional setup after loading the view.
     self.title = @"Instagram";
     self.curPage = 0;
-    
+    [self.view setBackgroundColor:[UIColor mainBgColor]];
     [self _setupCollectionView];
+    
+
+    
+    //AD
+    // 在屏幕顶部创建标准尺寸的视图。
+    // 在GADAdSize.h中对可用的AdSize常量进行说明。
+    bannerView_ = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
+    
+    // 指定广告单元ID。
+    bannerView_.adUnitID = MY_BANNER_UNIT_ID;
+    bannerView_.delegate = self;
+    // 告知运行时文件，在将用户转至广告的展示位置之后恢复哪个UIViewController
+    // 并将其添加至视图层级结构。
+    bannerView_.rootViewController = self;
+    [self.view addSubview:bannerView_];
+    
+    [self.view bringSubviewToFront:bannerView_];
+    
+    // 启动一般性请求并在其中加载广告。
+    [bannerView_ loadRequest:[GADRequest request]];
+    
+    bottomADView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.height -bannerView_.height, bannerView_.height, bannerView_.height)];
+    [bottomADView addSubview:bannerView_];
+    bottomADView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+    [self.view addSubview:bottomADView];
+    [self.view bringSubviewToFront:bottomADView];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+// 收到广告调整collectionView frame
+- (void)adViewDidReceiveAd:(GADBannerView *)view{
+
+        self.collectionView.frame = CGRectMake(0, 0, self.collectionView.width, self.collectionView.height-view.height);
+
 }
 
 #pragma mark - DataSource manager 
