@@ -1087,6 +1087,11 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/iFc/Libs/ShareSDK/Connection",
+					"$(PROJECT_DIR)/iFc/Libs/ShareSDK/Core",
+					"$(PROJECT_DIR)/iFc/Libs/ShareSDK/Extend/QQConnectSDK",
+					"$(PROJECT_DIR)/iFc/Libs/ShareSDK",
+					"$(PROJECT_DIR)/iFc/Libs/ShareSDK/UI",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iFc/iFc-Prefix.pch";
@@ -1098,6 +1103,8 @@
 					"$(PROJECT_DIR)/iFc/Libs/Facebook",
 					"$(PROJECT_DIR)/iFc/Libs/Instagram",
 					"$(PROJECT_DIR)/iFc/Libs/Twitter",
+					"$(PROJECT_DIR)/iFc/Libs/ShareSDK/Extend/SinaWeiboSDK",
+					"$(PROJECT_DIR)/iFc/Libs/ShareSDK/Extend/WeChatSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "5a8d80d1-ebc2-49f4-99c9-9594a37c97ec";
@@ -1115,6 +1122,11 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/iFc/Libs/ShareSDK/Connection",
+					"$(PROJECT_DIR)/iFc/Libs/ShareSDK/Core",
+					"$(PROJECT_DIR)/iFc/Libs/ShareSDK/Extend/QQConnectSDK",
+					"$(PROJECT_DIR)/iFc/Libs/ShareSDK",
+					"$(PROJECT_DIR)/iFc/Libs/ShareSDK/UI",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iFc/iFc-Prefix.pch";
@@ -1126,6 +1138,8 @@
 					"$(PROJECT_DIR)/iFc/Libs/Facebook",
 					"$(PROJECT_DIR)/iFc/Libs/Instagram",
 					"$(PROJECT_DIR)/iFc/Libs/Twitter",
+					"$(PROJECT_DIR)/iFc/Libs/ShareSDK/Extend/SinaWeiboSDK",
+					"$(PROJECT_DIR)/iFc/Libs/ShareSDK/Extend/WeChatSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "5a8d80d1-ebc2-49f4-99c9-9594a37c97ec";
