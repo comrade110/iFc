@@ -7,9 +7,9 @@
 //
 
 #import "FSMenuViewController.h"
-#import "UMSocial.h"
+#import <ShareSDK/ShareSDK.h>
 
-@interface FSMenuViewController ()<UMSocialUIDelegate>{
+@interface FSMenuViewController (){
 
     MBProgressHUD *hud;
 
@@ -121,18 +121,18 @@
 }
 
 
--(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
-{
-    NSLog(@"response:%@",response);
-    //根据`responseCode`得到发送结果,如果分享成功
-    if(response.responseCode == UMSResponseCodeSuccess)
-    {
-        //得到分享到的微博平台名
-        alert([NSString stringWithFormat:@"share to sns name is %@",[[response.data allKeys] objectAtIndex:0]]);
-    }else{
-        alert(@"Send failed");
-    }
-}
+//-(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
+//{
+//    NSLog(@"response:%@",response);
+//    //根据`responseCode`得到发送结果,如果分享成功
+//    if(response.responseCode == UMSResponseCodeSuccess)
+//    {
+//        //得到分享到的微博平台名
+//        alert([NSString stringWithFormat:@"share to sns name is %@",[[response.data allKeys] objectAtIndex:0]]);
+//    }else{
+//        alert(@"Send failed");
+//    }
+//}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -178,12 +178,37 @@
                     
                     break;
                 case 1:{
-                    [UMSocialSnsService presentSnsController:self
-                                                         appKey:@"53ce1fc656240bfcee0271d3"
-                                                      shareText:@"lalalal"
-                                                     shareImage:nil
-                                                shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToQQ,UMShareToFacebook,UMShareToTwitter,UMShareToInstagram,nil]
-                                                       delegate:self];
+                    
+                    id<ISSContent> publishContent = [ShareSDK content:@"分享内容"
+                                                       defaultContent:@"默认分享内容，没内容时显示"
+                                                                image:nil
+                                                                title:@"ShareSDK"
+                                                                  url:@"http://www.sharesdk.cn"
+                                                          description:@"这是一条测试信息"
+                                                            mediaType:SSPublishContentMediaTypeNews];
+                    
+                    [ShareSDK showShareActionSheet:nil
+                                         shareList:nil
+                                           content:publishContent
+                                     statusBarTips:YES
+                                       authOptions:nil
+                                      shareOptions: nil
+                                            result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                                if (state == SSResponseStateSuccess)
+                                                {
+                                                    NSLog(@"分享成功");
+                                                }
+                                                else if (state == SSResponseStateFail)
+                                                {
+                            NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error  errorDescription]);
+                                                }
+                                            }];
+//                    [UMSocialSnsService presentSnsController:self
+//                                                         appKey:@"53ce1fc656240bfcee0271d3"
+//                                                      shareText:@"lalalal"
+//                                                     shareImage:nil
+//                                                shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToQQ,UMShareToFacebook,UMShareToTwitter,UMShareToInstagram,nil]
+//                                                       delegate:self];
                 }
                     
                     break;

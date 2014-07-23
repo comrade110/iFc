@@ -27,6 +27,7 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     UISlider *brightnessSlider;
     UISlider *contrastSlider;
     MBProgressHUD *hud;
+    BOOL isBGDone;
     
 
 }
@@ -130,6 +131,9 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
 //            progressView.hidden = NO;
 //        }
         hud.progress = (float)percentDone/100;
+        if (hud.progress == 1) {
+            isBGDone = YES;
+        }
 //        progressView.progress=(float)percentDone/100;
     }];
     [self.saveView addSubview:weakSelf.imageView];
@@ -211,7 +215,9 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     getPhotoBtn = [[EditorButton alloc] initWithFrame:CGRectMake(10, 3, 44, 44)];
     [getPhotoBtn setTitle:NSLocalizedString(@"Photo", nil) forState:UIControlStateNormal];
     [getPhotoBtn handleControlWithBlock:^{
-
+        if (!isBGDone) {
+            return;
+        }
         [self pushedNewBtn];
     }];
     [toolsView addSubview:getPhotoBtn];
@@ -246,6 +252,9 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     editBtn = [[EditorButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
     [editBtn setTitle:NSLocalizedString(@"Edit", nil) forState:UIControlStateNormal];
     [editBtn handleControlWithBlock:^{
+        if (!isBGDone) {
+            return;
+        }
         if (!self.userImageView.image) {
             alert(@"Need to add a photo first before editing");
             return ;
@@ -280,6 +289,9 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     saveBtn = [[EditorButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 54, 3, 44, 44)];
     [saveBtn setTitle:NSLocalizedString(@"Save", nil) forState:UIControlStateNormal];
     [saveBtn handleControlWithBlock:^{
+        if (!isBGDone) {
+            return;
+        }
         [self pushedSaveBtn];
     }];
     [toolsView addSubview:saveBtn];
@@ -317,11 +329,10 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
 
 - (void)pushedSaveBtn
 {
-    if(!_userImageView.image){
+    if(_userImageView.image){
         NSArray *excludedActivityTypes = @[UIActivityTypePostToVimeo,UIActivityTypeMessage];
         
-        UIActivityViewController *activityView = [[UIActivityViewController alloc] initWithActivityItems:@[[self mergeImage]] applicationActivities:nil];
-
+        UIActivityViewController *activityView = [[UIActivityViewController alloc] initWithActivityItems:@[@"Come to join iFace‘s world,you will have an pleasant experience http://itunes.apple.com/en/app",[self mergeImage]] applicationActivities:nil];
         activityView.excludedActivityTypes = excludedActivityTypes;
         activityView.completionHandler = ^(NSString *activityType, BOOL completed){
             if(completed && [activityType isEqualToString:UIActivityTypeSaveToCameraRoll]){

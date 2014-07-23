@@ -48,6 +48,11 @@
 
 @implementation UIColor (customSystemColor)
 
++(UIColor *)navBgColor
+{
+    return [UIColor colorWithRed:225./255. green:230./255. blue:234./255. alpha:1];
+}
+
 +(UIColor *)mainBgColor
 {
     return [UIColor colorWithRed:231./255. green:235./255. blue:238./255. alpha:1];

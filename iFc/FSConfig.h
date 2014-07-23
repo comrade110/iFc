@@ -24,6 +24,7 @@
 
 
 @interface UIColor (customSystemColor)
++(UIColor *)navBgColor;
 +(UIColor*)mainBgColor;
 +(UIColor*)mainCellColor;
 @end

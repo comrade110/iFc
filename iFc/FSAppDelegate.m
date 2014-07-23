@@ -9,24 +9,38 @@
 #import "FSAppDelegate.h"
 #import "FSMenuViewController.h"
 #import <Parse/Parse.h>
+#import "FSConfig.h"
 #import "FSViewController.h"
 #import "MMDrawerController.h"
 #import "MMDrawerVisualState.h"
 #import "MMExampleDrawerVisualStateManager.h"
-#import "UMSocial.h"
+#import <ShareSDK/ShareSDK.h>
 
 @implementation FSAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
+     [ShareSDK registerApp:@"26b6131cd4e5"];
     
-    [UMSocialData setAppKey:@"53ce1fc656240bfcee0271d3"];
     
-    [UMSocialFacebookHandler setFacebookAppID:@"1533652706857414" shareFacebookWithURL:@"http://www.umeng.com/social"];
-    [UMSocialTwitterHandler openTwitter];
-    [UMSocialInstagramHandler openInstagramWithScale:NO paddingColor:[UIColor blackColor]];
+    if ([[FSConfig getCurrentLanguage] isEqualToString:@"zh-Hans"]||[[FSConfig getCurrentLanguage] isEqualToString:@"zh-Hant"]) {
+    }else{
+        
+    }
+    //添加Facebook应用  注册网址 https://developers.facebook.com
+    [ShareSDK connectFacebookWithAppKey:@"1533652706857414"
+                              appSecret:@"004c5ff9b49fbda532dba0bcbd9adda8"];
     
+    //添加Twitter应用  注册网址  https://dev.twitter.com
+    [ShareSDK connectTwitterWithConsumerKey:@"hB9ln89h4gsHYFa7yOxvRt33Y"
+                             consumerSecret:@"PftAyFognU49j7PLKXtD2UDou3MboQJvVn6YApJPfi8FNtY9Mt"
+                                redirectUri:@"http://sharesdk.cn"];
+    [ShareSDK connectSinaWeiboWithAppKey:@"2270857739" appSecret:@"c409e0b39bab52b4fd6fad4f081c6856" redirectUri:@"http://baidu.com"];
+//    [ShareSDK connectFlickrWithApiKey:@"3de37b66f2669f3ab8fa2b3314aec276" apiSecret:@"1cc23838602ed479"];
+    [ShareSDK connectInstagramWithClientId:@"4781de2e8e9e47a89e5f2a5ff563951e" clientSecret:@"89c356fcbfe34f76869b828fe6a05879" redirectUri:@"http://sharesdk.cn"];
+    
+    [ShareSDK connectMail];
     // ****************************************************************************
     // Uncomment and fill in with your Parse credentials:
     [Parse setApplicationId:@"vc9WStKb2rrh0dgDhyRy9yTyk37pMHtLhaaoGJv0"
@@ -70,10 +84,14 @@
     UIViewController * centerViewController = [[FSViewController alloc] init];
     
     UINavigationController * navigationController = [[UINavigationController alloc] initWithRootViewController:centerViewController];
-    
-    [navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav_bg"] forBarMetrics:UIBarMetricsDefault];
-    
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+        if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {
+            // Load resources for iOS 6.1 or earlier
+            navigationController.navigationBar.tintColor = [UIColor navBgColor];
+        } else {
+            // Load resources for iOS 7 or later
+            navigationController.navigationBar.barTintColor = [UIColor navBgColor];
+        }
+//    [navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav_bg"] forBarMetrics:UIBarMetricsDefault];
     
     MMDrawerController * drawerController = [[MMDrawerController alloc]
                                              initWithCenterViewController:navigationController
@@ -103,9 +121,11 @@
     return YES;
 }
 
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+- (BOOL)application:(UIApplication *)application
+      handleOpenURL:(NSURL *)url
 {
-    return  [UMSocialSnsService handleOpenURL:url];
+    return [ShareSDK handleOpenURL:url
+                        wxDelegate:self];
 }
 
 - (BOOL)application:(UIApplication *)application
@@ -113,7 +133,10 @@
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation
 {
-    return  [UMSocialSnsService handleOpenURL:url];
+    return [ShareSDK handleOpenURL:url
+                 sourceApplication:sourceApplication
+                        annotation:annotation
+                        wxDelegate:self];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
