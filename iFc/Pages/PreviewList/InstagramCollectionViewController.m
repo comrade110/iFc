@@ -135,8 +135,10 @@ static NSString * const kXHInstagramFooter = @"InstagramFooter";
 
 // 收到广告调整collectionView frame
 - (void)adViewDidReceiveAd:(GADBannerView *)view{
-
+    if (self.collectionView.height == self.view.height) {
         self.collectionView.frame = CGRectMake(0, 0, self.collectionView.width, self.collectionView.height-view.height);
+    }
+
 
 }
 

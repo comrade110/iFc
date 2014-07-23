@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		BEC14065197BA63D009643D1 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC14064197BA63D009643D1 /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		BEC3F89B197FCFFD00B13C33 /* FSBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC3F898197FCFFD00B13C33 /* FSBaseViewController.m */; };
+		BEC3F89C197FCFFD00B13C33 /* FSMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC3F89A197FCFFD00B13C33 /* FSMenuViewController.m */; };
 		BEE778D81975728D000CB8AC /* ADFlipTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE778D51975728D000CB8AC /* ADFlipTransition.m */; };
 		BEE778D91975728D000CB8AC /* UICollectionViewController+ADFlipTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE778D71975728D000CB8AC /* UICollectionViewController+ADFlipTransition.m */; };
 		BEE778DC197572B5000CB8AC /* UIViewController+ADFlipTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE778DB197572B5000CB8AC /* UIViewController+ADFlipTransition.m */; };
@@ -41,7 +43,6 @@
 		D396F5731973B69300F21999 /* MMDrawerVisualState.m in Sources */ = {isa = PBXBuildFile; fileRef = D396F56C1973B69300F21999 /* MMDrawerVisualState.m */; };
 		D396F5741973B69300F21999 /* MMExampleDrawerVisualStateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D396F56E1973B69300F21999 /* MMExampleDrawerVisualStateManager.m */; };
 		D396F5751973B69300F21999 /* UIViewController+MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = D396F5701973B69300F21999 /* UIViewController+MMDrawerController.m */; };
-		D396F5781973B6FC00F21999 /* FSMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D396F5771973B6FC00F21999 /* FSMenuViewController.m */; };
 		D396F57B1973BD4600F21999 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D396F57D1973BD4600F21999 /* Localizable.strings */; };
 		D396F5821973C58000F21999 /* FSSubTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D396F5811973C58000F21999 /* FSSubTypeViewController.m */; };
 		D396F5881973C72200F21999 /* JBParallaxCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D396F5871973C72200F21999 /* JBParallaxCell.m */; };
@@ -80,7 +81,6 @@
 		D3B80F991973718E005F0832 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B80F781973718E005F0832 /* UIKit.framework */; };
 		D3B80FA11973718E005F0832 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D3B80F9F1973718E005F0832 /* InfoPlist.strings */; };
 		D3B80FA31973718E005F0832 /* iFcTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B80FA21973718E005F0832 /* iFcTests.m */; };
-		D3B80FB71973758F005F0832 /* FSBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B80FB61973758F005F0832 /* FSBaseViewController.m */; };
 		D3B80FB9197375E5005F0832 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B80FB8197375E5005F0832 /* AdSupport.framework */; };
 		D3B80FBB197375EE005F0832 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B80FBA197375EE005F0832 /* Social.framework */; };
 		D3B80FBD197375F4005F0832 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B80FBC197375F4005F0832 /* Accounts.framework */; };
@@ -146,6 +146,10 @@
 /* Begin PBXFileReference section */
 		BEC14063197BA63D009643D1 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		BEC14064197BA63D009643D1 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		BEC3F897197FCFFD00B13C33 /* FSBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSBaseViewController.h; path = iFc/FSBaseViewController.h; sourceTree = SOURCE_ROOT; };
+		BEC3F898197FCFFD00B13C33 /* FSBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSBaseViewController.m; path = iFc/FSBaseViewController.m; sourceTree = SOURCE_ROOT; };
+		BEC3F899197FCFFD00B13C33 /* FSMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSMenuViewController.h; path = iFc/FSMenuViewController.h; sourceTree = SOURCE_ROOT; };
+		BEC3F89A197FCFFD00B13C33 /* FSMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSMenuViewController.m; path = iFc/FSMenuViewController.m; sourceTree = SOURCE_ROOT; };
 		BEE778D41975728D000CB8AC /* ADFlipTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADFlipTransition.h; sourceTree = "<group>"; };
 		BEE778D51975728D000CB8AC /* ADFlipTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADFlipTransition.m; sourceTree = "<group>"; };
 		BEE778D61975728D000CB8AC /* UICollectionViewController+ADFlipTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionViewController+ADFlipTransition.h"; sourceTree = "<group>"; };
@@ -202,8 +206,6 @@
 		D396F56E1973B69300F21999 /* MMExampleDrawerVisualStateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMExampleDrawerVisualStateManager.m; sourceTree = "<group>"; };
 		D396F56F1973B69300F21999 /* UIViewController+MMDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MMDrawerController.h"; sourceTree = "<group>"; };
 		D396F5701973B69300F21999 /* UIViewController+MMDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MMDrawerController.m"; sourceTree = "<group>"; };
-		D396F5761973B6FC00F21999 /* FSMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSMenuViewController.h; path = ../../FSMenuViewController.h; sourceTree = "<group>"; };
-		D396F5771973B6FC00F21999 /* FSMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSMenuViewController.m; path = ../../FSMenuViewController.m; sourceTree = "<group>"; };
 		D396F57C1973BD4600F21999 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; usesTabs = 0; };
 		D396F57E1973BD4C00F21999 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		D396F57F1973BD4D00F21999 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -271,8 +273,6 @@
 		D3B80FB1197371F5005F0832 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main_iPad.strings"; sourceTree = "<group>"; };
 		D3B80FB2197371F5005F0832 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		D3B80FB3197371F5005F0832 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		D3B80FB51973758F005F0832 /* FSBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSBaseViewController.h; path = ../../FSBaseViewController.h; sourceTree = "<group>"; };
-		D3B80FB61973758F005F0832 /* FSBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSBaseViewController.m; path = ../../FSBaseViewController.m; sourceTree = "<group>"; };
 		D3B80FB8197375E5005F0832 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		D3B80FBA197375EE005F0832 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		D3B80FBC197375F4005F0832 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
@@ -829,10 +829,10 @@
 		D3C70329197F4AFE000079C8 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				D396F5761973B6FC00F21999 /* FSMenuViewController.h */,
-				D396F5771973B6FC00F21999 /* FSMenuViewController.m */,
-				D3B80FB51973758F005F0832 /* FSBaseViewController.h */,
-				D3B80FB61973758F005F0832 /* FSBaseViewController.m */,
+				BEC3F897197FCFFD00B13C33 /* FSBaseViewController.h */,
+				BEC3F898197FCFFD00B13C33 /* FSBaseViewController.m */,
+				BEC3F899197FCFFD00B13C33 /* FSMenuViewController.h */,
+				BEC3F89A197FCFFD00B13C33 /* FSMenuViewController.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -989,7 +989,6 @@
 			files = (
 				D3A9626A19761DCD007C561C /* CurledViewBase.m in Sources */,
 				D339D5EA19790095002E1A4B /* CLClassList.m in Sources */,
-				D3B80FB71973758F005F0832 /* FSBaseViewController.m in Sources */,
 				BEEDCB1E19742634009B4F0B /* MONActivityIndicatorView.m in Sources */,
 				D3B4FE001974C7E40078B05E /* InstagramMediaModel+XHMediaControl.m in Sources */,
 				D396F5731973B69300F21999 /* MMDrawerVisualState.m in Sources */,
@@ -1017,6 +1016,8 @@
 				D339D5ED19790095002E1A4B /* UIImage+Utility.m in Sources */,
 				D396F5631973B5C100F21999 /* NSString+size.m in Sources */,
 				D3B4FDFF1974C7E40078B05E /* InstagramMediaModel.m in Sources */,
+				BEC3F89B197FCFFD00B13C33 /* FSBaseViewController.m in Sources */,
+				BEC3F89C197FCFFD00B13C33 /* FSMenuViewController.m in Sources */,
 				D396F5741973B69300F21999 /* MMExampleDrawerVisualStateManager.m in Sources */,
 				D396F5611973B5C100F21999 /* UIButton+Block.m in Sources */,
 				BEE778DC197572B5000CB8AC /* UIViewController+ADFlipTransition.m in Sources */,
@@ -1025,7 +1026,6 @@
 				D396F5621973B5C100F21999 /* UIAlertView+Block.m in Sources */,
 				D3B80FD719737955005F0832 /* FSConfig.m in Sources */,
 				D396F5721973B69300F21999 /* MMDrawerController.m in Sources */,
-				D396F5781973B6FC00F21999 /* FSMenuViewController.m in Sources */,
 				D339D5FD19792630002E1A4B /* CMSCoinView.m in Sources */,
 				D3A9627019763F99007C561C /* SinglePicManager.m in Sources */,
 				D3A9626C19761DCD007C561C /* UIImageView+Curled.m in Sources */,
@@ -1218,7 +1218,7 @@
 					"$(PROJECT_DIR)/iFc/Libs/Ad/libGoogleAdMobAds.a",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0E933208-A2FB-4264-B1A5-0625349CBADB";
+				PROVISIONING_PROFILE = "E3DFC150-C5D2-491C-B19E-B50F666899A8";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1254,7 +1254,7 @@
 					"$(PROJECT_DIR)/iFc/Libs/Ad/libGoogleAdMobAds.a",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0E933208-A2FB-4264-B1A5-0625349CBADB";
+				PROVISIONING_PROFILE = "E3DFC150-C5D2-491C-B19E-B50F666899A8";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

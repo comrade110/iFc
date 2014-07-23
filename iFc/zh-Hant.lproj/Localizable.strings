@@ -17,6 +17,7 @@
 "Done" = "完成";
 "Waiting" ="清理中";
 "Error" = "未知錯誤";
+"Photo" = "照片";
 "Saved successfully" = "保存成功";
 "Connection failed, please try again later." = "連接失敗,請稍後再試";
 "Need to add a photo first before editing" = "在編輯前需要先添加一張照片";
