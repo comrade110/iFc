@@ -125,6 +125,12 @@ static NSString * const kXHInstagramFooter = @"InstagramFooter";
     
     // 启动一般性请求并在其中加载广告。
     [bannerView_ loadRequest:[GADRequest request]];
+    // 请求测试广告。填入模拟器
+    // 以及接收测试广告的任何设备的标识符。
+    [GADRequest request].testDevices = [NSArray arrayWithObjects:
+                           @"2DEA15FF-9698-505D-931C-68E2B9A3CEFF",
+                           @"f2751b6ab2923ef5171dfb289dc50c9678520ecd",
+                           nil];
     
     bottomADView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.height -bannerView_.height, bannerView_.height, bannerView_.height)];
     [bottomADView addSubview:bannerView_];
