@@ -15,6 +15,7 @@
 #import "MMDrawerVisualState.h"
 #import "MMExampleDrawerVisualStateManager.h"
 #import <ShareSDK/ShareSDK.h>
+#import "GADInterstitial.h"
 
 @implementation FSAppDelegate
 
@@ -117,6 +118,16 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    
+    
+    
+    GADInterstitial *splashInterstitial_ = [[GADInterstitial alloc] init];
+    splashInterstitial_.adUnitID = MY_INTERSTITIAL_UNIT_ID;
+    [splashInterstitial_ loadAndDisplayRequest:[GADRequest request]
+                                   usingWindow:self.window
+                                  initialImage:[UIImage imageNamed:@"Default.png"]];
+    
     
     return YES;
 }

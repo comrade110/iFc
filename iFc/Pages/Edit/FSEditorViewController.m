@@ -11,12 +11,13 @@
 #import "UIView+Frame.h"
 #import "UIImage+Utility.h"
 #import "MBProgressHUD.h"
+#import "GADInterstitial.h"
 
 #define IMAGESIZE 2
 
 static const NSTimeInterval kAnimationIntervalTransform = 0.2;
 
-@interface FSEditorViewController ()<UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate,UIGestureRecognizerDelegate>{
+@interface FSEditorViewController ()<UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate,UIGestureRecognizerDelegate,GADInterstitialDelegate>{
 
     SEL showProgress;
     EditorButton *closeBtn;
@@ -29,7 +30,7 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     MBProgressHUD *hud;
     BOOL isBGDone;
     
-
+     GADInterstitial *interstitial_;
 }
 
 @property(nonatomic,strong) UIView *saveView;   //For save
@@ -78,6 +79,27 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //AD
+    interstitial_ = [[GADInterstitial alloc] init];
+    interstitial_.adUnitID = MY_INTERSTITIAL_UNIT_ID;
+    interstitial_.delegate = self;
+    if (interstitial_.isReady) {
+        [interstitial_ presentFromRootViewController:self];
+    }else{
+        [interstitial_ loadRequest:[GADRequest request]];
+    }
+    // 请求测试广告。填入模拟器
+    // 以及接收测试广告的任何设备的标识符。
+    [GADRequest request].testDevices = [NSArray arrayWithObjects:
+                                        @"2DEA15FF-9698-505D-931C-68E2B9A3CEFF",
+                                        @"f2751b6ab2923ef5171dfb289dc50c9678520ecd",
+                                        nil];
+    
+
+    
+    
+    
     
     self.imageView = [[PFImageView alloc] initWithFrame:self.view.frame];
     self.saveView = [[UIView alloc] initWithFrame:self.view.frame];
@@ -157,10 +179,9 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)interstitialDidReceiveAd:(GADInterstitial *)interstitial{
+
+    [interstitial_ presentFromRootViewController:self];
 }
 
 #pragma mark - Build Views
