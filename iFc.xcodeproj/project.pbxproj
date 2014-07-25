@@ -53,6 +53,15 @@
 		D3A9627019763F99007C561C /* SinglePicManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D3A9626F19763F99007C561C /* SinglePicManager.m */; };
 		D3A9627419764593007C561C /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3A9627319764593007C561C /* DACircularProgressView.m */; };
 		D3ABA6D9197796CE0082A5B2 /* EditorButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D3ABA6D8197796CE0082A5B2 /* EditorButton.m */; };
+		D3AF82421981EA5D00B9A0A4 /* LVBubbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3AF823D1981EA5D00B9A0A4 /* LVBubbleView.m */; };
+		D3AF82431981EA5D00B9A0A4 /* LVMovableView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3AF823F1981EA5D00B9A0A4 /* LVMovableView.m */; };
+		D3AF82441981EA5D00B9A0A4 /* LVTextBubbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3AF82411981EA5D00B9A0A4 /* LVTextBubbleView.m */; };
+		D3AF825B1982586A00B9A0A4 /* tellFriends_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3AF82551982586A00B9A0A4 /* tellFriends_icon@2x.png */; };
+		D3AF825D1982586A00B9A0A4 /* rate_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3AF82571982586A00B9A0A4 /* rate_icon@2x.png */; };
+		D3AF825E1982586A00B9A0A4 /* home_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3AF82581982586A00B9A0A4 /* home_icon@2x.png */; };
+		D3AF825F1982586A00B9A0A4 /* clearCached_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3AF82591982586A00B9A0A4 /* clearCached_icon@2x.png */; };
+		D3AF82601982586A00B9A0A4 /* copyright_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3AF825A1982586A00B9A0A4 /* copyright_icon@2x.png */; };
+		D3AF8264198259B800B9A0A4 /* upgrade_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3AF8263198259B800B9A0A4 /* upgrade_icon@2x.png */; };
 		D3B2E58E197CF3DD007C3605 /* animal_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3B2E58C197CF3DD007C3605 /* animal_bg@2x.png */; };
 		D3B2E58F197CF3DD007C3605 /* peple_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3B2E58D197CF3DD007C3605 /* peple_bg@2x.png */; };
 		D3B33CF6197E2CA700BC5217 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B33CF5197E2CA700BC5217 /* MessageUI.framework */; };
@@ -226,6 +235,18 @@
 		D3A9627319764593007C561C /* DACircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACircularProgressView.m; sourceTree = "<group>"; };
 		D3ABA6D7197796CE0082A5B2 /* EditorButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditorButton.h; sourceTree = "<group>"; };
 		D3ABA6D8197796CE0082A5B2 /* EditorButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditorButton.m; sourceTree = "<group>"; };
+		D3AF823C1981EA5D00B9A0A4 /* LVBubbleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LVBubbleView.h; sourceTree = "<group>"; };
+		D3AF823D1981EA5D00B9A0A4 /* LVBubbleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LVBubbleView.m; sourceTree = "<group>"; };
+		D3AF823E1981EA5D00B9A0A4 /* LVMovableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LVMovableView.h; sourceTree = "<group>"; };
+		D3AF823F1981EA5D00B9A0A4 /* LVMovableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LVMovableView.m; sourceTree = "<group>"; };
+		D3AF82401981EA5D00B9A0A4 /* LVTextBubbleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LVTextBubbleView.h; sourceTree = "<group>"; };
+		D3AF82411981EA5D00B9A0A4 /* LVTextBubbleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LVTextBubbleView.m; sourceTree = "<group>"; };
+		D3AF82551982586A00B9A0A4 /* tellFriends_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tellFriends_icon@2x.png"; sourceTree = "<group>"; };
+		D3AF82571982586A00B9A0A4 /* rate_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rate_icon@2x.png"; sourceTree = "<group>"; };
+		D3AF82581982586A00B9A0A4 /* home_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_icon@2x.png"; sourceTree = "<group>"; };
+		D3AF82591982586A00B9A0A4 /* clearCached_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clearCached_icon@2x.png"; sourceTree = "<group>"; };
+		D3AF825A1982586A00B9A0A4 /* copyright_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "copyright_icon@2x.png"; sourceTree = "<group>"; };
+		D3AF8263198259B800B9A0A4 /* upgrade_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "upgrade_icon@2x.png"; sourceTree = "<group>"; };
 		D3B2E58C197CF3DD007C3605 /* animal_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "animal_bg@2x.png"; sourceTree = "<group>"; };
 		D3B2E58D197CF3DD007C3605 /* peple_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "peple_bg@2x.png"; sourceTree = "<group>"; };
 		D3B33CF5197E2CA700BC5217 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -561,6 +582,32 @@
 			path = DACircularProgress;
 			sourceTree = "<group>";
 		};
+		D3AF823B1981EA5D00B9A0A4 /* LVBubbleView */ = {
+			isa = PBXGroup;
+			children = (
+				D3AF823C1981EA5D00B9A0A4 /* LVBubbleView.h */,
+				D3AF823D1981EA5D00B9A0A4 /* LVBubbleView.m */,
+				D3AF823E1981EA5D00B9A0A4 /* LVMovableView.h */,
+				D3AF823F1981EA5D00B9A0A4 /* LVMovableView.m */,
+				D3AF82401981EA5D00B9A0A4 /* LVTextBubbleView.h */,
+				D3AF82411981EA5D00B9A0A4 /* LVTextBubbleView.m */,
+			);
+			path = LVBubbleView;
+			sourceTree = "<group>";
+		};
+		D3AF82541982586300B9A0A4 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				D3AF8263198259B800B9A0A4 /* upgrade_icon@2x.png */,
+				D3AF82551982586A00B9A0A4 /* tellFriends_icon@2x.png */,
+				D3AF82571982586A00B9A0A4 /* rate_icon@2x.png */,
+				D3AF82581982586A00B9A0A4 /* home_icon@2x.png */,
+				D3AF82591982586A00B9A0A4 /* clearCached_icon@2x.png */,
+				D3AF825A1982586A00B9A0A4 /* copyright_icon@2x.png */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
 		D3B4FDEC1974C7C50078B05E /* PreviewList */ = {
 			isa = PBXGroup;
 			children = (
@@ -687,6 +734,7 @@
 		D3B80FB4197374BF005F0832 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D3AF82541982586300B9A0A4 /* Menu */,
 				D3B2E58C197CF3DD007C3605 /* animal_bg@2x.png */,
 				D3B2E58D197CF3DD007C3605 /* peple_bg@2x.png */,
 				D339D5EF19790220002E1A4B /* brightness.png */,
@@ -710,6 +758,7 @@
 		D3B80FD4197378D4005F0832 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				D3AF823B1981EA5D00B9A0A4 /* LVBubbleView */,
 				BEC14062197BA636009643D1 /* MBProgressHUD */,
 				D339D5FB19792630002E1A4B /* CMSCoinView.h */,
 				D339D5FC19792630002E1A4B /* CMSCoinView.m */,
@@ -948,6 +997,7 @@
 				D339D5DE1978FCB1002E1A4B /* edit_back@2x.png in Resources */,
 				D339D5F719790220002E1A4B /* contrast.png in Resources */,
 				D3B80FDB1973A048005F0832 /* placeholder@2x.png in Resources */,
+				D3AF825B1982586A00B9A0A4 /* tellFriends_icon@2x.png in Resources */,
 				D3C70324197F4A3B000079C8 /* ShareSDKiPadSimpleShareViewUI.bundle in Resources */,
 				D396F57B1973BD4600F21999 /* Localizable.strings in Resources */,
 				D3B80F881973718E005F0832 /* Main_iPhone.storyboard in Resources */,
@@ -956,9 +1006,11 @@
 				D339D5F519790220002E1A4B /* brightness.png in Resources */,
 				D339D5F819790220002E1A4B /* contrast@2x.png in Resources */,
 				D3B80FD919739745005F0832 /* cellBg.png in Resources */,
+				D3AF8264198259B800B9A0A4 /* upgrade_icon@2x.png in Resources */,
 				D3C7031D197F4A3B000079C8 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				D3B2E58E197CF3DD007C3605 /* animal_bg@2x.png in Resources */,
 				D396F58A1973CF5500F21999 /* placeholder2@2x.png in Resources */,
+				D3AF82601982586A00B9A0A4 /* copyright_icon@2x.png in Resources */,
 				D339D5FA19790220002E1A4B /* saturation@2x.png in Resources */,
 				D3C70322197F4A3B000079C8 /* ShareSDKFlatShareViewUI.bundle in Resources */,
 				D396F5551973B50C00F21999 /* pulDrawer.png in Resources */,
@@ -969,6 +1021,9 @@
 				D3C70319197F4A3B000079C8 /* ShareSDKLocalizable.strings in Resources */,
 				D3C7033E197FB2B3000079C8 /* README.txt in Resources */,
 				D3C7031A197F4A3B000079C8 /* Resource.bundle in Resources */,
+				D3AF825E1982586A00B9A0A4 /* home_icon@2x.png in Resources */,
+				D3AF825D1982586A00B9A0A4 /* rate_icon@2x.png in Resources */,
+				D3AF825F1982586A00B9A0A4 /* clearCached_icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -989,14 +1044,17 @@
 			files = (
 				D3A9626A19761DCD007C561C /* CurledViewBase.m in Sources */,
 				D339D5EA19790095002E1A4B /* CLClassList.m in Sources */,
+				D3AF82441981EA5D00B9A0A4 /* LVTextBubbleView.m in Sources */,
 				BEEDCB1E19742634009B4F0B /* MONActivityIndicatorView.m in Sources */,
 				D3B4FE001974C7E40078B05E /* InstagramMediaModel+XHMediaControl.m in Sources */,
 				D396F5731973B69300F21999 /* MMDrawerVisualState.m in Sources */,
 				D3B80F811973718E005F0832 /* main.m in Sources */,
 				D396F5751973B69300F21999 /* UIViewController+MMDrawerController.m in Sources */,
 				D339D5EB19790095002E1A4B /* CLSplineInterpolator.m in Sources */,
+				D3AF82421981EA5D00B9A0A4 /* LVBubbleView.m in Sources */,
 				D396F5881973C72200F21999 /* JBParallaxCell.m in Sources */,
 				D3B4FDF51974C7D20078B05E /* InstagramThumbnailCollectionViewController.m in Sources */,
+				D3AF82431981EA5D00B9A0A4 /* LVMovableView.m in Sources */,
 				D3ABA6D9197796CE0082A5B2 /* EditorButton.m in Sources */,
 				BEEDCB1819741974009B4F0B /* FSViewController.m in Sources */,
 				D3B4FDF31974C7D20078B05E /* InstagramCollectionViewController.m in Sources */,

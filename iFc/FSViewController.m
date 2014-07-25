@@ -20,23 +20,23 @@
 
 @implementation FSViewController
 
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:YES];
+    if ([UIApplication sharedApplication].statusBarHidden) {
+        [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor mainBgColor];
     self.title = @"Home";
-//    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav_bg"] forBarMetrics:UIBarMetricsDefault];
-    
+//  rate control
     
     [self setupLeftMenuButton];
-//    UIButton *leftBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 24, 23)];
-//    [leftBtn setImage:[UIImage imageNamed:@"pullDrawer"] forState:UIControlStateNormal];
-//    [leftBtn handleControlWithBlock:^{
-//        
-//    }];
-//    
-//    MMDrawerBarButtonItem * leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithCustomView:leftBtn];
-//    [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
+
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 50, self.view.frame.size.width, self.view.frame.size.height-50) style:UITableViewStylePlain];
     _tableView.delegate = self;

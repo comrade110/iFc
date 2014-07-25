@@ -8,11 +8,19 @@
 
 #import <Foundation/Foundation.h>
 #import "MBProgressHUD.h"
+#import "UIView+Frame.h"
 
 #define MY_BANNER_UNIT_ID @"ca-app-pub-4053211758441927/7334362495"
 #define MY_INTERSTITIAL_UNIT_ID @"ca-app-pub-4053211758441927/5166298497"
 #define WEAKSELF typeof(self) __weak weakSelf = self;
 #define FSWINDOW [[[UIApplication sharedApplication] delegate] window]
+
+
+//业务
+#define DELEGATEADCOUNT 3
+#define EDITVCADCOUNT 3
+#define LaunchMAXCount 5
+#define SAVEMAXCOUNT 5
 
 @interface FSConfig : NSObject
 

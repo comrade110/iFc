@@ -15,7 +15,7 @@
 #import "MMDrawerVisualState.h"
 #import "MMExampleDrawerVisualStateManager.h"
 #import <ShareSDK/ShareSDK.h>
-#import "GADInterstitial.h"
+
 
 @implementation FSAppDelegate
 
@@ -63,19 +63,19 @@
     // Override point for customization after application launch.
     
     
-    
-    if (application.applicationState != UIApplicationStateBackground) {
-        // Track an app open here if we launch with a push, unless
-        // "content_available" was used to trigger a background push (introduced
-        // in iOS 7). In that case, we skip tracking here to avoid double
-        // counting the app-open.
-        BOOL preBackgroundPush = ![application respondsToSelector:@selector(backgroundRefreshStatus)];
-        BOOL oldPushHandlerOnly = ![self respondsToSelector:@selector(application:didReceiveRemoteNotification:fetchCompletionHandler:)];
-        BOOL noPushPayload = ![launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
-        if (preBackgroundPush || oldPushHandlerOnly || noPushPayload) {
-            [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
-        }
-    }
+//    
+//    if (application.applicationState != UIApplicationStateBackground) {
+//        // Track an app open here if we launch with a push, unless
+//        // "content_available" was used to trigger a background push (introduced
+//        // in iOS 7). In that case, we skip tracking here to avoid double
+//        // counting the app-open.
+//        BOOL preBackgroundPush = ![application respondsToSelector:@selector(backgroundRefreshStatus)];
+//        BOOL oldPushHandlerOnly = ![self respondsToSelector:@selector(application:didReceiveRemoteNotification:fetchCompletionHandler:)];
+//        BOOL noPushPayload = ![launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+//        if (preBackgroundPush || oldPushHandlerOnly || noPushPayload) {
+//            [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+//        }
+//    }
     [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge|
      UIRemoteNotificationTypeAlert|
      UIRemoteNotificationTypeSound];
@@ -120,16 +120,45 @@
     [self.window makeKeyAndVisible];
     
     
+    if(![[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"]){
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstLaunch"];
+        [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"LaunchCount"];
+        [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"saveCount"];
+        [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"EditerVCADControl"];
+        [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"DelegateADControl"];
+        NSLog(@"第一次启动");
+    }else{
+        
+    }
     
-    
-    GADInterstitial *splashInterstitial_ = [[GADInterstitial alloc] init];
-    splashInterstitial_.adUnitID = MY_INTERSTITIAL_UNIT_ID;
-    [splashInterstitial_ loadAndDisplayRequest:[GADRequest request]
-                                   usingWindow:self.window
-                                  initialImage:[UIImage imageNamed:@"Default.png"]];
+//    // 每启动N次显示广告
+//    NSInteger adnum = [[[NSUserDefaults standardUserDefaults] objectForKey:@"DelegateADControl"] intValue];
+//    if (adnum < DELEGATEADCOUNT) {
+//        adnum++;
+//        [[NSUserDefaults standardUserDefaults] setInteger:adnum forKey:@"DelegateADControl"];
+//    }else{
+//        [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"DelegateADControl"];
+//        
+//        splashInterstitial_ = [[GADInterstitial alloc] init];
+//        splashInterstitial_.adUnitID = MY_INTERSTITIAL_UNIT_ID;
+//        self.request = [GADRequest request];
+//        splashInterstitial_.delegate = self;
+//        _request.testDevices = [NSArray arrayWithObjects:
+//                               @"2DEA15FF-9698-505D-931C-68E2B9A3CEFF",
+//                               @"f2751b6ab2923ef5171dfb289dc50c9678520ecd",
+//                               nil];
+//        [splashInterstitial_ loadRequest:_request];
+//    }
+
     
     
     return YES;
+}
+
+- (void)interstitial:(GADInterstitial *)ad didFailToReceiveAdWithError:(GADRequestError *)error{
+    
+//    [splashInterstitial_ loadRequest:_request];
+
 }
 
 - (BOOL)application:(UIApplication *)application

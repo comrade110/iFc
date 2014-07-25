@@ -6,7 +6,6 @@
   Copyright (c) 2014年 Fuleco studio. All rights reserved.
 */
 
-
 "normal" = "normal";
 "animal" = "animal";
 "Choose Photo" = "选择照片";
@@ -19,7 +18,15 @@
 "Waiting" ="清理中";
 "Error" = "未知错误";
 "Photo" = "照片";
+"Tips" = "温馨提示";
+"Continue" = "继续";
+"All images you downloaded will be cleared" = "之前您下载的图片将会被清空,是否继续?";
 "Saved successfully" = "保存成功";
+"Enjoying iFace+?" = "喜欢iFace+?";
+"If so, say it with stars on the App Store" = "喜欢它，就在App Store给它打分鼓励一下吧!";
+"OK,I give stars" = "好的,去打分";
+"Don't ask again" = "不想打分";
+"Remind me later" = "以后再说";
 "Connection failed, please try again later." = "连接失败，请稍后再试";
 "Need to add a photo first before editing" = "在编辑前需要先添加一张照片";
 "Use Photo from Library" = "从相册选取照片";

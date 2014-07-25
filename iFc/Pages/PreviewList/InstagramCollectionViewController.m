@@ -16,15 +16,15 @@
 
 static NSString * const kXHInstagramFooter = @"InstagramFooter";
 
-@interface InstagramCollectionViewController ()<GADBannerViewDelegate>{
+@interface InstagramCollectionViewController ()<GADBannerViewDelegate,UIAlertViewDelegate>{
 
     PFImageView *imageView;
     GADBannerView *bannerView_;
     UIView *bottomADView;
-
 }
 
 @property(nonatomic,assign) NSUInteger curPage;
+@property(nonatomic,strong) GADRequest *request;
 
 @end
 
@@ -78,10 +78,15 @@ static NSString * const kXHInstagramFooter = @"InstagramFooter";
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self downloadDataSource];
+    [self rateControl];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    if ([UIApplication sharedApplication].statusBarHidden) {
+        [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -124,10 +129,11 @@ static NSString * const kXHInstagramFooter = @"InstagramFooter";
     [self.view bringSubviewToFront:bannerView_];
     
     // 启动一般性请求并在其中加载广告。
-    [bannerView_ loadRequest:[GADRequest request]];
+    self.request = [GADRequest request];
+    [bannerView_ loadRequest:_request];
     // 请求测试广告。填入模拟器
     // 以及接收测试广告的任何设备的标识符。
-    [GADRequest request].testDevices = [NSArray arrayWithObjects:
+    _request.testDevices = [NSArray arrayWithObjects:
                            @"2DEA15FF-9698-505D-931C-68E2B9A3CEFF",
                            @"f2751b6ab2923ef5171dfb289dc50c9678520ecd",
                            nil];
@@ -137,6 +143,7 @@ static NSString * const kXHInstagramFooter = @"InstagramFooter";
     bottomADView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     [self.view addSubview:bottomADView];
     [self.view bringSubviewToFront:bottomADView];
+    
 }
 
 // 收到广告调整collectionView frame
@@ -147,6 +154,52 @@ static NSString * const kXHInstagramFooter = @"InstagramFooter";
 
 
 }
+
+-(void)adView:(GADBannerView *)view didFailToReceiveAdWithError:(GADRequestError *)error{
+
+    [bannerView_ loadRequest:_request];
+}
+
+-(void)rateControl{
+
+    // 每启动N次显示评分
+    NSInteger saveCount = [[[NSUserDefaults standardUserDefaults] objectForKey:@"saveCount"] intValue];
+    if (saveCount < SAVEMAXCOUNT && saveCount != 0) {
+    }else if(saveCount == 0){
+        // 用户选择了不再提示打分
+    }else{
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Enjoying iFace+?", nil)
+                                                            message:NSLocalizedString(@"If so, say it with stars on the AppStore",nil)
+                                                           delegate:self
+                                                  cancelButtonTitle:NSLocalizedString(@"Remind me later", nil)
+                                                  otherButtonTitles:NSLocalizedString(@"OK,I give stars", nil),NSLocalizedString(@"Don't ask again", nil), nil
+                                  ];
+        [alertView show];
+        [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"saveCount"];
+    }
+}
+
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    
+    switch (buttonIndex) {
+        case 0:
+            break;
+        case 1:
+            // 跳转到APP STORE
+            break;
+        case 2:
+            // 不再提示
+            [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"saveCount"];
+            break;
+            
+        default:
+            break;
+    }
+    
+}
+
 
 #pragma mark - DataSource manager 
 
@@ -209,7 +262,6 @@ static NSString * const kXHInstagramFooter = @"InstagramFooter";
     if ([self.mediaArray count] > 0) {
          PFObject* entity = [self.mediaArray objectAtIndex:indexPath.row];
         [instagramCell setEntity:entity andIndexPath:indexPath];
-
         
     }
     

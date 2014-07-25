@@ -72,34 +72,20 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
 
 
 -(void)viewDidDisappear:(BOOL)animated{
-
-     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+    
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    //AD
-    interstitial_ = [[GADInterstitial alloc] init];
-    interstitial_.adUnitID = MY_INTERSTITIAL_UNIT_ID;
-    interstitial_.delegate = self;
-    if (interstitial_.isReady) {
-        [interstitial_ presentFromRootViewController:self];
-    }else{
-        [interstitial_ loadRequest:[GADRequest request]];
-    }
-    // 请求测试广告。填入模拟器
-    // 以及接收测试广告的任何设备的标识符。
-    [GADRequest request].testDevices = [NSArray arrayWithObjects:
-                                        @"2DEA15FF-9698-505D-931C-68E2B9A3CEFF",
-                                        @"f2751b6ab2923ef5171dfb289dc50c9678520ecd",
-                                        nil];
+    [self preLoadInterstitial];
+
     
 
     
     
-    
+    self.view.backgroundColor = [UIColor whiteColor];
     
     self.imageView = [[PFImageView alloc] initWithFrame:self.view.frame];
     self.saveView = [[UIView alloc] initWithFrame:self.view.frame];
@@ -179,9 +165,40 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     // Do any additional setup after loading the view.
 }
 
+
+#pragma mark - interstitial contorl
+
+
+-(void)preLoadInterstitial{
+    //AD
+    interstitial_ = [[GADInterstitial alloc] init];
+    interstitial_.adUnitID = MY_INTERSTITIAL_UNIT_ID;
+    interstitial_.delegate = self;
+    GADRequest *request =[GADRequest request];
+    [interstitial_ loadRequest:request];
+    // 请求测试广告。填入模拟器
+    // 以及接收测试广告的任何设备的标识符。
+    request.testDevices = [NSArray arrayWithObjects:
+                           @"2DEA15FF-9698-505D-931C-68E2B9A3CEFF",
+                           @"f2751b6ab2923ef5171dfb289dc50c9678520ecd",
+                           nil];
+
+
+}
+
+- (void)interstitialDidDismissScreen:(GADInterstitial *)ad
+{
+    //An interstitial object can only be used once - so it's useful to automatically load a new one when the current one is dismissed
+    [self preLoadInterstitial];
+}
 - (void)interstitialDidReceiveAd:(GADInterstitial *)interstitial{
 
-    [interstitial_ presentFromRootViewController:self];
+}
+
+-(void)interstitial:(GADInterstitial *)ad didFailToReceiveAdWithError:(GADRequestError *)error{
+
+    [NSTimer scheduledTimerWithTimeInterval:3.0f target:self selector:@selector(preLoadInterstitial) userInfo:nil repeats:NO];
+    
 }
 
 #pragma mark - Build Views
@@ -356,11 +373,35 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
         UIActivityViewController *activityView = [[UIActivityViewController alloc] initWithActivityItems:@[@"Come to join iFace‘s world,you will have an pleasant experience http://itunes.apple.com/en/app",[self mergeImage]] applicationActivities:nil];
         activityView.excludedActivityTypes = excludedActivityTypes;
         activityView.completionHandler = ^(NSString *activityType, BOOL completed){
+            // ad control
+            NSInteger adnum = [[[NSUserDefaults standardUserDefaults] objectForKey:@"EditerVCADControl"] intValue];
+            if (adnum < EDITVCADCOUNT) {
+                adnum++;
+                [[NSUserDefaults standardUserDefaults] setInteger:adnum forKey:@"EditerVCADControl"];
+            }else{
+                if (interstitial_.isReady && !interstitial_.hasBeenUsed) {
+                    [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"EditerVCADControl"];
+                    [interstitial_ presentFromRootViewController:self];
+                }else{
+                    [self preLoadInterstitial];
+                }
+                
+            }
+            
+
+            
+            // rate count
+            NSInteger launchCount = [[[NSUserDefaults standardUserDefaults] objectForKey:@"saveCount"] intValue];
+            if (launchCount < SAVEMAXCOUNT) {
+                launchCount++;
+                [[NSUserDefaults standardUserDefaults] setInteger:launchCount forKey:@"saveCount"];
+            }
+            
             if(completed && [activityType isEqualToString:UIActivityTypeSaveToCameraRoll]){
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Saved successfully", nil) message:nil delegate:nil cancelButtonTitle:NSLocalizedString(@"OK",nil) otherButtonTitles:nil];
                 [alert show];
-            }else if ([activityType isEqualToString:UIActivityTypePostToFacebook]){
                 
+            }else if ([activityType isEqualToString:UIActivityTypePostToFacebook]){
                 
             }
         };

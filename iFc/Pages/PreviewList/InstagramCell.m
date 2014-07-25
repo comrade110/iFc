@@ -24,9 +24,10 @@
         [self.imageView loadInBackground:^(UIImage *image, NSError *error) {
             if (error) {
                 NSLog(@"caio");
+            }else{
+                [_imageView setImage:image borderWidth:5.0 shadowDepth:5.0 controlPointXOffset:10 controlPointYOffset:80];
             }
             
-            [_imageView setImage:image borderWidth:5.0 shadowDepth:5.0 controlPointXOffset:10 controlPointYOffset:80];
             [indicatorView stopAnimating];
         }];
     }

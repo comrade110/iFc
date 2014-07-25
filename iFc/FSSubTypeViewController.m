@@ -29,6 +29,14 @@
     return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+
+    [super viewWillAppear:YES];
+    if ([UIApplication sharedApplication].statusBarHidden) {
+        [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+    }
+}
+
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -40,6 +48,8 @@
     
     self.view.backgroundColor = [UIColor mainBgColor];
     
+    
+
     
     WEAKSELF
     NSLog(@"self.fid:%@",self.fid);

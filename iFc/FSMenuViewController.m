@@ -9,7 +9,7 @@
 #import "FSMenuViewController.h"
 #import <ShareSDK/ShareSDK.h>
 
-@interface FSMenuViewController (){
+@interface FSMenuViewController ()<UIAlertViewDelegate>{
 
     MBProgressHUD *hud;
 
@@ -17,6 +17,7 @@
 
 @property(nonatomic,strong) UITableView *tableView;
 @property(nonatomic,strong) NSArray *menuArray;
+@property(nonatomic,strong) NSArray *menuImgArray;
 @property(nonatomic,copy) NSString *cachedData;
 
 @end
@@ -68,7 +69,7 @@
 }
 
 -(void)resetMenuArray{
-
+    
     self.menuArray = @[
                        @[@"Home"],
                        @[
@@ -78,6 +79,16 @@
                            _cachedData,
                            ],
                        @[@"Copyright"],
+                       ];
+    self.menuImgArray = @[
+                       @[@"home_icon"],
+                       @[
+                           @"rate_icon",
+                           @"tellFriends_icon",
+                           @"upgrade_icon",
+                           @"clearCached_icon",
+                           ],
+                       @[@"copyright_icon"],
                        ];
     [_tableView reloadData];
 }
@@ -148,10 +159,16 @@
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-    cell.backgroundColor = [UIColor clearColor];
+    cell.backgroundColor = [UIColor colorWithWhite:55.f/255.f alpha:1.f];
+    UIView *selectdView = [[UIView alloc] initWithFrame:cell.frame];
+    selectdView.backgroundColor = [UIColor colorWithWhite:50.f/255.f alpha:1.f];
+    cell.selectedBackgroundView = selectdView;
     cell.textLabel.text = self.menuArray[indexPath.section][indexPath.row];
-    cell.textLabel.textColor = [UIColor lightGrayColor];
-    cell.textLabel.font = [UIFont fsFontWithSize:14.f];
+    cell.textLabel.textColor = [UIColor colorWithWhite:240.f/255.f alpha:1.f];
+    cell.textLabel.font = [UIFont systemFontOfSize:14.f];
+    cell.imageView.frame = CGRectMake(cell.imageView.left, cell.imageView.top, 15, 15);
+    cell.imageView.image = [UIImage imageNamed:self.menuImgArray[indexPath.section][indexPath.row]];
+    
     return cell;
 
 }
@@ -161,10 +178,15 @@
     switch (indexPath.section) {
         case 0:{
             UIViewController * centerViewController =  [NSClassFromString(@"FSViewController") new];
-            
+            ;
             UINavigationController * navigationController = [[UINavigationController alloc] initWithRootViewController:centerViewController];
-            
-            [navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav_bg"] forBarMetrics:UIBarMetricsDefault];
+            if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {
+                // Load resources for iOS 6.1 or earlier
+                navigationController.navigationBar.tintColor = [UIColor navBgColor];
+            } else {
+                // Load resources for iOS 7 or later
+                navigationController.navigationBar.barTintColor = [UIColor navBgColor];
+            }
             [self.mm_drawerController setCenterViewController:navigationController withFullCloseAnimation:YES completion:^(BOOL b) {
                 
             }];
@@ -216,8 +238,17 @@
                     
                     break;
                 case 3:{
-                
-                    [self clearCache];
+                    if(![[NSUserDefaults standardUserDefaults] boolForKey:@"FirstCleanCached"]){
+                        
+                        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"FirstCleanCached"];
+                        
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Tips", nil) message:NSLocalizedString(@"All images you downloaded will be cleared", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitles:NSLocalizedString(@"Continue", nil), nil];
+                        [alert show];
+                        
+                    }else{
+                     [self clearCache];
+                    }
+
                 }
                     
                     break;
@@ -237,6 +268,15 @@
 
     }
 
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+
+    if (buttonIndex == 1) {
+        [self clearCache];
+    }else{
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"FirstCleanCached"];
+    }
 }
 
 /*

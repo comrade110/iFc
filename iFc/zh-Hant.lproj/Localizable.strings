@@ -18,7 +18,15 @@
 "Waiting" ="清理中";
 "Error" = "未知錯誤";
 "Photo" = "照片";
+"Tips" = "溫馨提示";
+"Continue" = "繼續";
+"All images you downloaded will be cleared" = "之前您下載的圖片將會被清空，是否繼續？";
 "Saved successfully" = "保存成功";
+"Enjoying iFace+?" = "喜歡iFace+?";
+"If so, say it with stars on the App Store" = "喜歡它，就在App Store給它打分鼓勵一下吧!";
+"OK,I give stars" = "好的,去打分";
+"Don't ask again" = "不想打分";
+"Remind me later" = "以後再說吧";
 "Connection failed, please try again later." = "連接失敗,請稍後再試";
 "Need to add a photo first before editing" = "在編輯前需要先添加一張照片";
 "Use Photo from Library" = "從相冊選取照片";
