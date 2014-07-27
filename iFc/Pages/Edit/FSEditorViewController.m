@@ -75,6 +75,7 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     
 }
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -731,6 +732,8 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     }];
     NSLog(@"info:%@",info);
 }
+
+
 /*
 #pragma mark - Navigation
 

@@ -98,9 +98,9 @@ static NSString * const kXHInstagramFooter = @"InstagramFooter";
 }
 
 - (void)_setupCollectionView {
-    [self.collectionView registerClass:[InstagramCell class] forCellWithReuseIdentifier:kXHInstagramCell];
     [self.collectionView setBackgroundColor:[UIColor mainBgColor]];
     [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:kXHInstagramFooter];
+    [self.collectionView registerClass:[InstagramCell class] forCellWithReuseIdentifier:kXHInstagramCell];
 }
 
 - (void)viewDidLoad {
@@ -307,5 +307,6 @@ static NSString * const kXHInstagramFooter = @"InstagramFooter";
       }];
     
 }
+
 
 @end

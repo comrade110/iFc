@@ -73,40 +73,7 @@
 - (void)setupCell {
     
     self.backgroundColor = [UIColor clearColor];
-//    if (!_thumbnailButton) {
-//        _thumbnailButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    }
-//    [_thumbnailButton setFrame:CGRectMake(0.0, 0.0, self.frame.size.width, self.frame.size.width)];
-//    [_thumbnailButton addTarget:self action:@selector(selectedThumbnailImage:) forControlEvents:UIControlEventTouchUpInside];
-//    [_thumbnailButton setBackgroundImage:[UIImage imageNamed:@"placeholder"] forState:UIControlStateNormal];
-//    self.thumbnailButton.contentMode = UIViewContentModeScaleAspectFit;
-//    [self.contentView addSubview:_thumbnailButton];
-//    
-//    if (!self.showThumbnail) {
-//        if (!_userNameLabel) {
-//            _userNameLabel = [[UILabel alloc] init];
-//        }
-//        _userNameLabel.frame = CGRectMake(40, 0, CGRectGetWidth(self.frame) - 45, 35);
-//        _userNameLabel.textColor = [UIColor blackColor];
-//        _userNameLabel.font = [_userNameLabel.font fontWithSize:12];
-//        
-//        if (!_pictureCaptionLabel) {
-//            _pictureCaptionLabel = [[UILabel alloc] init];
-//        }
-//        
-//        _pictureCaptionLabel.frame = CGRectMake(5, CGRectGetHeight(self.frame) - 40, CGRectGetWidth(self.frame) - 10, 30);
-//        _pictureCaptionLabel.numberOfLines = 0;
-//        _pictureCaptionLabel.textColor = [UIColor blackColor];
-//        _pictureCaptionLabel.font = [_pictureCaptionLabel.font fontWithSize:12];
-//        
-//        if (!_userProfileImageView) {
-//            _userProfileImageView = [[UIImageView alloc] init];
-//        }
-//        _userProfileImageView.frame = CGRectMake(0, 0, 35, 35);
-//        _userProfileImageView.contentMode = UIViewContentModeScaleAspectFit;
-//        _userProfileImageView.layer.masksToBounds = YES;
-//        _userProfileImageView.layer.cornerRadius = 17.5;
-//    }
+
     if (!_imageView) {
         _imageView = [[PFImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
 //        _imageView.image = [UIImage imageNamed:@"placeholder"];
