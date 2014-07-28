@@ -19,6 +19,13 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
 
 @interface FSEditorViewController ()<UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate,UIGestureRecognizerDelegate,GADInterstitialDelegate>{
 
+    UIView *saveView;
+    PFImageView *imageView;
+    UIImageView *userImageView;
+    UIView *usershadowImageView;
+    UIImage *thumnailImage;
+    UIImageView *tempView;
+    
     SEL showProgress;
     EditorButton *closeBtn;
     EditorButton *editBtn;
@@ -29,17 +36,18 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     UISlider *contrastSlider;
     MBProgressHUD *hud;
     BOOL isBGDone;
+    GADRequest *request;
     
      GADInterstitial *interstitial_;
 }
 
-@property(nonatomic,strong) UIView *saveView;   //For save
-
-@property(nonatomic,strong) PFImageView *imageView;
-@property(nonatomic,strong) UIImageView *userImageView;
-@property(nonatomic,strong) UIView *usershadowImageView;
-@property(nonatomic,strong) UIImage *thumnailImage;
-@property(nonatomic,strong) UIImageView *tempView;
+//@property(nonatomic,strong) UIView *saveView;   //For save
+//
+//@property(nonatomic,strong) PFImageView *imageView;
+//@property(nonatomic,strong) UIImageView *userImageView;
+//@property(nonatomic,strong) UIView *usershadowImageView;
+//@property(nonatomic,strong) UIImage *thumnailImage;
+//@property(nonatomic,strong) UIImageView *tempView;
 @property (retain, nonatomic) UIPanGestureRecognizer *panRecognizer;
 @property (retain, nonatomic) UIRotationGestureRecognizer *rotationRecognizer;
 @property (retain, nonatomic) UIPinchGestureRecognizer *pinchRecognizer;
@@ -81,71 +89,69 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     [super viewDidLoad];
     
     [self preLoadInterstitial];
-
-    
-
-    
-    
+//
+//    
+//
+//    
+//    
     self.view.backgroundColor = [UIColor whiteColor];
     
-    self.imageView = [[PFImageView alloc] initWithFrame:self.view.frame];
-    self.saveView = [[UIView alloc] initWithFrame:self.view.frame];
-    [self.view addSubview:_saveView];
-    [self.view sendSubviewToBack:_saveView];
+    imageView = [[PFImageView alloc] initWithFrame:self.view.frame];
+    saveView = [[UIView alloc] initWithFrame:self.view.frame];
+    [self.view addSubview:saveView];
+    [self.view sendSubviewToBack:saveView];
     
-    hud = [MBProgressHUD showHUDAddedTo:self.imageView animated:YES];
+    hud = [MBProgressHUD showHUDAddedTo:imageView animated:YES];
     hud.labelText = @"Loading";
     
-    _imageView.image = _bgImg;
-    _imageView.file = [[SinglePicManager manager] entity][@"imageData"];
+    imageView.image = _bgImg;
+    imageView.file = [[SinglePicManager manager] entity][@"imageData"];
     
-//    DACircularProgressView *progressView = [[DACircularProgressView alloc] initWithFrame:CGRectMake(0, 0, 40.0f, 40.0f)];
-//    progressView.center = _imageView.center;
-//    progressView.progress=0.0f;
-//    progressView.hidden = YES;
-//    [_imageView addSubview:progressView];
-//    
+    DACircularProgressView *progressView = [[DACircularProgressView alloc] initWithFrame:CGRectMake(0, 0, 40.0f, 40.0f)];
+    progressView.center = imageView.center;
+    progressView.progress=0.0f;
+    progressView.hidden = YES;
+    [imageView addSubview:progressView];
     
-
-    
-    //创建一个调度时间,相对于默认时钟或修改现有的调度时间。
-    //设置时间为2
-//    double delayInSeconds = 0.8;
-//    //创建一个调度时间,相对于默认时钟或修改现有的调度时间。
-//    dispatch_time_t delayInNanoSeconds =dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-//    //推迟两纳秒执行
-//    dispatch_queue_t concurrentQueue =dispatch_get_main_queue();
-//    dispatch_after(delayInNanoSeconds, concurrentQueue, ^(void){
-//        progressView.hidden = NO;
-//    });
-
     WEAKSELF
-
-    
-    NSLog(@"sdasdasda:%@",_imageView.file.url);
-    [_imageView.file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-        [hud hide:YES];
+//
+//    
+//
+//    
+//    //创建一个调度时间,相对于默认时钟或修改现有的调度时间。
+//    //设置时间为2
+////    double delayInSeconds = 0.8;
+////    //创建一个调度时间,相对于默认时钟或修改现有的调度时间。
+////    dispatch_time_t delayInNanoSeconds =dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+////    //推迟两纳秒执行
+////    dispatch_queue_t concurrentQueue =dispatch_get_main_queue();
+////    dispatch_after(delayInNanoSeconds, concurrentQueue, ^(void){
+////        progressView.hidden = NO;
+////    });
+//
+//    
+    NSLog(@"sdasdasda:%@",imageView.file.url);
+    [imageView.file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        [MBProgressHUD hideHUDForView:imageView animated:YES];
         if (!error) {
-            weakSelf.imageView.image = [UIImage imageWithData:data];
+            imageView.image = [UIImage imageWithData:data];
         }else{
             alert(NSLocalizedString(@"Connection failed, please try again later.", nil));
-            [self dismissFlipWithCompletion:NULL];
+            [weakSelf dismissFlipWithCompletion:NULL];
         }
 //        [progressView removeFromSuperview];
     } progressBlock:^(int percentDone) {
         if (hud.mode == MBProgressHUDModeIndeterminate) {
             hud.mode = MBProgressHUDModeDeterminate;
         }
-//        if (progressView.hidden) {
-//            progressView.hidden = NO;
-//        }
+
         hud.progress = (float)percentDone/100;
         if (hud.progress == 1) {
             isBGDone = YES;
         }
-//        progressView.progress=(float)percentDone/100;
+        
     }];
-    [self.saveView addSubview:weakSelf.imageView];
+    [saveView addSubview:imageView];
     
     //用户导入的图片
     [self buildUserImageView];
@@ -159,9 +165,23 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     [backBtn setImage:[UIImage imageNamed:@"edit_back"] forState:UIControlStateNormal];
     
     [backBtn handleControlWithBlock:^{
-        [self dismissFlipWithCompletion:NULL];
+        [weakSelf dismissFlipWithCompletion:NULL];
+        hud.delegate = nil;
+        
+        // 下面三句不加会莫名其妙的不能释放内存  有待研究
+        imageView.image = nil;
+        imageView.file = nil;
+        [imageView removeFromSuperview];
+        
+        interstitial_.delegate = nil;
+        interstitial_ = nil;
+        weakSelf.panRecognizer.delegate = nil;
+        weakSelf.rotationRecognizer.delegate = nil;
+        weakSelf.pinchRecognizer.delegate = nil;
+
+
     }];
-    [self.view insertSubview:backBtn aboveSubview:_imageView];
+    [self.view addSubview:backBtn];
     
     // Do any additional setup after loading the view.
 }
@@ -175,7 +195,10 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     interstitial_ = [[GADInterstitial alloc] init];
     interstitial_.adUnitID = MY_INTERSTITIAL_UNIT_ID;
     interstitial_.delegate = self;
-    GADRequest *request =[GADRequest request];
+    
+    request =[GADRequest request];
+
+    
     [interstitial_ loadRequest:request];
     // 请求测试广告。填入模拟器
     // 以及接收测试广告的任何设备的标识符。
@@ -206,12 +229,12 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
 
 -(void)buildUserImageView{
 
-    self.userImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width/IMAGESIZE, self.view.frame.size.height/IMAGESIZE)];
-    [self.saveView addSubview:_userImageView];
+    userImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width/IMAGESIZE, self.view.frame.size.height/IMAGESIZE)];
+    [saveView addSubview:userImageView];
     
-    [self.saveView sendSubviewToBack:self.userImageView];
+    [saveView sendSubviewToBack:userImageView];
     
-    self.userImageView.userInteractionEnabled = NO;
+    userImageView.userInteractionEnabled = NO;
     
     self.rotationRecognizer = [[UIRotationGestureRecognizer alloc] initWithTarget:self action:@selector(rotationImage:)];
     _rotationRecognizer.delegate = self;
@@ -219,24 +242,24 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     _pinchRecognizer.delegate = self;
     self.panRecognizer=[[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(panpan:)];
     
-    [self.userImageView addGestureRecognizer:_panRecognizer];
-    [self.userImageView addGestureRecognizer:_pinchRecognizer];
-    [self.userImageView addGestureRecognizer:_rotationRecognizer];
+    [userImageView addGestureRecognizer:_panRecognizer];
+    [userImageView addGestureRecognizer:_pinchRecognizer];
+    [userImageView addGestureRecognizer:_rotationRecognizer];
 
     
     // 半透明图层
-    self.usershadowImageView = [[UIView alloc] initWithFrame:self.userImageView.frame];
-    self.usershadowImageView.frame = _userImageView.frame;
-    self.usershadowImageView.backgroundColor = [UIColor clearColor];
-    self.usershadowImageView.userInteractionEnabled = NO;
+    usershadowImageView = [[UIView alloc] initWithFrame:userImageView.frame];
+    usershadowImageView.frame = userImageView.frame;
+    usershadowImageView.backgroundColor = [UIColor clearColor];
+    usershadowImageView.userInteractionEnabled = NO;
     
-    self.tempView = [[UIImageView alloc] initWithFrame:self.userImageView.frame];
-    [self.usershadowImageView addSubview:_tempView];
+    tempView = [[UIImageView alloc] initWithFrame:userImageView.frame];
+    [usershadowImageView addSubview:tempView];
     
-    [self.usershadowImageView addGestureRecognizer:_panRecognizer];
-    [self.usershadowImageView addGestureRecognizer:_pinchRecognizer];
-    [self.usershadowImageView addGestureRecognizer:_rotationRecognizer];
-    [self.view insertSubview:self.usershadowImageView aboveSubview:_imageView];
+    [usershadowImageView addGestureRecognizer:_panRecognizer];
+    [usershadowImageView addGestureRecognizer:_pinchRecognizer];
+    [usershadowImageView addGestureRecognizer:_rotationRecognizer];
+    [self.view insertSubview:usershadowImageView aboveSubview:imageView];
 }
 
 -(void)bulidToolsView
@@ -294,7 +317,7 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
         if (!isBGDone) {
             return;
         }
-        if (!self.userImageView.image) {
+        if (!userImageView.image) {
             alert(@"Need to add a photo first before editing");
             return ;
         }
@@ -313,7 +336,7 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
                         }
          ];
 
-        _thumnailImage = [self.userImageView.image resize:self.userImageView.frame.size];
+        thumnailImage = [userImageView.image resize:userImageView.frame.size];
     }];
 //    [toolsView addSubview:editBtn];
     
@@ -368,7 +391,7 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
 
 - (void)pushedSaveBtn
 {
-    if(_userImageView.image){
+    if(userImageView.image){
         NSArray *excludedActivityTypes = @[UIActivityTypePostToVimeo,UIActivityTypeMessage];
         
         UIActivityViewController *activityView = [[UIActivityViewController alloc] initWithActivityItems:@[@"Come to join iFace‘s world,you will have an pleasant experience http://itunes.apple.com/en/app",[self mergeImage]] applicationActivities:nil];
@@ -416,8 +439,8 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
 
 -(UIImage *)mergeImage
 {
-    UIGraphicsBeginImageContext(self.saveView.bounds.size);
-    [self.saveView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIGraphicsBeginImageContext(saveView.bounds.size);
+    [saveView.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage *MergedImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return MergedImage;
@@ -443,7 +466,7 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     slider.value = value;
     
     [container addSubview:slider];
-    [self.view insertSubview:container aboveSubview:self.tempView];
+    [self.view insertSubview:container aboveSubview:tempView];
     
 }
 
@@ -457,8 +480,8 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     inProgress = YES;
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        UIImage *image = [self filteredImage:_thumnailImage];
-        [self.userImageView performSelectorOnMainThread:@selector(setImage:) withObject:image waitUntilDone:NO];
+        UIImage *image = [self filteredImage:thumnailImage];
+        [userImageView performSelectorOnMainThread:@selector(setImage:) withObject:image waitUntilDone:NO];
         inProgress = NO;
     });
 }
@@ -513,10 +536,10 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
                     scale = self.maximumScale;
                 }
                 if(scale != self.scale) {
-                    CGFloat deltaX = self.scaleCenter.x-self.userImageView.bounds.size.width/2.0;
-                    CGFloat deltaY = self.scaleCenter.y-self.userImageView.bounds.size.height/2.0;
+                    CGFloat deltaX = self.scaleCenter.x-userImageView.bounds.size.width/2.0;
+                    CGFloat deltaY = self.scaleCenter.y-userImageView.bounds.size.height/2.0;
                     
-                    CGAffineTransform transform =  CGAffineTransformTranslate(self.userImageView.transform, deltaX, deltaY);
+                    CGAffineTransform transform =  CGAffineTransformTranslate(userImageView.transform, deltaX, deltaY);
                     transform = CGAffineTransformScale(transform, scale/self.scale , scale/self.scale);
                     transform = CGAffineTransformTranslate(transform, -deltaX, -deltaY);
                     self.view.userInteractionEnabled = NO;
@@ -524,7 +547,7 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
                                           delay:0
                                         options:UIViewAnimationCurveEaseOut
                                      animations:^{
-                        self.userImageView.transform = transform;
+                        userImageView.transform = transform;
                     } completion:^(BOOL finished) {
                         self.view.userInteractionEnabled = YES;
                         self.scale = scale;
@@ -544,17 +567,17 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
 //    CGPoint location = [recognizer locationInView:self.view];
 //    recognizer.view.center = CGPointMake(location.x,  location.y);
     if([self handleGestureState:recognizer.state]) {
-        CGPoint translation = [recognizer translationInView:self.userImageView];
-        CGAffineTransform transform = CGAffineTransformTranslate( self.userImageView.transform, translation.x, translation.y);
-        self.userImageView.transform = transform;
-        self.usershadowImageView.transform = transform;
+        CGPoint translation = [recognizer translationInView:userImageView];
+        CGAffineTransform transform = CGAffineTransformTranslate(userImageView.transform, translation.x, translation.y);
+        userImageView.transform = transform;
+        usershadowImageView.transform = transform;
         
         [recognizer setTranslation:CGPointMake(0, 0) inView:self.view];
     }
     
     if (recognizer.state == UIGestureRecognizerStateEnded){
         
-        _tempView.alpha = 0.f;
+        tempView.alpha = 0.f;
     }
 }
 
@@ -565,20 +588,20 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
         if(recognizer.state == UIGestureRecognizerStateBegan){
             self.rotationCenter = self.touchCenter;
         }
-        CGFloat deltaX = self.rotationCenter.x-self.userImageView.bounds.size.width/2;
-        CGFloat deltaY = self.rotationCenter.y-self.userImageView.bounds.size.height/2;
+        CGFloat deltaX = self.rotationCenter.x-userImageView.bounds.size.width/2;
+        CGFloat deltaY = self.rotationCenter.y-userImageView.bounds.size.height/2;
         
-        CGAffineTransform transform =  CGAffineTransformTranslate(self.userImageView.transform,deltaX,deltaY);
+        CGAffineTransform transform =  CGAffineTransformTranslate(userImageView.transform,deltaX,deltaY);
         transform = CGAffineTransformRotate(transform, recognizer.rotation);
         transform = CGAffineTransformTranslate(transform, -deltaX, -deltaY);
-        self.userImageView.transform = transform;
-        self.usershadowImageView.transform = transform;
+        userImageView.transform = transform;
+        usershadowImageView.transform = transform;
         
         recognizer.rotation = 0;
     }
     if (recognizer.state == UIGestureRecognizerStateEnded){
         
-        _tempView.alpha = 0.f;
+        tempView.alpha = 0.f;
     }
 }
 - (void)changeImage:(UIPinchGestureRecognizer*)recognizer {
@@ -587,21 +610,21 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
         if(recognizer.state == UIGestureRecognizerStateBegan){
             self.scaleCenter = self.touchCenter;
         }
-        CGFloat deltaX = self.scaleCenter.x-self.userImageView.bounds.size.width/2.0;
-        CGFloat deltaY = self.scaleCenter.y-self.userImageView.bounds.size.height/2.0;
+        CGFloat deltaX = self.scaleCenter.x-userImageView.bounds.size.width/2.0;
+        CGFloat deltaY = self.scaleCenter.y-userImageView.bounds.size.height/2.0;
         
-        CGAffineTransform transform =  CGAffineTransformTranslate(self.userImageView.transform, deltaX, deltaY);
+        CGAffineTransform transform =  CGAffineTransformTranslate(userImageView.transform, deltaX, deltaY);
         transform = CGAffineTransformScale(transform, recognizer.scale, recognizer.scale);
         transform = CGAffineTransformTranslate(transform, -deltaX, -deltaY);
         self.scale *= recognizer.scale;
-        self.userImageView.transform = transform;
-        self.usershadowImageView.transform = transform;
+        userImageView.transform = transform;
+        usershadowImageView.transform = transform;
         
         recognizer.scale = 1;
     }
     if (recognizer.state == UIGestureRecognizerStateEnded){
         
-        _tempView.alpha = 0.f;
+        tempView.alpha = 0.f;
     }
     
 }
@@ -612,7 +635,7 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     
     [touches enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
         UITouch *touch = (UITouch*)obj;
-        CGPoint touchLocation = [touch locationInView:self.userImageView];
+        CGPoint touchLocation = [touch locationInView:userImageView];
         self.touchCenter = CGPointMake(self.touchCenter.x + touchLocation.x, self.touchCenter.y +touchLocation.y);
     }];
     self.touchCenter = CGPointMake(self.touchCenter.x/touches.count, self.touchCenter.y/touches.count);
@@ -620,16 +643,16 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [self handleTouches:[event allTouches]];
-    if (_tempView.alpha == .0f) {
-        _tempView.alpha = 0.1f;
+    if (tempView.alpha == .0f) {
+        tempView.alpha = 0.1f;
     }
 
 }
 
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
     [self handleTouches:[event allTouches]];
-    if (_tempView.alpha == .0f) {
-        _tempView.alpha = 0.1f;
+    if (tempView.alpha == .0f) {
+        tempView.alpha = 0.1f;
     }
 }
 
@@ -714,12 +737,12 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
 }
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     UIImage *image = info[@"UIImagePickerControllerOriginalImage"];
-    self.userImageView.image = image;
-    [self.userImageView setUserInteractionEnabled:YES];
-    _tempView.alpha = .1f;
-    _tempView.image = self.userImageView.image;
+    userImageView.image = image;
+    [userImageView setUserInteractionEnabled:YES];
+    tempView.alpha = .1f;
+    tempView.image = userImageView.image;
 
-    [self.usershadowImageView setUserInteractionEnabled:YES];
+    [usershadowImageView setUserInteractionEnabled:YES];
     
     //image from camera storage
     if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {

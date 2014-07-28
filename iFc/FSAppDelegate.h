@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "GADInterstitial.h"
+#import "FSConfig.h"
 
 
 @interface FSAppDelegate : UIResponder <UIApplicationDelegate,GADInterstitialDelegate>{
 
     GADInterstitial *splashInterstitial_;
+    CJPAdController *_adController;
 }
 @property (strong, nonatomic) GADRequest *request;
 @property (strong, nonatomic) UIWindow *window;

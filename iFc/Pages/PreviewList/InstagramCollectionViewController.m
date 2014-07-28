@@ -114,40 +114,41 @@ static NSString * const kXHInstagramFooter = @"InstagramFooter";
 
     
     //AD
-    // 在屏幕顶部创建标准尺寸的视图。
-    // 在GADAdSize.h中对可用的AdSize常量进行说明。
-    bannerView_ = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
-    
-    // 指定广告单元ID。
-    bannerView_.adUnitID = MY_BANNER_UNIT_ID;
-    bannerView_.delegate = self;
-    // 告知运行时文件，在将用户转至广告的展示位置之后恢复哪个UIViewController
-    // 并将其添加至视图层级结构。
-    bannerView_.rootViewController = self;
-    [self.view addSubview:bannerView_];
-    
-    [self.view bringSubviewToFront:bannerView_];
-    
-    // 启动一般性请求并在其中加载广告。
-    self.request = [GADRequest request];
-    [bannerView_ loadRequest:_request];
-    // 请求测试广告。填入模拟器
-    // 以及接收测试广告的任何设备的标识符。
-    _request.testDevices = [NSArray arrayWithObjects:
-                           @"2DEA15FF-9698-505D-931C-68E2B9A3CEFF",
-                           @"f2751b6ab2923ef5171dfb289dc50c9678520ecd",
-                           nil];
-    
-    bottomADView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.height -bannerView_.height, bannerView_.height, bannerView_.height)];
-    [bottomADView addSubview:bannerView_];
-    bottomADView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-    [self.view addSubview:bottomADView];
-    [self.view bringSubviewToFront:bottomADView];
-    
+//    // 在屏幕顶部创建标准尺寸的视图。
+//    // 在GADAdSize.h中对可用的AdSize常量进行说明。
+//    bannerView_ = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
+//    
+//    // 指定广告单元ID。
+//    bannerView_.adUnitID = MY_BANNER_UNIT_ID;
+//    bannerView_.delegate = self;
+//    // 告知运行时文件，在将用户转至广告的展示位置之后恢复哪个UIViewController
+//    // 并将其添加至视图层级结构。
+//    bannerView_.rootViewController = self;
+//    [self.view addSubview:bannerView_];
+//    
+//    [self.view bringSubviewToFront:bannerView_];
+//    
+//    // 启动一般性请求并在其中加载广告。
+//    self.request = [GADRequest request];
+//    [bannerView_ loadRequest:_request];
+//    // 请求测试广告。填入模拟器
+//    // 以及接收测试广告的任何设备的标识符。
+//    _request.testDevices = [NSArray arrayWithObjects:
+//                           @"2DEA15FF-9698-505D-931C-68E2B9A3CEFF",
+//                           @"f2751b6ab2923ef5171dfb289dc50c9678520ecd",
+//                           nil];
+//
+//    bottomADView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.height -bannerView_.height, bannerView_.height, bannerView_.height)];
+//    [bottomADView addSubview:bannerView_];
+//    bottomADView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+//    [self.view addSubview:bottomADView];
+//    [self.view bringSubviewToFront:bottomADView];
+//    
 }
 
 // 收到广告调整collectionView frame
 - (void)adViewDidReceiveAd:(GADBannerView *)view{
+    NSLog(@"======%@=======",view.adNetworkClassName);
     if (self.collectionView.height == self.view.height) {
         self.collectionView.frame = CGRectMake(0, 0, self.collectionView.width, self.collectionView.height-view.height);
     }
@@ -305,7 +306,6 @@ static NSString * const kXHInstagramFooter = @"InstagramFooter";
     [self flipToViewController:editorVC fromItemAtIndexPath:indexPath withSourceSnapshotImage:cell.imageView.image andDestinationSnapshot:cell.imageView.image withCompletion:^{
          [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
       }];
-    
 }
 
 

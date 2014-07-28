@@ -143,6 +143,7 @@
 		D3C7033D197FB2B3000079C8 /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D3C7033B197FB2B3000079C8 /* libGoogleAdMobAds.a */; };
 		D3C7033E197FB2B3000079C8 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = D3C7033C197FB2B3000079C8 /* README.txt */; };
 		D3C70340197FB30E000079C8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3C7033F197FB30E000079C8 /* AVFoundation.framework */; };
+		D3DBBD0A198641C8001502E1 /* CJPAdController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3DBBD09198641C8001502E1 /* CJPAdController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -367,6 +368,8 @@
 		D3C7033B197FB2B3000079C8 /* libGoogleAdMobAds.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAdMobAds.a; sourceTree = "<group>"; };
 		D3C7033C197FB2B3000079C8 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		D3C7033F197FB30E000079C8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		D3DBBD08198641C8001502E1 /* CJPAdController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJPAdController.h; sourceTree = "<group>"; };
+		D3DBBD09198641C8001502E1 /* CJPAdController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJPAdController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -583,6 +586,8 @@
 		D3A9626D19763F6E007C561C /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				D3DBBD08198641C8001502E1 /* CJPAdController.h */,
+				D3DBBD09198641C8001502E1 /* CJPAdController.m */,
 				D3A9626E19763F99007C561C /* SinglePicManager.h */,
 				D3A9626F19763F99007C561C /* SinglePicManager.m */,
 			);
@@ -1096,6 +1101,7 @@
 				D3B4FDFF1974C7E40078B05E /* InstagramMediaModel.m in Sources */,
 				BEC3F89B197FCFFD00B13C33 /* FSBaseViewController.m in Sources */,
 				BEC3F89C197FCFFD00B13C33 /* FSMenuViewController.m in Sources */,
+				D3DBBD0A198641C8001502E1 /* CJPAdController.m in Sources */,
 				D396F5741973B69300F21999 /* MMExampleDrawerVisualStateManager.m in Sources */,
 				D396F5611973B5C100F21999 /* UIButton+Block.m in Sources */,
 				BEE778DC197572B5000CB8AC /* UIViewController+ADFlipTransition.m in Sources */,

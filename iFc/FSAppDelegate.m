@@ -9,7 +9,6 @@
 #import "FSAppDelegate.h"
 #import "FSMenuViewController.h"
 #import <Parse/Parse.h>
-#import "FSConfig.h"
 #import "FSViewController.h"
 #import "MMDrawerController.h"
 #import "MMDrawerVisualState.h"
@@ -85,6 +84,7 @@
     UIViewController * centerViewController = [[FSViewController alloc] init];
     
     UINavigationController * navigationController = [[UINavigationController alloc] initWithRootViewController:centerViewController];
+    
         if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {
             // Load resources for iOS 6.1 or earlier
             navigationController.navigationBar.tintColor = [UIColor navBgColor];
@@ -113,8 +113,9 @@
     [drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
     [drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
     
+    _adController = [[CJPAdController sharedManager] initWithContentViewController:drawerController];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    [self.window setRootViewController:drawerController];
+    [self.window setRootViewController:_adController];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

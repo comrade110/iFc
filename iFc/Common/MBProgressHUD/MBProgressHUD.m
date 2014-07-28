@@ -219,7 +219,7 @@
 	[view addSubview:hud];
 	[hud show:animated];
 #if __has_feature(objc_arc)
-	return hud;
+	return MB_AUTORELEASE(hud);
 #else
 	return [hud autorelease];
 #endif

@@ -10,7 +10,9 @@
 #import "MMDrawerBarButtonItem.h"
 #import "FSSubTypeViewController.h"
 
-@interface FSViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface FSViewController ()<UITableViewDelegate,UITableViewDataSource>{
+    
+}
 
 @property(nonatomic,strong) UITableView *tableView;
 @property(nonatomic,strong) NSArray *imageArr;
@@ -53,6 +55,8 @@
                       NSLocalizedString(@"normal", nil),
                       NSLocalizedString(@"animal", nil)
                       ];
+    
+//    [self removeAds];
 //    PFQuery *query = [PFQuery queryWithClassName:@"Type"];
 //    [query whereKey:@"fid" equalTo:@0];
 //    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -72,6 +76,19 @@
 //    
 	// Do any additional setup after loading the view, typically from a nib.
 }
+
+
+- (void)removeAds
+{
+    [[CJPAdController sharedManager] removeBanner:@"iAd" permanently:YES];
+    [[CJPAdController sharedManager] removeBanner:@"AdMob" permanently:YES];
+    
+    // Or if this was from an in-app purchase, you could simply call the following
+    // which would save a boolean in UserDefaults so the app remembers not to create ads
+    // next time it starts up.
+    //[[CJPAdController sharedManager] removeAllAdsForever];
+}
+
 
 -(void)setupLeftMenuButton{
     MMDrawerBarButtonItem * leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
