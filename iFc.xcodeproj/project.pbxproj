@@ -1295,7 +1295,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: hongxiang chen (2QEUAT8WGW)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: hongxiang chen (TPW4A222GA)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1321,7 +1321,7 @@
 					"$(PROJECT_DIR)/iFc/Libs/Ad/libGoogleAdMobAds.a",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "FDAC1C99-A603-419E-9711-E089F02390E8";
+				PROVISIONING_PROFILE = "E3DFC150-C5D2-491C-B19E-B50F666899A8";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1330,7 +1330,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: hongxiang chen (2QEUAT8WGW)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: hongxiang chen (TPW4A222GA)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1356,7 +1356,7 @@
 					"$(PROJECT_DIR)/iFc/Libs/Ad/libGoogleAdMobAds.a",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "FDAC1C99-A603-419E-9711-E089F02390E8";
+				PROVISIONING_PROFILE = "E3DFC150-C5D2-491C-B19E-B50F666899A8";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

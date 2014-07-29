@@ -52,6 +52,8 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
 @property (retain, nonatomic) UIRotationGestureRecognizer *rotationRecognizer;
 @property (retain, nonatomic) UIPinchGestureRecognizer *pinchRecognizer;
 
+@property (nonatomic, strong) UIPopoverController *popVC;
+
 
 @property(nonatomic,assign) CGFloat minimumScale;
 @property(nonatomic,assign) CGFloat maximumScale;
@@ -677,12 +679,10 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     if (buttonIndex == 0) {
 
         if (kXHISIPAD) {
-            UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-            //sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum; //保存的相片
             UIImagePickerController *picker = [[UIImagePickerController alloc] init];
             picker.delegate = self;
             picker.allowsEditing = NO;//是否允许编辑
-            picker.sourceType = sourceType;
+            picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
             /*
              如果从一个导航按钮处呈现，使用：
              presentPopoverFromBarButtonItem:permittedArrowDirections:animated:；
@@ -695,9 +695,9 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
              - (void)presentPopoverFromRect:(CGRect)rect inView:(UIView *)view permittedArrowDirections:(UIPopoverArrowDirection)arrowDirections animated:(BOOL)animated
              */
             //UIPopoverController只能在ipad设备上面使用；作用是用于显示临时内容，特点是总是显示在当前视图最前端，当单击界面的其他地方时自动消失。
-            UIPopoverController *popover = [[UIPopoverController alloc]initWithContentViewController:picker];
+            self.popVC = [[UIPopoverController alloc] initWithContentViewController:picker];
             //permittedArrowDirections 设置箭头方向
-            [popover presentPopoverFromRect:CGRectMake(0, 0, 300, 300) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+            [_popVC presentPopoverFromRect:CGRectMake(0, 0, 300, 300) inView:getPhotoBtn permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
         }else{
             UIImagePickerController *pickerImage = [[UIImagePickerController alloc] init];
             if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
