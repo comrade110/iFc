@@ -110,6 +110,10 @@
 		D3B80FD719737955005F0832 /* FSConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B80FD619737955005F0832 /* FSConfig.m */; };
 		D3B80FD919739745005F0832 /* cellBg.png in Resources */ = {isa = PBXBuildFile; fileRef = D3B80FD819739745005F0832 /* cellBg.png */; };
 		D3B80FDB1973A048005F0832 /* placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3B80FDA1973A048005F0832 /* placeholder@2x.png */; };
+		D3BB5ACB19876FAD00F06719 /* icon-57.png in Resources */ = {isa = PBXBuildFile; fileRef = D3BB5ACA19876FAD00F06719 /* icon-57.png */; };
+		D3BB5ACF1987704700F06719 /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = D3BB5ACC1987704700F06719 /* icon-72.png */; };
+		D3BB5AD01987704700F06719 /* icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = D3BB5ACD1987704700F06719 /* icon-76.png */; };
+		D3BB5AD11987704700F06719 /* icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = D3BB5ACE1987704700F06719 /* icon-120.png */; };
 		D3C7030D197F4A3A000079C8 /* CopyConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3C702E6197F4A3A000079C8 /* CopyConnection.framework */; };
 		D3C7030E197F4A3B000079C8 /* DouBanConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3C702E7197F4A3A000079C8 /* DouBanConnection.framework */; };
 		D3C7030F197F4A3B000079C8 /* FacebookConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3C702E8197F4A3A000079C8 /* FacebookConnection.framework */; };
@@ -319,6 +323,10 @@
 		D3B80FD619737955005F0832 /* FSConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSConfig.m; sourceTree = "<group>"; };
 		D3B80FD819739745005F0832 /* cellBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellBg.png; sourceTree = "<group>"; };
 		D3B80FDA1973A048005F0832 /* placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placeholder@2x.png"; sourceTree = "<group>"; };
+		D3BB5ACA19876FAD00F06719 /* icon-57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-57.png"; sourceTree = "<group>"; };
+		D3BB5ACC1987704700F06719 /* icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-72.png"; sourceTree = "<group>"; };
+		D3BB5ACD1987704700F06719 /* icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-76.png"; sourceTree = "<group>"; };
+		D3BB5ACE1987704700F06719 /* icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-120.png"; sourceTree = "<group>"; };
 		D3C702E6197F4A3A000079C8 /* CopyConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CopyConnection.framework; sourceTree = "<group>"; };
 		D3C702E7197F4A3A000079C8 /* DouBanConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DouBanConnection.framework; sourceTree = "<group>"; };
 		D3C702E8197F4A3A000079C8 /* FacebookConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookConnection.framework; sourceTree = "<group>"; };
@@ -452,6 +460,10 @@
 		BEC57FB41982B99900198B94 /* icon */ = {
 			isa = PBXGroup;
 			children = (
+				D3BB5ACC1987704700F06719 /* icon-72.png */,
+				D3BB5ACD1987704700F06719 /* icon-76.png */,
+				D3BB5ACE1987704700F06719 /* icon-120.png */,
+				D3BB5ACA19876FAD00F06719 /* icon-57.png */,
 				BEC57FB71982BD7400198B94 /* icon-58.png */,
 				BEC57FB81982BD7400198B94 /* icon-114.png */,
 				BEC57FB91982BD7400198B94 /* icon-144.png */,
@@ -1013,6 +1025,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3B80F8B1973718E005F0832 /* Main_iPad.storyboard in Resources */,
+				D3BB5AD01987704700F06719 /* icon-76.png in Resources */,
 				D396F5531973AD5200F21999 /* nav_bg@2x.png in Resources */,
 				D3B80F901973718E005F0832 /* Images.xcassets in Resources */,
 				D339D5F619790220002E1A4B /* brightness@2x.png in Resources */,
@@ -1024,13 +1037,16 @@
 				D3C70324197F4A3B000079C8 /* ShareSDKiPadSimpleShareViewUI.bundle in Resources */,
 				D396F57B1973BD4600F21999 /* Localizable.strings in Resources */,
 				D3B80F881973718E005F0832 /* Main_iPhone.storyboard in Resources */,
+				D3BB5ACB19876FAD00F06719 /* icon-57.png in Resources */,
 				D339D5F919790220002E1A4B /* saturation.png in Resources */,
 				D3C7031F197F4A3B000079C8 /* WeiboSDK.bundle in Resources */,
 				D339D5F519790220002E1A4B /* brightness.png in Resources */,
+				D3BB5AD11987704700F06719 /* icon-120.png in Resources */,
 				D339D5F819790220002E1A4B /* contrast@2x.png in Resources */,
 				D3B80FD919739745005F0832 /* cellBg.png in Resources */,
 				D3AF8264198259B800B9A0A4 /* upgrade_icon@2x.png in Resources */,
 				D3C7031D197F4A3B000079C8 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
+				D3BB5ACF1987704700F06719 /* icon-72.png in Resources */,
 				D3B2E58E197CF3DD007C3605 /* animal_bg@2x.png in Resources */,
 				D396F58A1973CF5500F21999 /* placeholder2@2x.png in Resources */,
 				D3AF82601982586A00B9A0A4 /* copyright_icon@2x.png in Resources */,
@@ -1279,7 +1295,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: hongxiang chen (2QEUAT8WGW)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1305,7 +1321,7 @@
 					"$(PROJECT_DIR)/iFc/Libs/Ad/libGoogleAdMobAds.a",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "FDAC1C99-A603-419E-9711-E089F02390E8";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1314,7 +1330,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: hongxiang chen (2QEUAT8WGW)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1340,7 +1356,7 @@
 					"$(PROJECT_DIR)/iFc/Libs/Ad/libGoogleAdMobAds.a",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "FDAC1C99-A603-419E-9711-E089F02390E8";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

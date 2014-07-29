@@ -12,13 +12,13 @@
 #import "FSConfig.h"
 
 // Display iAds?
-static BOOL const kUseiAd = NO;
+static BOOL const kUseiAd = YES;
 
 // Display AdMob ads?
 static BOOL const kUseAdMob = YES;
 
 // Set which ads should be initially displayed and preferred ("iAd" or "AdMob")
-static NSString * const kDefaultAds = @"AdMob";
+static NSString * const kDefaultAds = @"iAd";
 
 // Your AdMob publisher ID
 static NSString * const kAdMobID = @"ca-app-pub-4053211758441927/7334362495";
