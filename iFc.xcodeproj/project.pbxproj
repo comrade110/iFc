@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		BEC14065197BA63D009643D1 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC14064197BA63D009643D1 /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		BEC3EE8119892D8A00E14FF9 /* placeHolder3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BEC3EE8019892D8A00E14FF9 /* placeHolder3@2x.png */; };
+		BEC3EE8319892E3300E14FF9 /* placeHolder3-hd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BEC3EE8219892E3300E14FF9 /* placeHolder3-hd@2x.png */; };
+		BEC3EE85198937E600E14FF9 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BEC3EE84198937E600E14FF9 /* Default@2x.png */; };
 		BEC3F89B197FCFFD00B13C33 /* FSBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC3F898197FCFFD00B13C33 /* FSBaseViewController.m */; };
 		BEC3F89C197FCFFD00B13C33 /* FSMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC3F89A197FCFFD00B13C33 /* FSMenuViewController.m */; };
 		BEC57FBA1982BD7400198B94 /* icon-58.png in Resources */ = {isa = PBXBuildFile; fileRef = BEC57FB71982BD7400198B94 /* icon-58.png */; };
@@ -164,6 +167,9 @@
 /* Begin PBXFileReference section */
 		BEC14063197BA63D009643D1 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		BEC14064197BA63D009643D1 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		BEC3EE8019892D8A00E14FF9 /* placeHolder3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placeHolder3@2x.png"; sourceTree = "<group>"; };
+		BEC3EE8219892E3300E14FF9 /* placeHolder3-hd@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placeHolder3-hd@2x.png"; sourceTree = "<group>"; };
+		BEC3EE84198937E600E14FF9 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		BEC3F897197FCFFD00B13C33 /* FSBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSBaseViewController.h; path = iFc/FSBaseViewController.h; sourceTree = SOURCE_ROOT; };
 		BEC3F898197FCFFD00B13C33 /* FSBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSBaseViewController.m; path = iFc/FSBaseViewController.m; sourceTree = SOURCE_ROOT; };
 		BEC3F899197FCFFD00B13C33 /* FSMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSMenuViewController.h; path = iFc/FSMenuViewController.h; sourceTree = SOURCE_ROOT; };
@@ -772,6 +778,9 @@
 		D3B80FB4197374BF005F0832 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BEC3EE84198937E600E14FF9 /* Default@2x.png */,
+				BEC3EE8219892E3300E14FF9 /* placeHolder3-hd@2x.png */,
+				BEC3EE8019892D8A00E14FF9 /* placeHolder3@2x.png */,
 				BEC57FB41982B99900198B94 /* icon */,
 				D3AF82541982586300B9A0A4 /* Menu */,
 				D3B2E58C197CF3DD007C3605 /* animal_bg@2x.png */,
@@ -1031,6 +1040,7 @@
 			files = (
 				D3B80F8B1973718E005F0832 /* Main_iPad.storyboard in Resources */,
 				D3BB5AD01987704700F06719 /* icon-76.png in Resources */,
+				BEC3EE8119892D8A00E14FF9 /* placeHolder3@2x.png in Resources */,
 				D396F5531973AD5200F21999 /* nav_bg@2x.png in Resources */,
 				D3B80F901973718E005F0832 /* Images.xcassets in Resources */,
 				D339D5F619790220002E1A4B /* brightness@2x.png in Resources */,
@@ -1044,6 +1054,7 @@
 				D3B80F881973718E005F0832 /* Main_iPhone.storyboard in Resources */,
 				D3BB5ACB19876FAD00F06719 /* icon-57.png in Resources */,
 				D339D5F919790220002E1A4B /* saturation.png in Resources */,
+				BEC3EE85198937E600E14FF9 /* Default@2x.png in Resources */,
 				D3C7031F197F4A3B000079C8 /* WeiboSDK.bundle in Resources */,
 				D339D5F519790220002E1A4B /* brightness.png in Resources */,
 				D3BB5AD11987704700F06719 /* icon-120.png in Resources */,
@@ -1053,6 +1064,7 @@
 				D3C7031D197F4A3B000079C8 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				D3BB5ACF1987704700F06719 /* icon-72.png in Resources */,
 				D3B2E58E197CF3DD007C3605 /* animal_bg@2x.png in Resources */,
+				BEC3EE8319892E3300E14FF9 /* placeHolder3-hd@2x.png in Resources */,
 				D396F58A1973CF5500F21999 /* placeholder2@2x.png in Resources */,
 				D3AF82601982586A00B9A0A4 /* copyright_icon@2x.png in Resources */,
 				D339D5FA19790220002E1A4B /* saturation@2x.png in Resources */,

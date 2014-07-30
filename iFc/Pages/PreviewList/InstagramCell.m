@@ -78,7 +78,8 @@
         _imageView = [[PFImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
 //        _imageView.image = [UIImage imageNamed:@"placeholder"];
         [_imageView setContentMode:UIViewContentModeScaleToFill];
-        [_imageView setImage:[UIImage imageNamed:@"placeholder"] borderWidth:5.0 shadowDepth:10.0 controlPointXOffset:30.0 controlPointYOffset:80.0];
+        
+        [_imageView setImage:kXHISIPAD?[UIImage imageNamed:@"placeHolder3-hd"]:[UIImage imageNamed:@"placeHolder3"] borderWidth:5.0 shadowDepth:10.0 controlPointXOffset:30.0 controlPointYOffset:80.0];
         [self.contentView addSubview:_imageView];
     }
 }

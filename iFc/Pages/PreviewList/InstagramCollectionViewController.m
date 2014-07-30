@@ -170,7 +170,7 @@ static NSString * const kXHInstagramFooter = @"InstagramFooter";
         // 用户选择了不再提示打分
     }else{
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Enjoying iFace+?", nil)
-                                                            message:NSLocalizedString(@"If so, say it with stars on the AppStore",nil)
+                                                            message:NSLocalizedString(@"If so, say it with stars on the App Store",nil)
                                                            delegate:self
                                                   cancelButtonTitle:NSLocalizedString(@"Remind me later", nil)
                                                   otherButtonTitles:NSLocalizedString(@"OK,I give stars", nil),NSLocalizedString(@"Don't ask again", nil), nil

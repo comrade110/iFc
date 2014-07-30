@@ -103,7 +103,7 @@
                                              initWithCenterViewController:navigationController
                                              leftDrawerViewController:leftSideDrawerViewController
                                              rightDrawerViewController:nil];
-    [drawerController setMaximumLeftDrawerWidth:200];
+    [drawerController setMaximumLeftDrawerWidth:kXHISIPAD?300:200];
     
     [drawerController setDrawerVisualStateBlock:^(MMDrawerController *drawerController, MMDrawerSide drawerSide, CGFloat percentVisible) {
         MMDrawerControllerDrawerVisualStateBlock block;

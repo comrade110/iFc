@@ -686,6 +686,8 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
 }
 
 
+#pragma mark - photo contorl
+
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     // 相册取
@@ -767,6 +769,11 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
         
     }];
     NSLog(@"info:%@",info);
+}
+
+-(NSUInteger)supportedInterfaceOrientations{
+
+    return UIInterfaceOrientationMaskPortraitUpsideDown | UIInterfaceOrientationMaskPortrait;
 }
 
 

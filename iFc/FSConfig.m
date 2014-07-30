@@ -50,7 +50,7 @@
 
 +(UIColor *)navBgColor
 {
-    return [UIColor colorWithRed:225./255. green:230./255. blue:234./255. alpha:1];
+    return [UIColor colorWithRed:38./255. green:137./255. blue:156./255. alpha:1];
 }
 
 +(UIColor *)mainBgColor

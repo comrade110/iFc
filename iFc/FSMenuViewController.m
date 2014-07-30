@@ -201,7 +201,8 @@
                     
                     break;
                 case 1:{
-                    
+                    id<ISSContainer> container = [ShareSDK container];
+                    [container setIPadContainerWithView:self.view arrowDirect:UIPopoverArrowDirectionAny];
                     id<ISSContent> publishContent = [ShareSDK content:@"分享内容"
                                                        defaultContent:@"默认分享内容，没内容时显示"
                                                                 image:nil
@@ -210,7 +211,7 @@
                                                           description:@"这是一条测试信息"
                                                             mediaType:SSPublishContentMediaTypeNews];
                     
-                    [ShareSDK showShareActionSheet:nil
+                    [ShareSDK showShareActionSheet:kXHISIPAD?container:nil
                                          shareList:nil
                                            content:publishContent
                                      statusBarTips:YES

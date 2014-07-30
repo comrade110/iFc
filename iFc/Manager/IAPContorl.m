@@ -27,8 +27,6 @@
     [PFPurchase buyProduct:productId block:^(NSError *error) {
         if (!error) {
             alert(NSLocalizedString(@"You have successfully made the purchase. Enjoy!", nil));
-        }else{
-            alert(NSLocalizedString(@"Error", nil));
         }
     }];
 
