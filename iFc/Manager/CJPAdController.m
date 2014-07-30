@@ -358,9 +358,6 @@ static CJPAdController *CJPSharedManager = nil;
 }
 
 
--(BOOL)needToShow{
-    return self.needToShow;
-}
 
 - (void)layoutAds
 {
@@ -462,11 +459,9 @@ static CJPAdController *CJPSharedManager = nil;
     }
     _showingAdMob = YES;
     
-    if (_needToShow) {
-        [UIView animateWithDuration:0.25 animations:^{
-            [self layoutAds];
-        }];
-    }
+    [UIView animateWithDuration:0.25 animations:^{
+        [self layoutAds];
+    }];
 
 }
 

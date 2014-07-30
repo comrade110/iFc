@@ -14,6 +14,7 @@
 #import "MMDrawerVisualState.h"
 #import "MMExampleDrawerVisualStateManager.h"
 #import <ShareSDK/ShareSDK.h>
+#import "IAPContorl.h"
 
 
 @implementation FSAppDelegate
@@ -28,6 +29,10 @@
     }else{
         
     }
+    
+    //  内购配置
+    [IAPContorl createProducts];
+    
     //添加Facebook应用  注册网址 https://developers.facebook.com
     [ShareSDK connectFacebookWithAppKey:@"1533652706857414"
                               appSecret:@"004c5ff9b49fbda532dba0bcbd9adda8"];

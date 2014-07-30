@@ -122,14 +122,14 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
 //    
 //    //创建一个调度时间,相对于默认时钟或修改现有的调度时间。
 //    //设置时间为2
-////    double delayInSeconds = 0.8;
-////    //创建一个调度时间,相对于默认时钟或修改现有的调度时间。
-////    dispatch_time_t delayInNanoSeconds =dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-////    //推迟两纳秒执行
-////    dispatch_queue_t concurrentQueue =dispatch_get_main_queue();
-////    dispatch_after(delayInNanoSeconds, concurrentQueue, ^(void){
-////        progressView.hidden = NO;
-////    });
+//    double delayInSeconds = 0.8;
+//    //创建一个调度时间,相对于默认时钟或修改现有的调度时间。
+//    dispatch_time_t delayInNanoSeconds =dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+//    //推迟两纳秒执行
+//    dispatch_queue_t concurrentQueue =dispatch_get_main_queue();
+//    dispatch_after(delayInNanoSeconds, concurrentQueue, ^(void){
+//        progressView.hidden = NO;
+//    });
 //
 //    
     NSLog(@"sdasdasda:%@",imageView.file.url);
@@ -193,21 +193,26 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
 
 
 -(void)preLoadInterstitial{
+    
     //AD
-    interstitial_ = [[GADInterstitial alloc] init];
-    interstitial_.adUnitID = MY_INTERSTITIAL_UNIT_ID;
-    interstitial_.delegate = self;
-    
-    request =[GADRequest request];
+    BOOL  adsRemoved = [[NSUserDefaults standardUserDefaults] boolForKey:kAdsPurchasedKey];
+    if (!adsRemoved) {
+        interstitial_ = [[GADInterstitial alloc] init];
+        interstitial_.adUnitID = MY_INTERSTITIAL_UNIT_ID;
+        interstitial_.delegate = self;
+        
+        request =[GADRequest request];
+        
+        
+        [interstitial_ loadRequest:request];
+        // 请求测试广告。填入模拟器
+        // 以及接收测试广告的任何设备的标识符。
+        request.testDevices = [NSArray arrayWithObjects:
+                               @"2DEA15FF-9698-505D-931C-68E2B9A3CEFF",
+                               @"f2751b6ab2923ef5171dfb289dc50c9678520ecd",
+                               nil];
+    }
 
-    
-    [interstitial_ loadRequest:request];
-    // 请求测试广告。填入模拟器
-    // 以及接收测试广告的任何设备的标识符。
-    request.testDevices = [NSArray arrayWithObjects:
-                           @"2DEA15FF-9698-505D-931C-68E2B9A3CEFF",
-                           @"f2751b6ab2923ef5171dfb289dc50c9678520ecd",
-                           nil];
 
 
 }
@@ -219,10 +224,13 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
 }
 - (void)interstitialDidReceiveAd:(GADInterstitial *)interstitial{
 
+    NSLog(@"full screen ad received");
 }
 
 -(void)interstitial:(GADInterstitial *)ad didFailToReceiveAdWithError:(GADRequestError *)error{
 
+    
+    NSLog(@"full screen Fail To received, will try again decriptiom:%@",error.description);
     [NSTimer scheduledTimerWithTimeInterval:3.0f target:self selector:@selector(preLoadInterstitial) userInfo:nil repeats:NO];
     
 }
@@ -405,12 +413,17 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
                 adnum++;
                 [[NSUserDefaults standardUserDefaults] setInteger:adnum forKey:@"EditerVCADControl"];
             }else{
-                if (interstitial_.isReady && !interstitial_.hasBeenUsed) {
-                    [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"EditerVCADControl"];
-                    [interstitial_ presentFromRootViewController:self];
-                }else{
-                    [self preLoadInterstitial];
+                if (interstitial_) {
+                    if (interstitial_.isReady) {
+                        [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"EditerVCADControl"];
+                        [interstitial_ presentFromRootViewController:self];
+                        if (interstitial_.hasBeenUsed) {
+                            [self preLoadInterstitial];
+                        }
+                    }
+
                 }
+
                 
             }
             

@@ -28,6 +28,8 @@
 
 - (void)mediaWithPage:(NSInteger)page localDownloadDataSourceCompled:(DownloadDataSourceCompled)downloadDataSourceCompled {
     PFQuery *query = [PFQuery queryWithClassName:@"ImageDB"];
+    //按更新日期排序
+    [query orderByDescending:@"updatedAt"];
     query.cachePolicy = kPFCachePolicyCacheElseNetwork;
     [query whereKey:@"fid" equalTo:[PFObject objectWithoutDataWithClassName:@"Type" objectId:_objectId]];
     query.limit = 10;

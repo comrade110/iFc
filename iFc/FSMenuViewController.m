@@ -8,6 +8,7 @@
 
 #import "FSMenuViewController.h"
 #import <ShareSDK/ShareSDK.h>
+#import "IAPContorl.h"
 
 @interface FSMenuViewController ()<UIAlertViewDelegate>{
 
@@ -234,7 +235,10 @@
                 }
                     
                     break;
-                case 2:
+                case 2:{
+                
+                    [IAPContorl showAlertByID:Product_NOiAd];
+                }
                     
                     break;
                 case 3:{

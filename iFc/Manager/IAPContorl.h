@@ -1,0 +1,21 @@
+//
+//  IAPContorl.h
+//  iFc
+//
+//  Created by xiang-chen on 14-7-30.
+//  Copyright (c) 2014年 Fuleco studio. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+
+#define Product_NOiAd @"01"
+
+@interface IAPContorl : NSObject<UIAlertViewDelegate>
+
+
++(void)createProducts;
+
++(void)showAlertByID:(NSString*)productId;
+
+@end

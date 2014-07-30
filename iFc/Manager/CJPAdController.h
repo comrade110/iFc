@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <iAd/iAd.h>
 #import "GADBannerView.h"
-#import "FSConfig.h"
 
 // Display iAds?
 static BOOL const kUseiAd = YES;
@@ -52,7 +51,6 @@ static BOOL const kAdTesting = YES;
 @property (nonatomic, assign) BOOL              iOS4;
 @property (nonatomic, retain) NSString          *kADBannerContentSizeIdentifierPortrait;
 @property (nonatomic, retain) NSString          *kADBannerContentSizeIdentifierLandscape;
-@property (nonatomic, assign) BOOL              needToShow;
 
 + (CJPAdController *)sharedManager;
 - (id)initWithContentViewController:(UIViewController *)contentController;

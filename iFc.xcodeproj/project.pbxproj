@@ -79,6 +79,7 @@
 		D3B4FDFF1974C7E40078B05E /* InstagramMediaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B4FDFA1974C7E40078B05E /* InstagramMediaModel.m */; };
 		D3B4FE001974C7E40078B05E /* InstagramMediaModel+XHMediaControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B4FDFC1974C7E40078B05E /* InstagramMediaModel+XHMediaControl.m */; };
 		D3B4FE011974C7E40078B05E /* XHInstagramStoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B4FDFE1974C7E40078B05E /* XHInstagramStoreManager.m */; };
+		D3B5C0E519888966002983F0 /* IAPContorl.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B5C0E419888966002983F0 /* IAPContorl.m */; };
 		D3B80F751973718E005F0832 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B80F741973718E005F0832 /* Foundation.framework */; };
 		D3B80F771973718E005F0832 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B80F761973718E005F0832 /* CoreGraphics.framework */; };
 		D3B80F791973718E005F0832 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B80F781973718E005F0832 /* UIKit.framework */; };
@@ -279,6 +280,8 @@
 		D3B4FDFC1974C7E40078B05E /* InstagramMediaModel+XHMediaControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "InstagramMediaModel+XHMediaControl.m"; sourceTree = "<group>"; };
 		D3B4FDFD1974C7E40078B05E /* XHInstagramStoreManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHInstagramStoreManager.h; sourceTree = "<group>"; };
 		D3B4FDFE1974C7E40078B05E /* XHInstagramStoreManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHInstagramStoreManager.m; sourceTree = "<group>"; };
+		D3B5C0E319888966002983F0 /* IAPContorl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPContorl.h; sourceTree = "<group>"; };
+		D3B5C0E419888966002983F0 /* IAPContorl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPContorl.m; sourceTree = "<group>"; };
 		D3B80F711973718E005F0832 /* iFc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iFc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3B80F741973718E005F0832 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D3B80F761973718E005F0832 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -602,6 +605,8 @@
 				D3DBBD09198641C8001502E1 /* CJPAdController.m */,
 				D3A9626E19763F99007C561C /* SinglePicManager.h */,
 				D3A9626F19763F99007C561C /* SinglePicManager.m */,
+				D3B5C0E319888966002983F0 /* IAPContorl.h */,
+				D3B5C0E419888966002983F0 /* IAPContorl.m */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -1116,6 +1121,7 @@
 				D396F5631973B5C100F21999 /* NSString+size.m in Sources */,
 				D3B4FDFF1974C7E40078B05E /* InstagramMediaModel.m in Sources */,
 				BEC3F89B197FCFFD00B13C33 /* FSBaseViewController.m in Sources */,
+				D3B5C0E519888966002983F0 /* IAPContorl.m in Sources */,
 				BEC3F89C197FCFFD00B13C33 /* FSMenuViewController.m in Sources */,
 				D3DBBD0A198641C8001502E1 /* CJPAdController.m in Sources */,
 				D396F5741973B69300F21999 /* MMExampleDrawerVisualStateManager.m in Sources */,

@@ -15,4 +15,6 @@
     #import <Foundation/Foundation.h>
 #endif
 
+#import "FSConfig.h"
+
 #define kXHISIPAD ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
