@@ -13,6 +13,7 @@
 
 #define MY_BANNER_UNIT_ID @"ca-app-pub-4053211758441927/7334362495"
 #define MY_INTERSTITIAL_UNIT_ID @"ca-app-pub-4053211758441927/5166298497"
+#define MY_GAI @"UA-53388064-2"
 #define WEAKSELF typeof(self) __weak weakSelf = self;
 #define FSWINDOW [[[UIApplication sharedApplication] delegate] window]
 
@@ -22,6 +23,7 @@
 #define EDITVCADCOUNT 3
 #define LaunchMAXCount 5
 #define SAVEMAXCOUNT 5
+
 
 @interface FSConfig : NSObject
 

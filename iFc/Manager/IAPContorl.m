@@ -18,6 +18,7 @@
     [PFPurchase addObserverForProduct:Product_NOiAd block:^(SKPaymentTransaction *transaction) {
         // Write business logic that should run once this product is purchased.
         [[CJPAdController sharedManager] removeAllAdsForever];
+        
     }];
 
 }
@@ -26,7 +27,9 @@
     
     [PFPurchase buyProduct:productId block:^(NSError *error) {
         if (!error) {
-            alert(NSLocalizedString(@"You have successfully made the purchase. Enjoy!", nil));
+            alert(NSLocalizedString(@"Purchase successfully. Enjoy!", nil));
+        }else{
+            alert(error.description);
         }
     }];
 

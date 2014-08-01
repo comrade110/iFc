@@ -442,7 +442,7 @@ static CJPAdController *CJPSharedManager = nil;
 
 - (void)adViewDidReceiveAd:(GADBannerView *)bannerView
 {
-    if(kAdTesting) NSLog(@"New AdMob ad received.");
+    if(kAdTesting) NSLog(@"New AdMob ad received.%@",bannerView.adNetworkClassName);
     
     if(!_showingAdMob){
         // Ensure iAd is hidden, then show AdMob

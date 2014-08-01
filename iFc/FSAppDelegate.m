@@ -14,6 +14,7 @@
 #import "MMDrawerVisualState.h"
 #import "MMExampleDrawerVisualStateManager.h"
 #import <ShareSDK/ShareSDK.h>
+#import "GAI.h"
 #import "IAPContorl.h"
 
 
@@ -132,38 +133,32 @@
         [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"saveCount"];
         [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"EditerVCADControl"];
         [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"DelegateADControl"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
         NSLog(@"第一次启动");
     }else{
         
     }
     
-//    // 每启动N次显示广告
-//    NSInteger adnum = [[[NSUserDefaults standardUserDefaults] objectForKey:@"DelegateADControl"] intValue];
-//    if (adnum < DELEGATEADCOUNT) {
-//        adnum++;
-//        [[NSUserDefaults standardUserDefaults] setInteger:adnum forKey:@"DelegateADControl"];
-//    }else{
-//        [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"DelegateADControl"];
-//        
-//        splashInterstitial_ = [[GADInterstitial alloc] init];
-//        splashInterstitial_.adUnitID = MY_INTERSTITIAL_UNIT_ID;
-//        self.request = [GADRequest request];
-//        splashInterstitial_.delegate = self;
-//        _request.testDevices = [NSArray arrayWithObjects:
-//                               @"2DEA15FF-9698-505D-931C-68E2B9A3CEFF",
-//                               @"f2751b6ab2923ef5171dfb289dc50c9678520ecd",
-//                               nil];
-//        [splashInterstitial_ loadRequest:_request];
-//    }
-
     
+    
+    [self setGoogleAnalytics];
     
     return YES;
 }
 
-- (void)interstitial:(GADInterstitial *)ad didFailToReceiveAdWithError:(GADRequestError *)error{
+-(void)setGoogleAnalytics{
     
-//    [splashInterstitial_ loadRequest:_request];
+    // Optional: automatically send uncaught exceptions to Google Analytics.
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    
+    // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
+    [GAI sharedInstance].dispatchInterval = 20;
+    
+    // Optional: set Logger to VERBOSE for debug information.
+    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
+    
+    // Initialize tracker. Replace with your tracking ID.
+    [[GAI sharedInstance] trackerWithTrackingId:MY_GAI];
 
 }
 

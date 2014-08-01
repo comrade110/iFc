@@ -90,6 +90,7 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
 {
     [super viewDidLoad];
     
+    self.screenName = @"Edit Screen";
     [self preLoadInterstitial];
 //
 //    
@@ -403,8 +404,8 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
 {
     if(userImageView.image){
         NSArray *excludedActivityTypes = @[UIActivityTypePostToVimeo,UIActivityTypeMessage];
-        
-        UIActivityViewController *activityView = [[UIActivityViewController alloc] initWithActivityItems:@[@"Come to join iFace‘s world,you will have an pleasant experience http://itunes.apple.com/en/app",[self mergeImage]] applicationActivities:nil];
+        NSString *str = [NSString stringWithFormat:@"%@ http://itunes.apple.com/app/iface+/id904153091?mt=8",NSLocalizedString(@"Come to join iFace+‘s world,you will have an pleasant experience", nil)];
+        UIActivityViewController *activityView = [[UIActivityViewController alloc] initWithActivityItems:@[str,[self mergeImage]] applicationActivities:nil];
         activityView.excludedActivityTypes = excludedActivityTypes;
         activityView.completionHandler = ^(NSString *activityType, BOOL completed){
             // ad control
@@ -412,10 +413,12 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
             if (adnum < EDITVCADCOUNT) {
                 adnum++;
                 [[NSUserDefaults standardUserDefaults] setInteger:adnum forKey:@"EditerVCADControl"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
             }else{
                 if (interstitial_) {
                     if (interstitial_.isReady) {
                         [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"EditerVCADControl"];
+                        [[NSUserDefaults standardUserDefaults] synchronize];
                         [interstitial_ presentFromRootViewController:self];
                         if (interstitial_.hasBeenUsed) {
                             [self preLoadInterstitial];
@@ -434,6 +437,7 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
             if (launchCount < SAVEMAXCOUNT) {
                 launchCount++;
                 [[NSUserDefaults standardUserDefaults] setInteger:launchCount forKey:@"saveCount"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
             }
             
             if(completed && [activityType isEqualToString:UIActivityTypeSaveToCameraRoll]){

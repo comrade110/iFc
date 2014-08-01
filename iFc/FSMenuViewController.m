@@ -8,9 +8,10 @@
 
 #import "FSMenuViewController.h"
 #import <ShareSDK/ShareSDK.h>
+#import <StoreKit/StoreKit.h>
 #import "IAPContorl.h"
 
-@interface FSMenuViewController ()<UIAlertViewDelegate>{
+@interface FSMenuViewController ()<UIAlertViewDelegate,SKStoreProductViewControllerDelegate>{
 
     MBProgressHUD *hud;
 
@@ -47,6 +48,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.screenName = @"Menu Screen";
 //    self.view.backgroundColor = [UIColor colorWithWhite:1.f/255.f alpha:1.f];
     
     if (!self.cachedData) {
@@ -63,10 +66,32 @@
     [self.view addSubview:_tableView];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)evaluate{
+    
+    //初始化控制器
+    SKStoreProductViewController *storeProductViewContorller = [[SKStoreProductViewController alloc] init];
+    //设置代理请求为当前控制器本身
+    storeProductViewContorller.delegate = self;
+    //加载一个新的视图展示
+    [storeProductViewContorller loadProductWithParameters:
+     //appId唯一的
+     @{SKStoreProductParameterITunesItemIdentifier : @"904153091"} completionBlock:^(BOOL result, NSError *error) {
+         //block回调
+         if(error){
+             NSLog(@"error %@ with userInfo %@",error,[error userInfo]);
+         }else{
+             //模态弹出appstore
+             [self presentViewController:storeProductViewContorller animated:YES completion:^{
+                 
+             }
+              ];
+         }
+     }];
+}
+- (void)productViewControllerDidFinish:(SKStoreProductViewController *)viewController{
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 -(void)resetMenuArray{
@@ -181,6 +206,7 @@
             UIViewController * centerViewController =  [NSClassFromString(@"FSViewController") new];
             ;
             UINavigationController * navigationController = [[UINavigationController alloc] initWithRootViewController:centerViewController];
+            navigationController.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
             if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {
                 // Load resources for iOS 6.1 or earlier
                 navigationController.navigationBar.tintColor = [UIColor navBgColor];
@@ -195,20 +221,25 @@
             break;
         case 1:{
             switch (indexPath.row) {
+                // rate
                 case 0:{
                 
+                    [self evaluate];
                 }
                     
                     break;
+                    // share
                 case 1:{
                     id<ISSContainer> container = [ShareSDK container];
                     [container setIPadContainerWithView:self.view arrowDirect:UIPopoverArrowDirectionAny];
-                    id<ISSContent> publishContent = [ShareSDK content:@"分享内容"
+                    
+                    NSString *str = [NSString stringWithFormat:@"%@ http://itunes.apple.com/app/iface+/id904153091?mt=8",NSLocalizedString(@"Come to join iFace+‘s world,you will have an pleasant experience", nil)];
+                    id<ISSContent> publishContent = [ShareSDK content:str
                                                        defaultContent:@"默认分享内容，没内容时显示"
                                                                 image:nil
-                                                                title:@"ShareSDK"
-                                                                  url:@"http://www.sharesdk.cn"
-                                                          description:@"这是一条测试信息"
+                                                                title:@"iFace+"
+                                                                  url:@"http://itunes.apple.com/app/iface+/id904153091?mt=8"
+                                                          description:@"iFace+"
                                                             mediaType:SSPublishContentMediaTypeNews];
                     
                     [ShareSDK showShareActionSheet:kXHISIPAD?container:nil
@@ -237,11 +268,12 @@
                     
                     break;
                 case 2:{
-                
+                 // iap
                     [IAPContorl showAlertByID:Product_NOiAd];
                 }
                     
                     break;
+                 // clean cached
                 case 3:{
                     if(![[NSUserDefaults standardUserDefaults] boolForKey:@"FirstCleanCached"]){
                         
@@ -281,6 +313,7 @@
         [self clearCache];
     }else{
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"FirstCleanCached"];
+        
     }
 }
 

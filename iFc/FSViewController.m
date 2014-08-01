@@ -35,6 +35,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor mainBgColor];
     self.title = @"Home";
+    self.screenName = @"Home Screen";
 //  rate control
     
     [self setupLeftMenuButton];

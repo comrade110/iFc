@@ -10,17 +10,21 @@
 #import "UICollectionViewController+ADFlipTransition.h"
 #import "FSEditorViewController.h"
 #import <Parse/Parse.h>
+#import <StoreKit/StoreKit.h>
 #import "GADBannerView.h"
 #import "UIView+Frame.h"
-
+#import "GAI.h"
+#import "GAIDictionaryBuilder.h"
 
 static NSString * const kXHInstagramFooter = @"InstagramFooter";
 
-@interface InstagramCollectionViewController ()<GADBannerViewDelegate,UIAlertViewDelegate>{
+@interface InstagramCollectionViewController ()<GADBannerViewDelegate,UIAlertViewDelegate,SKStoreProductViewControllerDelegate>{
 
     PFImageView *imageView;
     GADBannerView *bannerView_;
     UIView *bottomADView;
+    NSDate *startDate;
+    NSDate *endData;
 }
 
 @property(nonatomic,assign) NSUInteger curPage;
@@ -111,7 +115,18 @@ static NSString * const kXHInstagramFooter = @"InstagramFooter";
     [self.view setBackgroundColor:[UIColor mainBgColor]];
     [self _setupCollectionView];
     
-
+    id tracker = [[GAI sharedInstance] defaultTracker];
+    
+    // This screen name value will remain set on the tracker and sent with
+    // hits until it is set to a new value or to nil.
+    [tracker set:@"Detail List"
+           value:@"Detail List"];
+    
+    // Previous V3 SDK versions
+    // [tracker send:[[GAIDictionaryBuilder createAppView] build]];
+    
+    // New SDK versions
+    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
     
     //AD
 //    // 在屏幕顶部创建标准尺寸的视图。
@@ -161,8 +176,49 @@ static NSString * const kXHInstagramFooter = @"InstagramFooter";
     [bannerView_ loadRequest:_request];
 }
 
--(void)rateControl{
 
+#pragma mark - rate contorl
+
+- (void)evaluate{
+    
+    //初始化控制器
+    SKStoreProductViewController *storeProductViewContorller = [[SKStoreProductViewController alloc] init];
+    //设置代理请求为当前控制器本身
+    storeProductViewContorller.delegate = self;
+    //加载一个新的视图展示
+    [storeProductViewContorller loadProductWithParameters:
+     //appId唯一的
+     @{SKStoreProductParameterITunesItemIdentifier : @"904153091"} completionBlock:^(BOOL result, NSError *error) {
+         //block回调
+         if(error){
+             NSLog(@"error %@ with userInfo %@",error,[error userInfo]);
+         }else{
+             //模态弹出appstore
+             [self presentViewController:storeProductViewContorller animated:YES completion:^{
+                 startDate = [NSDate date];
+             }
+              ];
+         }
+     }];
+}
+- (void)productViewControllerDidFinish:(SKStoreProductViewController *)viewController{
+    [self dismissViewControllerAnimated:YES completion:^{
+        endData = [NSDate date];
+        // 判断进入APP store时间 少于8秒不算评论
+        if ([endData timeIntervalSinceDate:startDate]<8.f) {
+            startDate = nil;
+            endData = nil;
+        }else{
+            startDate = nil;
+            endData = nil;
+            [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"saveCount"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
+    }];
+}
+
+
+-(void)rateControl{
     // 每启动N次显示评分
     NSInteger saveCount = [[[NSUserDefaults standardUserDefaults] objectForKey:@"saveCount"] intValue];
     if (saveCount < SAVEMAXCOUNT && saveCount != 0) {
@@ -177,6 +233,7 @@ static NSString * const kXHInstagramFooter = @"InstagramFooter";
                                   ];
         [alertView show];
         [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"saveCount"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
     }
 }
 
@@ -189,10 +246,12 @@ static NSString * const kXHInstagramFooter = @"InstagramFooter";
             break;
         case 1:
             // 跳转到APP STORE
+            [self evaluate];
             break;
         case 2:
             // 不再提示
             [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"saveCount"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
             break;
             
         default:

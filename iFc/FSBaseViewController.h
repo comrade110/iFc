@@ -13,7 +13,8 @@
 #import "UIViewController+MMDrawerController.h"
 #import "MONActivityIndicatorView.h"
 #import "SinglePicManager.h"
+#import "GAITrackedViewController.h"
 
-@interface FSBaseViewController : UIViewController
+@interface FSBaseViewController : GAITrackedViewController
 
 @end

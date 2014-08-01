@@ -45,7 +45,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    self.screenName = @"SubType Screen";
     self.view.backgroundColor = [UIColor mainBgColor];
     
     
