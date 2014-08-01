@@ -128,7 +128,7 @@
 
     // Configure the cell
     
-    UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(35.f, 0, 250, 150)];
+    UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(cell.width/2-125, 0, 250, 150)];
     backView.backgroundColor = [UIColor mainCellColor];
     backView.layer.cornerRadius = 5.f;
     backView.layer.borderWidth = .5f;

@@ -138,8 +138,6 @@
                                [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
                            }
                            if (error) {
-                               [hud setLabelText: NSLocalizedString(@"Error", nil)];
-                               [hud hide:YES afterDelay:.5f];
                            }
                        }
 
@@ -157,6 +155,39 @@
     [self.tableView reloadData];
 }
 
+
+-(void)sharePressed{
+    id<ISSContainer> container = [ShareSDK container];
+    [container setIPadContainerWithView:self.view arrowDirect:UIPopoverArrowDirectionAny];
+    
+    NSString *str = [NSString stringWithFormat:@"%@ http://goo.gl/L9jNZw",NSLocalizedString(@"iFace+ make your life more colorful", nil)];
+    id<ISSContent> publishContent = [ShareSDK content:str
+                                       defaultContent:@"默认分享内容，没内容时显示"
+                                                image:nil
+                                                title:@"iFace+"
+                                                  url:@"http://goo.gl/L9jNZw"
+                                          description:@"iFace+"
+                                            mediaType:SSPublishContentMediaTypeNews];
+    
+    [ShareSDK showShareActionSheet:kXHISIPAD?container:nil
+                         shareList:nil
+                           content:publishContent
+                     statusBarTips:YES
+                       authOptions:nil
+                      shareOptions: nil
+                            result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                if (state == SSResponseStateSuccess)
+                                {
+                                    NSLog(@"分享成功");
+                                }
+                                else if (state == SSResponseStateFail)
+                                {
+                                    NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error  errorDescription]);
+                                }
+                            }];
+
+
+}
 
 //-(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
 //{
@@ -180,6 +211,16 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [self.menuArray[section] count];
+}
+
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if (section == 0) {
+        return 80.f;
+    }else{
+        return 15.f;
+    }
+
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -206,6 +247,8 @@
             UIViewController * centerViewController =  [NSClassFromString(@"FSViewController") new];
             ;
             UINavigationController * navigationController = [[UINavigationController alloc] initWithRootViewController:centerViewController];
+            
+            navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:UITextAttributeTextColor];
             navigationController.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
             if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {
                 // Load resources for iOS 6.1 or earlier
@@ -229,43 +272,8 @@
                     
                     break;
                     // share
-                case 1:{
-                    id<ISSContainer> container = [ShareSDK container];
-                    [container setIPadContainerWithView:self.view arrowDirect:UIPopoverArrowDirectionAny];
-                    
-                    NSString *str = [NSString stringWithFormat:@"%@ http://itunes.apple.com/app/iface+/id904153091?mt=8",NSLocalizedString(@"Come to join iFace+‘s world,you will have an pleasant experience", nil)];
-                    id<ISSContent> publishContent = [ShareSDK content:str
-                                                       defaultContent:@"默认分享内容，没内容时显示"
-                                                                image:nil
-                                                                title:@"iFace+"
-                                                                  url:@"http://itunes.apple.com/app/iface+/id904153091?mt=8"
-                                                          description:@"iFace+"
-                                                            mediaType:SSPublishContentMediaTypeNews];
-                    
-                    [ShareSDK showShareActionSheet:kXHISIPAD?container:nil
-                                         shareList:nil
-                                           content:publishContent
-                                     statusBarTips:YES
-                                       authOptions:nil
-                                      shareOptions: nil
-                                            result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
-                                                if (state == SSResponseStateSuccess)
-                                                {
-                                                    NSLog(@"分享成功");
-                                                }
-                                                else if (state == SSResponseStateFail)
-                                                {
-                            NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error  errorDescription]);
-                                                }
-                                            }];
-//                    [UMSocialSnsService presentSnsController:self
-//                                                         appKey:@"53ce1fc656240bfcee0271d3"
-//                                                      shareText:@"lalalal"
-//                                                     shareImage:nil
-//                                                shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToQQ,UMShareToFacebook,UMShareToTwitter,UMShareToInstagram,nil]
-//                                                       delegate:self];
-                }
-                    
+                case 1:
+                    [self sharePressed];
                     break;
                 case 2:{
                  // iap

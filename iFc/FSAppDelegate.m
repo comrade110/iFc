@@ -30,7 +30,7 @@
     }else{
         
     }
-    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     //  内购配置
     [IAPContorl createProducts];
     
@@ -44,7 +44,6 @@
                                 redirectUri:@"http://sharesdk.cn"];
     [ShareSDK connectSinaWeiboWithAppKey:@"2270857739" appSecret:@"c409e0b39bab52b4fd6fad4f081c6856" redirectUri:@"http://baidu.com"];
 //    [ShareSDK connectFlickrWithApiKey:@"3de37b66f2669f3ab8fa2b3314aec276" apiSecret:@"1cc23838602ed479"];
-    [ShareSDK connectInstagramWithClientId:@"4781de2e8e9e47a89e5f2a5ff563951e" clientSecret:@"89c356fcbfe34f76869b828fe6a05879" redirectUri:@"http://sharesdk.cn"];
     
     [ShareSDK connectMail];
     // ****************************************************************************
@@ -90,7 +89,8 @@
     UIViewController * centerViewController = [[FSViewController alloc] init];
     
     UINavigationController * navigationController = [[UINavigationController alloc] initWithRootViewController:centerViewController];
-    
+    navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:UITextAttributeTextColor];
+
         if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {
             // Load resources for iOS 6.1 or earlier
             navigationController.navigationBar.tintColor = [UIColor navBgColor];
@@ -98,6 +98,7 @@
             // Load resources for iOS 7 or later
             navigationController.navigationBar.barTintColor = [UIColor navBgColor];
         }
+    navigationController.navigationBar.tintColor = [UIColor whiteColor];
 //    [navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav_bg"] forBarMetrics:UIBarMetricsDefault];
     
     MMDrawerController * drawerController = [[MMDrawerController alloc]
@@ -119,6 +120,7 @@
     [drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
     [drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
     
+
     _adController = [[CJPAdController sharedManager] initWithContentViewController:drawerController];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window setRootViewController:_adController];

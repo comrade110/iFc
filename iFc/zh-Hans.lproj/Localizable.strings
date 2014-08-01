@@ -8,6 +8,7 @@
 
 "normal" = "normal";
 "animal" = "animal";
+"Home" = "首页";
 "Choose Photo" = "选择照片";
 "Cancel" = "取消";
 "Back" = "返回";
@@ -20,6 +21,7 @@
 "Photo" = "照片";
 "Tips" = "温馨提示";
 "Continue" = "继续";
+"Send Successfully" = "发送成功！";
 "Buy" = "购买";
 "Purchase successfully. Enjoy!" = "购买成功！祝你开心";
 "All images you downloaded will be cleared" = "之前您下载的图片将会被清空,是否继续?";
@@ -33,4 +35,4 @@
 "Need to add a photo first before editing" = "在编辑前需要先添加一张照片";
 "Use Photo from Library" = "从相册选取照片";
 "Take Photo with Camera" = "用相机拍照";
-"Come to join iFace+‘s world,you will have an pleasant experience" = "大家来玩iFace+吧！太有趣了！";
+"iFace+ make your life more colorful" = "大家来玩iFace+吧！太有趣了！";

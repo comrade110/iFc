@@ -30,7 +30,7 @@ static BOOL const kUseAdMobSmartSize = YES;
 static NSString * const kAdPosition = @"bottom";
 
 // Seconds to wait before displaying ad after the view loads (0.0 = instant)
-static float const kWaitTime = 3.0;
+static float const kWaitTime = 5.0;
 
 // Name of UserDefaults key for if ads have been purchased (you can ignore this if you don't have an IAP to remove ads)
 static NSString * const kAdsPurchasedKey = @"adRemovalPurchased";

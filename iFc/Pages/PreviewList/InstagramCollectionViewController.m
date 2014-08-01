@@ -110,7 +110,6 @@ static NSString * const kXHInstagramFooter = @"InstagramFooter";
 - (void)viewDidLoad {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.title = @"Instagram";
     self.curPage = 0;
     [self.view setBackgroundColor:[UIColor mainBgColor]];
     [self _setupCollectionView];

@@ -48,7 +48,7 @@
     self.screenName = @"SubType Screen";
     self.view.backgroundColor = [UIColor mainBgColor];
     
-    
+
 
     
     WEAKSELF
@@ -58,7 +58,7 @@
     [query whereKey:@"fid" equalTo:self.fid];
     [query orderByAscending:@"priority"];
     MONActivityIndicatorView *indicatorView = [[MONActivityIndicatorView alloc] init];
-    indicatorView.center = [[UIApplication sharedApplication].delegate window].center;
+    indicatorView.center = CGPointMake(self.view.center.x, self.view.center.x-10);
     [self.view addSubview:indicatorView];
     [indicatorView startAnimating];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -151,7 +151,15 @@
     PFObject *object = _quaryArr[indexPath.row];
     
      InstagramCollectionViewController *instagramCollectionViewController = [InstagramThumbnailCollectionViewController sharedInstagramCollectionViewControllerWithObjectId:object.objectId];
-    
+    NSString *titleStr = nil;
+    if ([[FSConfig getCurrentLanguage] isEqualToString:@"zh-Hans"]) {
+        titleStr = object[@"name_cn"];
+    }else if ([[FSConfig getCurrentLanguage] isEqualToString:@"zh-Hant"]){
+        titleStr = object[@"name_hk"];
+    }else{
+        titleStr= object[@"name_en"];
+    }
+    instagramCollectionViewController.title = titleStr;
     [self.navigationController pushViewController:instagramCollectionViewController animated:YES];
 
 }

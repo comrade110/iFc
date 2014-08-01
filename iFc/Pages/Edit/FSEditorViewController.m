@@ -91,12 +91,10 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     [super viewDidLoad];
     
     self.screenName = @"Edit Screen";
+    
+    // 初始化广告
     [self preLoadInterstitial];
-//
-//    
-//
-//    
-//    
+    
     self.view.backgroundColor = [UIColor whiteColor];
     
     imageView = [[PFImageView alloc] initWithFrame:self.view.frame];
@@ -404,7 +402,9 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
 {
     if(userImageView.image){
         NSArray *excludedActivityTypes = @[UIActivityTypePostToVimeo,UIActivityTypeMessage];
-        NSString *str = [NSString stringWithFormat:@"%@ http://itunes.apple.com/app/iface+/id904153091?mt=8",NSLocalizedString(@"Come to join iFace+‘s world,you will have an pleasant experience", nil)];
+//        NSString *str = [NSString stringWithFormat:@"%@ http://itunes.apple.com/app/iface+/id904153091?mt=8",NSLocalizedString(@"iFace+ make your life more colorful", nil)];
+        NSString *str = [NSString stringWithFormat:@"%@ http://goo.gl/L9jNZw",NSLocalizedString(@"iFace+ make your life more colorful", nil)];
+        
         UIActivityViewController *activityView = [[UIActivityViewController alloc] initWithActivityItems:@[str,[self mergeImage]] applicationActivities:nil];
         activityView.excludedActivityTypes = excludedActivityTypes;
         activityView.completionHandler = ^(NSString *activityType, BOOL completed){
@@ -444,8 +444,8 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Saved successfully", nil) message:nil delegate:nil cancelButtonTitle:NSLocalizedString(@"OK",nil) otherButtonTitles:nil];
                 [alert show];
                 
-            }else if ([activityType isEqualToString:UIActivityTypePostToFacebook]){
-                
+            }else if ([activityType isEqualToString:UIActivityTypePostToFacebook]||[activityType isEqualToString:UIActivityTypePostToTwitter]||[activityType isEqualToString:UIActivityTypePostToWeibo]||[activityType isEqualToString:UIActivityTypePostToTencentWeibo]||[activityType isEqualToString:UIActivityTypePostToFlickr]){
+                alert(NSLocalizedString(@"Send Successfully",nil));
             }
         };
         

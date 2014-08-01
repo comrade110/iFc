@@ -11,4 +11,6 @@
 
 @interface FSMenuViewController : FSBaseViewController<UITableViewDelegate,UITableViewDataSource>
 
+-(void)sharePressed;
+
 @end

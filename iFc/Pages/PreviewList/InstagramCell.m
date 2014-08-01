@@ -29,6 +29,7 @@
             }
             
             [indicatorView stopAnimating];
+            [indicatorView removeFromSuperview];
         }];
     }
 //    
@@ -81,6 +82,8 @@
         
         [_imageView setImage:kXHISIPAD?[UIImage imageNamed:@"placeHolder3-hd"]:[UIImage imageNamed:@"placeHolder3"] borderWidth:5.0 shadowDepth:10.0 controlPointXOffset:30.0 controlPointYOffset:80.0];
         [self.contentView addSubview:_imageView];
+    }else{
+        [_imageView setImage:kXHISIPAD?[UIImage imageNamed:@"placeHolder3-hd"]:[UIImage imageNamed:@"placeHolder3"] borderWidth:5.0 shadowDepth:10.0 controlPointXOffset:30.0 controlPointYOffset:80.0];
     }
 }
 

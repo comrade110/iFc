@@ -74,7 +74,6 @@
 		D3B2278D198B398B0048B436 /* FBMissingSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B2278C198B398B0048B436 /* FBMissingSymbols.m */; };
 		D3B227A9198B3F7C0048B436 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B227A8198B3F7C0048B436 /* libxml2.dylib */; };
 		D3B227AB198B3F9E0048B436 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B227AA198B3F9E0048B436 /* MediaPlayer.framework */; };
-		D3B227CB198B55EB0048B436 /* CLFilterTool.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B227CA198B55EB0048B436 /* CLFilterTool.m */; };
 		D3B2E58E197CF3DD007C3605 /* animal_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3B2E58C197CF3DD007C3605 /* animal_bg@2x.png */; };
 		D3B2E58F197CF3DD007C3605 /* peple_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3B2E58D197CF3DD007C3605 /* peple_bg@2x.png */; };
 		D3B33CF6197E2CA700BC5217 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B33CF5197E2CA700BC5217 /* MessageUI.framework */; };
@@ -292,8 +291,6 @@
 		D3B2278C198B398B0048B436 /* FBMissingSymbols.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBMissingSymbols.m; sourceTree = "<group>"; };
 		D3B227A8198B3F7C0048B436 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		D3B227AA198B3F9E0048B436 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		D3B227C9198B55EB0048B436 /* CLFilterTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLFilterTool.h; sourceTree = "<group>"; };
-		D3B227CA198B55EB0048B436 /* CLFilterTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLFilterTool.m; sourceTree = "<group>"; };
 		D3B2E58C197CF3DD007C3605 /* animal_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "animal_bg@2x.png"; sourceTree = "<group>"; };
 		D3B2E58D197CF3DD007C3605 /* peple_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "peple_bg@2x.png"; sourceTree = "<group>"; };
 		D3B33CF5197E2CA700BC5217 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -530,8 +527,6 @@
 		BEE778DD19757316000CB8AC /* Edit */ = {
 			isa = PBXGroup;
 			children = (
-				D3B227C9198B55EB0048B436 /* CLFilterTool.h */,
-				D3B227CA198B55EB0048B436 /* CLFilterTool.m */,
 				BEE778DE19757335000CB8AC /* FSEditorViewController.h */,
 				BEE778DF19757335000CB8AC /* FSEditorViewController.m */,
 				D3ABA6D7197796CE0082A5B2 /* EditorButton.h */,
@@ -1195,7 +1190,6 @@
 				D3B4FDF31974C7D20078B05E /* InstagramCollectionViewController.m in Sources */,
 				D3B4FE011974C7E40078B05E /* XHInstagramStoreManager.m in Sources */,
 				BEC14065197BA63D009643D1 /* MBProgressHUD.m in Sources */,
-				D3B227CB198B55EB0048B436 /* CLFilterTool.m in Sources */,
 				BEE778D91975728D000CB8AC /* UICollectionViewController+ADFlipTransition.m in Sources */,
 				D3A9627419764593007C561C /* DACircularProgressView.m in Sources */,
 				D396F5601973B5C100F21999 /* UILabel+attributed.m in Sources */,
