@@ -34,7 +34,7 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor mainBgColor];
-    self.title = @"Home";
+    self.title = NSLocalizedString(@"Home", nil);
     self.screenName = @"Home Screen";
 //  rate control
     
@@ -46,7 +46,8 @@
     _tableView.dataSource = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.backgroundColor = [UIColor clearColor];
-    
+    _tableView.backgroundView =nil;
+
     [self.view addSubview:_tableView];
     self.imageArr = @[
                       @"peple_bg",
@@ -161,6 +162,9 @@
     
     [cell.contentView addSubview:backView];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    UIView *tempView = [[UIView alloc] init];
+    [cell setBackgroundView:tempView];
+    [cell setBackgroundColor:[UIColor clearColor]];
     
     return cell;
 }

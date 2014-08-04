@@ -1,0 +1,46 @@
+/* 
+  Localizable.strings
+  iFc
+
+  Created by xiang-chen on 14-7-14.
+  Copyright (c) 2014年 Fuleco studio. All rights reserved.
+*/
+
+"normal" = "normal";
+"animal" = "animal";
+"Home" = "トップページ";
+"Choose Photo" = "选択する";
+"Cancel" = "キャンセル";
+"Back" = "戻ってきて";
+"Save" = "保存";
+"OK" = "確定";
+"Edit" = "編集";
+"Done" = "完了";
+"Waiting" ="清掃中";
+"Error" = "未知の過ち";
+"Connection failure\nTap to Retry" = "失败をつなぐ\n最初からやり直しをクリックして";
+"Photo" = "写真";
+"Tips" = "スイート・ホームヒント";
+"Continue" = "引き続き";
+"Send Successfully" = "送信するのに成功した！";
+"Buy" = "購買";
+"Purchase successfully. Enjoy!" = "購入し！——楽しい";
+"All images you downloaded will be cleared" = "前にあなたにダウンロードした画像を空にされかねないと、継続するか?";
+"Saved successfully" = "保存するのに成功した";
+"Enjoying iFace+?" = "好きなiFace+?";
+"If so, say it with stars on the App Store" = "それが好き。じゃ、app storeゲッター打点を励ましてもらうようにしましょう!";
+"OK,I give stars" = "はい、行き配点";
+"Don't ask again" = "もはやによると";
+"Remind me later" = "后に";
+"Connection failed, please try again later." = "失败したいので、あとでつなぐやり直してください";
+"Need to add a photo first before editing" = "前に受けなければならなく、編集添加写真だった";
+"Use Photo from Library" = "アルバムから選びの写真を見ている";
+"Take Photo with Camera" = "カメラで写真を撮るの";
+"iFace+ make your life more colorful" = "みんなが游びに来iface +でしょう!面白さのあまり!";
+
+"Rate" = "採点";
+"Tell Friends" = "分かち合い";
+"Upgrade" = "広告を除去";
+"Clear Cached" = "キャッシュされた";
+"Choose Photo" = "选択する";
+"Need to add a photo first before editing" = "編集に必要添加写真だった";

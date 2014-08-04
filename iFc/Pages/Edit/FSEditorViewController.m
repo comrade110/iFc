@@ -327,7 +327,7 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
             return;
         }
         if (!userImageView.image) {
-            alert(@"Need to add a photo first before editing");
+            alert(NSLocalizedString(@"Need to add a photo first before editing", nil));
             return ;
         }
         [self adjustmentViewBulid];
@@ -393,7 +393,11 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
 
 
 -(void)pushedNewBtn{
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Choose Photo" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Use Photo from Library", nil),NSLocalizedString(@"Take Photo with Camera", nil), nil];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Choose Photo", nil)
+                                                             delegate:self
+                                                    cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:NSLocalizedString(@"Use Photo from Library", nil),NSLocalizedString(@"Take Photo with Camera", nil), nil];
     actionSheet.delegate = self;
     [actionSheet showInView:self.view.window];
 }

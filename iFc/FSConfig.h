@@ -9,7 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "MBProgressHUD.h"
 #import "UIView+Frame.h"
+#import "UIButton+Block.h"
 #import "CJPAdController.h"
+#import "FSErrorView.h"
 
 #define MY_BANNER_UNIT_ID @"ca-app-pub-4053211758441927/7334362495"
 #define MY_INTERSTITIAL_UNIT_ID @"ca-app-pub-4053211758441927/5166298497"

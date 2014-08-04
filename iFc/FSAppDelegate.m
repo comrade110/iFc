@@ -97,8 +97,8 @@
         } else {
             // Load resources for iOS 7 or later
             navigationController.navigationBar.barTintColor = [UIColor navBgColor];
+            navigationController.navigationBar.tintColor = [UIColor whiteColor];
         }
-    navigationController.navigationBar.tintColor = [UIColor whiteColor];
 //    [navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav_bg"] forBarMetrics:UIBarMetricsDefault];
     
     MMDrawerController * drawerController = [[MMDrawerController alloc]

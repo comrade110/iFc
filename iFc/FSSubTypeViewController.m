@@ -49,16 +49,22 @@
     self.view.backgroundColor = [UIColor mainBgColor];
     
 
-
+    [self syncParseData];
     
-    WEAKSELF
     NSLog(@"self.fid:%@",self.fid);
     // Do any additional setup after loading the view.
+
+}
+
+
+-(void)syncParseData{
+    
+    WEAKSELF
     PFQuery *query = [PFQuery queryWithClassName:@"Type"];
     [query whereKey:@"fid" equalTo:self.fid];
     [query orderByAscending:@"priority"];
     MONActivityIndicatorView *indicatorView = [[MONActivityIndicatorView alloc] init];
-    indicatorView.center = CGPointMake(self.view.center.x, self.view.center.x-10);
+    indicatorView.center = CGPointMake(self.view.center.x, self.view.center.y-64);
     [self.view addSubview:indicatorView];
     [indicatorView startAnimating];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -79,11 +85,15 @@
         } else {
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
+            FSErrorView *errorView = [[FSErrorView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, [[UIScreen mainScreen]bounds].size.height-64) withAciontBlock:^{
+                [_tableView removeFromSuperview];
+                [self syncParseData];
+            }];
+            [self.view addSubview:errorView];
         }
         [indicatorView stopAnimating];
     }];
 }
-
 
 
 #pragma mark - Table view data source
@@ -120,9 +130,15 @@
     
     PFObject *object = _quaryArr[indexPath.row];
     
+    if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {
+        // Load resources for iOS 6.1 or earlier
+        cell.selectedBackgroundView = [[UIView alloc] init];
+    }
+    
     UIView *boxView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height)];
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(60, 0, 179, 85)];
     label.textColor = [UIColor colorWithRed:140./255. green:153./255. blue:169./255. alpha:1.f];
+    label.backgroundColor = [UIColor clearColor];
     label.font = [UIFont fsFontWithSize:16.f];
     if ([[FSConfig getCurrentLanguage] isEqualToString:@"zh-Hans"]) {
         label.text = object[@"name_cn"];

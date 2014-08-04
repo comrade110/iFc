@@ -38,7 +38,7 @@
 -(void)viewWillAppear:(BOOL)animated{
 
 
-    self.cachedData  = [NSString stringWithFormat:@"Clear Cached (%.1fMB)",[FSConfig getFilePath]];
+     self.cachedData  = [NSString stringWithFormat:@"%@ (%.1fMB)",NSLocalizedString(@"Clear Cached", nil),[FSConfig getFilePath]];
     if (_tableView) {
         [self resetMenuArray];
         [_tableView reloadData];
@@ -53,8 +53,7 @@
 //    self.view.backgroundColor = [UIColor colorWithWhite:1.f/255.f alpha:1.f];
     
     if (!self.cachedData) {
-        
-        self.cachedData  = [NSString stringWithFormat:@"Clear Cached (%.1fMB)",[FSConfig getFilePath]];
+        self.cachedData  = [NSString stringWithFormat:@"%@ (%.1fMB)",NSLocalizedString(@"Clear Cached", nil),[FSConfig getFilePath]];
     }
     [self resetMenuArray];
     
@@ -63,6 +62,8 @@
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _tableView.backgroundView =nil;
+
     [self.view addSubview:_tableView];
 }
 
@@ -97,11 +98,11 @@
 -(void)resetMenuArray{
     
     self.menuArray = @[
-                       @[@"Home"],
+                       @[NSLocalizedString(@"Home", nil)],
                        @[
-                           @"Rate",
-                           @"Tell Friends",
-                           @"Upgrade",
+                           NSLocalizedString(@"Rate", nil),
+                           NSLocalizedString(@"Tell Friends", nil),
+                           NSLocalizedString(@"Upgrade", nil),
                            _cachedData,
                            ],
                        @[@"Copyright"],
@@ -148,7 +149,7 @@
 
 -(void)clearCacheSuccess
 {
-    self.cachedData  = @"Clear Cached (0.0MB)";
+    self.cachedData  = [NSString stringWithFormat:@"%@ (0.0MB)",NSLocalizedString(@"Clear Cached", nil)];
     [hud setLabelText: NSLocalizedString(@"Done", nil)];
     [hud hide:YES afterDelay:.5f];
     [self resetMenuArray];
@@ -235,7 +236,7 @@
     cell.textLabel.font = [UIFont systemFontOfSize:14.f];
     cell.imageView.frame = CGRectMake(cell.imageView.left, cell.imageView.top, 15, 15);
     cell.imageView.image = [UIImage imageNamed:self.menuImgArray[indexPath.section][indexPath.row]];
-    
+
     return cell;
 
 }
