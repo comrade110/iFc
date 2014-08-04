@@ -132,6 +132,7 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
 //
 //    
     NSLog(@"sdasdasda:%@",imageView.file.url);
+    
     [imageView.file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         [MBProgressHUD hideHUDForView:imageView animated:YES];
         if (!error) {
