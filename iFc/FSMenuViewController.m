@@ -49,7 +49,6 @@
 {
     [super viewDidLoad];
     
-    self.screenName = @"Menu Screen";
 //    self.view.backgroundColor = [UIColor colorWithWhite:1.f/255.f alpha:1.f];
     
     if (!self.cachedData) {
@@ -257,10 +256,18 @@
             } else {
                 // Load resources for iOS 7 or later
                 navigationController.navigationBar.barTintColor = [UIColor navBgColor];
+                navigationController.navigationBar.tintColor = [UIColor whiteColor];
             }
-            [self.mm_drawerController setCenterViewController:navigationController withFullCloseAnimation:YES completion:^(BOOL b) {
-                
-            }];
+            if (kXHISIPAD) {
+                [self.mm_drawerController setCenterViewController:navigationController withCloseAnimation:YES completion:^(BOOL b) {
+                    
+                }];
+            }else{
+                [self.mm_drawerController setCenterViewController:navigationController withFullCloseAnimation:YES completion:^(BOOL b) {
+                    
+                }];
+            }
+
         }
             break;
         case 1:{
@@ -299,6 +306,43 @@
                     
                     break;
                 case 4:
+                    break;
+                    
+                default:
+                    break;
+            }
+        }
+            break;
+        case 2:{
+            switch (indexPath.row) {
+                case 0:{
+                    {
+                        UIViewController * centerViewController =  [NSClassFromString(@"FSCopyrightViewController") new];
+                        ;
+                        UINavigationController * navigationController = [[UINavigationController alloc] initWithRootViewController:centerViewController];
+                        
+                        navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:UITextAttributeTextColor];
+                        navigationController.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
+                        if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {
+                            // Load resources for iOS 6.1 or earlier
+                            navigationController.navigationBar.tintColor = [UIColor navBgColor];
+                        } else {
+                            // Load resources for iOS 7 or later
+                            navigationController.navigationBar.barTintColor = [UIColor navBgColor];
+                            navigationController.navigationBar.tintColor = [UIColor whiteColor];
+                        }
+                        if (kXHISIPAD) {
+                            [self.mm_drawerController setCenterViewController:navigationController withCloseAnimation:YES completion:^(BOOL b) {
+                            
+                        }];
+                        }else{
+                            [self.mm_drawerController setCenterViewController:navigationController withFullCloseAnimation:YES completion:^(BOOL b) {
+                                
+                            }];
+                        }
+                    }
+                    break;
+                }
                     
                     break;
                     
@@ -310,9 +354,7 @@
         default:
             break;
     }
-    if (indexPath.section == 1) {
 
-    }
 
 }
 

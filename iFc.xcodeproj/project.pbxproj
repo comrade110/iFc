@@ -89,7 +89,6 @@
 		D3B4FE001974C7E40078B05E /* InstagramMediaModel+XHMediaControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B4FDFC1974C7E40078B05E /* InstagramMediaModel+XHMediaControl.m */; };
 		D3B4FE011974C7E40078B05E /* XHInstagramStoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B4FDFE1974C7E40078B05E /* XHInstagramStoreManager.m */; };
 		D3B5C0E519888966002983F0 /* IAPContorl.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B5C0E419888966002983F0 /* IAPContorl.m */; };
-		D3B79219198A3738005CBE4F /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B79218198A3738005CBE4F /* libGoogleAnalyticsServices.a */; };
 		D3B79222198A3771005CBE4F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B79221198A3771005CBE4F /* CoreData.framework */; };
 		D3B80F751973718E005F0832 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B80F741973718E005F0832 /* Foundation.framework */; };
 		D3B80F771973718E005F0832 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B80F761973718E005F0832 /* CoreGraphics.framework */; };
@@ -122,6 +121,7 @@
 		D3B80FD719737955005F0832 /* FSConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B80FD619737955005F0832 /* FSConfig.m */; };
 		D3B80FD919739745005F0832 /* cellBg.png in Resources */ = {isa = PBXBuildFile; fileRef = D3B80FD819739745005F0832 /* cellBg.png */; };
 		D3B80FDB1973A048005F0832 /* placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3B80FDA1973A048005F0832 /* placeholder@2x.png */; };
+		D3B8EA9F1990842B00129579 /* FSCopyrightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B8EA9E1990842B00129579 /* FSCopyrightViewController.m */; };
 		D3BB5ACB19876FAD00F06719 /* icon-57.png in Resources */ = {isa = PBXBuildFile; fileRef = D3BB5ACA19876FAD00F06719 /* icon-57.png */; };
 		D3BB5ACF1987704700F06719 /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = D3BB5ACC1987704700F06719 /* icon-72.png */; };
 		D3BB5AD01987704700F06719 /* icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = D3BB5ACD1987704700F06719 /* icon-76.png */; };
@@ -316,19 +316,8 @@
 		D3B4FDFE1974C7E40078B05E /* XHInstagramStoreManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHInstagramStoreManager.m; sourceTree = "<group>"; };
 		D3B5C0E319888966002983F0 /* IAPContorl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPContorl.h; sourceTree = "<group>"; };
 		D3B5C0E419888966002983F0 /* IAPContorl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPContorl.m; sourceTree = "<group>"; };
-		D3B79218198A3738005CBE4F /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
-		D3B7921A198A3747005CBE4F /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
-		D3B7921B198A3747005CBE4F /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
-		D3B7921C198A3747005CBE4F /* GAIEcommerceFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceFields.h; sourceTree = "<group>"; };
-		D3B7921D198A3747005CBE4F /* GAIFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIFields.h; sourceTree = "<group>"; };
-		D3B7921E198A3747005CBE4F /* GAILogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAILogger.h; sourceTree = "<group>"; };
-		D3B7921F198A3747005CBE4F /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
-		D3B79220198A3747005CBE4F /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
 		D3B79221198A3771005CBE4F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		D3B79223198A4347005CBE4F /* GAIEcommerceProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceProduct.h; sourceTree = "<group>"; };
-		D3B79224198A4347005CBE4F /* GAIEcommerceProductAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceProductAction.h; sourceTree = "<group>"; };
-		D3B79225198A4347005CBE4F /* GAIEcommercePromotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommercePromotion.h; sourceTree = "<group>"; };
-		D3B80F711973718E005F0832 /* iFc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iFc.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3B80F711973718E005F0832 /* iFace+.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iFace+.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3B80F741973718E005F0832 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D3B80F761973718E005F0832 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		D3B80F781973718E005F0832 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -372,6 +361,8 @@
 		D3B80FD619737955005F0832 /* FSConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSConfig.m; sourceTree = "<group>"; };
 		D3B80FD819739745005F0832 /* cellBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellBg.png; sourceTree = "<group>"; };
 		D3B80FDA1973A048005F0832 /* placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placeholder@2x.png"; sourceTree = "<group>"; };
+		D3B8EA9D1990842B00129579 /* FSCopyrightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCopyrightViewController.h; sourceTree = "<group>"; };
+		D3B8EA9E1990842B00129579 /* FSCopyrightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCopyrightViewController.m; sourceTree = "<group>"; };
 		D3BB5ACA19876FAD00F06719 /* icon-57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-57.png"; sourceTree = "<group>"; };
 		D3BB5ACC1987704700F06719 /* icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-72.png"; sourceTree = "<group>"; };
 		D3BB5ACD1987704700F06719 /* icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-76.png"; sourceTree = "<group>"; };
@@ -443,7 +434,6 @@
 				D3C70314197F4A3B000079C8 /* QZoneConnection.framework in Frameworks */,
 				D3C70318197F4A3B000079C8 /* AGCommon.framework in Frameworks */,
 				D3B33CF6197E2CA700BC5217 /* MessageUI.framework in Frameworks */,
-				D3B79219198A3738005CBE4F /* libGoogleAnalyticsServices.a in Frameworks */,
 				D3B80FD119737666005F0832 /* SystemConfiguration.framework in Frameworks */,
 				D3C7031E197F4A3B000079C8 /* libSinaWeiboSDK.a in Frameworks */,
 				D3C70311197F4A3B000079C8 /* InstagramConnection.framework in Frameworks */,
@@ -576,7 +566,6 @@
 			isa = PBXGroup;
 			children = (
 				D3B2277D198B34810048B436 /* iAd */,
-				D3B79217198A3704005CBE4F /* GoogleAnalytics */,
 				D3C7032E197FB2A6000079C8 /* Ad */,
 				D3C702E4197F4A3A000079C8 /* ShareSDK */,
 				D396F5661973B69300F21999 /* MMDrawerController */,
@@ -745,24 +734,6 @@
 			path = PreviewList;
 			sourceTree = "<group>";
 		};
-		D3B79217198A3704005CBE4F /* GoogleAnalytics */ = {
-			isa = PBXGroup;
-			children = (
-				D3B79223198A4347005CBE4F /* GAIEcommerceProduct.h */,
-				D3B79224198A4347005CBE4F /* GAIEcommerceProductAction.h */,
-				D3B79225198A4347005CBE4F /* GAIEcommercePromotion.h */,
-				D3B7921A198A3747005CBE4F /* GAI.h */,
-				D3B7921B198A3747005CBE4F /* GAIDictionaryBuilder.h */,
-				D3B7921C198A3747005CBE4F /* GAIEcommerceFields.h */,
-				D3B7921D198A3747005CBE4F /* GAIFields.h */,
-				D3B7921E198A3747005CBE4F /* GAILogger.h */,
-				D3B7921F198A3747005CBE4F /* GAITrackedViewController.h */,
-				D3B79220198A3747005CBE4F /* GAITracker.h */,
-				D3B79218198A3738005CBE4F /* libGoogleAnalyticsServices.a */,
-			);
-			path = GoogleAnalytics;
-			sourceTree = "<group>";
-		};
 		D3B80F681973718E005F0832 = {
 			isa = PBXGroup;
 			children = (
@@ -777,7 +748,7 @@
 		D3B80F721973718E005F0832 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D3B80F711973718E005F0832 /* iFc.app */,
+				D3B80F711973718E005F0832 /* iFace+.app */,
 				D3B80F951973718E005F0832 /* iFcTests.xctest */,
 			);
 			name = Products;
@@ -1029,6 +1000,8 @@
 				BEC3F89A197FCFFD00B13C33 /* FSMenuViewController.m */,
 				D3B2278B198B398B0048B436 /* FBMissingSymbols.h */,
 				D3B2278C198B398B0048B436 /* FBMissingSymbols.m */,
+				D3B8EA9D1990842B00129579 /* FSCopyrightViewController.h */,
+				D3B8EA9E1990842B00129579 /* FSCopyrightViewController.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -1058,7 +1031,7 @@
 			);
 			name = iFc;
 			productName = iFc;
-			productReference = D3B80F711973718E005F0832 /* iFc.app */;
+			productReference = D3B80F711973718E005F0832 /* iFace+.app */;
 			productType = "com.apple.product-type.application";
 		};
 		D3B80F941973718E005F0832 /* iFcTests */ = {
@@ -1219,6 +1192,7 @@
 				D339D5EE19790095002E1A4B /* UIView+Frame.m in Sources */,
 				D3B80F851973718E005F0832 /* FSAppDelegate.m in Sources */,
 				D339D5ED19790095002E1A4B /* UIImage+Utility.m in Sources */,
+				D3B8EA9F1990842B00129579 /* FSCopyrightViewController.m in Sources */,
 				D396F5631973B5C100F21999 /* NSString+size.m in Sources */,
 				D3B4FDFF1974C7E40078B05E /* InstagramMediaModel.m in Sources */,
 				BEC3F89B197FCFFD00B13C33 /* FSBaseViewController.m in Sources */,
@@ -1409,7 +1383,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: hongxiang chen (TPW4A222GA)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1438,8 +1412,9 @@
 					"$(PROJECT_DIR)/iFc/Libs/Ad/Adapter/AdapterLibs",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "iFace+";
 				PROVISIONING_PROFILE = "BAB2B1BA-60AF-4AF7-9192-81C2EE02EDCF";
+
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1448,7 +1423,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: hongxiang chen (TPW4A222GA)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1477,8 +1452,9 @@
 					"$(PROJECT_DIR)/iFc/Libs/Ad/Adapter/AdapterLibs",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "iFace+";
 				PROVISIONING_PROFILE = "BAB2B1BA-60AF-4AF7-9192-81C2EE02EDCF";
+
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

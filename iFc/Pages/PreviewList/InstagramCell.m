@@ -17,7 +17,8 @@
     _entity = entity;
     if (_entity[@"previewData"]) {
         self.imageView.file = _entity[@"previewData"];
-        UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        UIActivityIndicatorView *indicatorView = nil;
+        indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
         indicatorView.center = self.imageView.center;
         [self.contentView addSubview:indicatorView];
         [indicatorView startAnimating];
@@ -27,7 +28,6 @@
             }else{
                 [_imageView setImage:image borderWidth:5.0 shadowDepth:5.0 controlPointXOffset:10 controlPointYOffset:80];
             }
-            
             [indicatorView stopAnimating];
             [indicatorView removeFromSuperview];
         }];

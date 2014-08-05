@@ -35,7 +35,6 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor mainBgColor];
     self.title = NSLocalizedString(@"Home", nil);
-    self.screenName = @"Home Screen";
 //  rate control
     
     [self setupLeftMenuButton];

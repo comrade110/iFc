@@ -45,7 +45,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.screenName = @"SubType Screen";
     self.view.backgroundColor = [UIColor mainBgColor];
     
 
@@ -65,6 +64,16 @@
     [query orderByAscending:@"priority"];
     MONActivityIndicatorView *indicatorView = [[MONActivityIndicatorView alloc] init];
     indicatorView.center = CGPointMake(self.view.center.x, self.view.center.y-64);
+    indicatorView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+    if (kXHISIPAD) {
+        if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) {
+            
+            indicatorView.center = CGPointMake(self.view.center.y, self.view.center.x);
+        }else{
+            
+            indicatorView.center = CGPointMake(self.view.center.x, self.view.center.y-64);
+        }
+    }
     [self.view addSubview:indicatorView];
     [indicatorView startAnimating];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -75,7 +84,7 @@
             weakSelf.tableView.separatorColor = [UIColor colorWithRed:140./255. green:153./255. blue:169./255. alpha:.5f];
             weakSelf.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
             weakSelf.tableView.backgroundColor = [UIColor clearColor];
-            
+            weakSelf.tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
             [self.view addSubview:weakSelf.tableView];
             weakSelf.quaryArr = objects;
             // The find succeeded.

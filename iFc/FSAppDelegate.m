@@ -14,7 +14,6 @@
 #import "MMDrawerVisualState.h"
 #import "MMExampleDrawerVisualStateManager.h"
 #import <ShareSDK/ShareSDK.h>
-#import "GAI.h"
 #import "IAPContorl.h"
 
 
@@ -58,16 +57,18 @@
     
     [PFUser enableAutomaticUser];
     
-    PFACL *defaultACL = [PFACL ACL];    
+    PFACL *defaultACL = [PFACL ACL];
+    
     
     // If you would like all objects to be private by default, remove this line.
     [defaultACL setPublicReadAccess:YES];
     
     [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:YES];
     // Override point for customization after application launch.
-    
-    
-//    
+ 
+//    //parse统计
+//    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+//
 //    if (application.applicationState != UIApplicationStateBackground) {
 //        // Track an app open here if we launch with a push, unless
 //        // "content_available" was used to trigger a background push (introduced
@@ -131,10 +132,8 @@
     
     if(![[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"]){
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstLaunch"];
-        [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"LaunchCount"];
         [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"saveCount"];
         [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"EditerVCADControl"];
-        [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"DelegateADControl"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         NSLog(@"第一次启动");
     }else{
@@ -142,27 +141,9 @@
     }
     
     
-    
-    [self setGoogleAnalytics];
-    
     return YES;
 }
 
--(void)setGoogleAnalytics{
-    
-    // Optional: automatically send uncaught exceptions to Google Analytics.
-    [GAI sharedInstance].trackUncaughtExceptions = YES;
-    
-    // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
-    [GAI sharedInstance].dispatchInterval = 20;
-    
-    // Optional: set Logger to VERBOSE for debug information.
-    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
-    
-    // Initialize tracker. Replace with your tracking ID.
-    [[GAI sharedInstance] trackerWithTrackingId:MY_GAI];
-
-}
 
 - (BOOL)application:(UIApplication *)application
       handleOpenURL:(NSURL *)url

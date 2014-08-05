@@ -13,8 +13,6 @@
 #import <StoreKit/StoreKit.h>
 #import "GADBannerView.h"
 #import "UIView+Frame.h"
-#import "GAI.h"
-#import "GAIDictionaryBuilder.h"
 
 static NSString * const kXHInstagramFooter = @"InstagramFooter";
 
@@ -114,19 +112,7 @@ static NSString * const kXHInstagramFooter = @"InstagramFooter";
     [self.view setBackgroundColor:[UIColor mainBgColor]];
     [self _setupCollectionView];
     
-    id tracker = [[GAI sharedInstance] defaultTracker];
-    
-    // This screen name value will remain set on the tracker and sent with
-    // hits until it is set to a new value or to nil.
-    [tracker set:@"Detail List"
-           value:@"Detail List"];
-    
-    // Previous V3 SDK versions
-    // [tracker send:[[GAIDictionaryBuilder createAppView] build]];
-    
-    // New SDK versions
-    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
-    
+
     //AD
 //    // 在屏幕顶部创建标准尺寸的视图。
 //    // 在GADAdSize.h中对可用的AdSize常量进行说明。
