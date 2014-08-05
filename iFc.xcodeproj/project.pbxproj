@@ -1412,9 +1412,14 @@
 					"$(PROJECT_DIR)/iFc/Libs/Ad/Adapter/AdapterLibs",
 				);
 				OTHER_LDFLAGS = "-ObjC";
+<<<<<<< HEAD
 				PRODUCT_NAME = "iFace+";
 				PROVISIONING_PROFILE = "BAB2B1BA-60AF-4AF7-9192-81C2EE02EDCF";
 
+=======
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+>>>>>>> FETCH_HEAD
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1452,9 +1457,14 @@
 					"$(PROJECT_DIR)/iFc/Libs/Ad/Adapter/AdapterLibs",
 				);
 				OTHER_LDFLAGS = "-ObjC";
+<<<<<<< HEAD
 				PRODUCT_NAME = "iFace+";
 				PROVISIONING_PROFILE = "BAB2B1BA-60AF-4AF7-9192-81C2EE02EDCF";
 
+=======
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+>>>>>>> FETCH_HEAD
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
