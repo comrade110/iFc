@@ -15,6 +15,7 @@
 #import "GADBannerView.h"
 
 #define IMAGESIZE 2
+#define ToolViewHeight 50.f
 
 static const NSTimeInterval kAnimationIntervalTransform = 0.2;
 
@@ -27,6 +28,8 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     UIImage *thumnailImage;
     UIImageView *tempView;
     UIView *toolsView;
+    
+    CGFloat kheight;
     
     SEL showProgress;
     EditorButton *closeBtn;
@@ -94,6 +97,8 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     [super viewDidLoad];
     
     adsRemoved = [[NSUserDefaults standardUserDefaults] boolForKey:CJPAdsPurchasedKey];
+    
+    kheight = kXHISIPAD?ToolViewHeight*2:ToolViewHeight;
     
     // 初始化广告
     [self preLoadInterstitial];
@@ -248,7 +253,7 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
         adMobView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait];
         adMobView.adUnitID = MY_BANNER_UNIT_ID;
         adMobView.delegate = self;
-        adMobView.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height, adMobView.width, adMobView.height);
+        adMobView.frame = CGRectMake(0, self.view.height, adMobView.width, adMobView.height);
         adMobView.hidden = YES;
         adMobView.rootViewController = self;
         request =[GADRequest request];
@@ -264,8 +269,8 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     if (adMobView) {
         [UIView animateWithDuration:0.25
                          animations:^{
-                             toolsView.frame = CGRectMake(0, self.view.frame.size.height-50, self.view.frame.size.width, 50);
-                             adMobView.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height, adMobView.width, adMobView.height);
+                             toolsView.frame = CGRectMake(0, self.view.frame.size.height-kheight, self.view.frame.size.width, kheight);
+                             adMobView.frame = CGRectMake(0, self.view.height, adMobView.width, adMobView.height);
                          }
                          completion:^(BOOL finished){
                              
@@ -289,7 +294,7 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
                      animations:^{
                          adMobView.frame = CGRectMake(0, self.view.frame.size.height-adMobView.height, adMobView.width, adMobView.height);
                          adMobView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-                         toolsView.frame = CGRectMake(0, self.view.frame.size.height-100, self.view.frame.size.width, 50);
+                         toolsView.frame = CGRectMake(0, self.view.frame.size.height-kheight-adMobView.height, self.view.frame.size.width, kheight);
                      }
                      completion:^(BOOL finished){
                      }];
@@ -340,16 +345,16 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
 -(void)bulidToolsView
 {
 
-    toolsView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-50, self.view.frame.size.width, 50)];
+    toolsView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-kheight, self.view.frame.size.width, kheight)];
     toolsView.backgroundColor = [UIColor colorWithWhite:.1f alpha:.3f];
     toolsView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     [self.view addSubview:toolsView];
     [self.view bringSubviewToFront:toolsView];
     
-
+    NSInteger scanNum = kXHISIPAD?2:1;
     
     // 照片按钮
-    getPhotoBtn = [[EditorButton alloc] initWithFrame:CGRectMake(10, 3, 44, 44)];
+    getPhotoBtn = [[EditorButton alloc] initWithFrame:CGRectMake(10, 3, 44*scanNum, 44*scanNum)];
     [getPhotoBtn setTitle:NSLocalizedString(@"Photo", nil) forState:UIControlStateNormal];
     [getPhotoBtn handleControlWithBlock:^{
         if (!isBGDone) {
@@ -360,7 +365,7 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     [toolsView addSubview:getPhotoBtn];
     
     //编辑按钮
-    closeBtn = [[EditorButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
+    closeBtn = [[EditorButton alloc] initWithFrame:CGRectMake(0, 0, 44*scanNum, 44*scanNum)];
     [closeBtn setTitle:NSLocalizedString(@"Done", nil) forState:UIControlStateNormal];
     closeBtn.hidden = YES;
     [closeBtn handleControlWithBlock:^{
@@ -386,7 +391,7 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     }];
 //    [toolsView addSubview:closeBtn];
     
-    editBtn = [[EditorButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
+    editBtn = [[EditorButton alloc] initWithFrame:CGRectMake(0, 0, 44*scanNum, 44*scanNum)];
     [editBtn setTitle:NSLocalizedString(@"Edit", nil) forState:UIControlStateNormal];
     [editBtn handleControlWithBlock:^{
         if (!isBGDone) {
@@ -415,7 +420,7 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     }];
 //    [toolsView addSubview:editBtn];
     
-    UIView *boxView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-21, 2, 45, 45)];
+    UIView *boxView = [[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-21*scanNum, 2, 45*scanNum, 45*scanNum)];
     [boxView addSubview:closeBtn];
     [boxView addSubview:editBtn];
     
@@ -423,7 +428,7 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     
     
     //保存按钮
-    saveBtn = [[EditorButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 54, 3, 44, 44)];
+    saveBtn = [[EditorButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 44*scanNum-10, 3, 44*scanNum, 44*scanNum)];
     [saveBtn setTitle:NSLocalizedString(@"Save", nil) forState:UIControlStateNormal];
     [saveBtn handleControlWithBlock:^{
         if (!isBGDone) {

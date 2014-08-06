@@ -1419,7 +1419,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "iFace+";
-				PROVISIONING_PROFILE = "BAB2B1BA-60AF-4AF7-9192-81C2EE02EDCF";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1458,7 +1458,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "iFace+";
-				PROVISIONING_PROFILE = "BAB2B1BA-60AF-4AF7-9192-81C2EE02EDCF";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

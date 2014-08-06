@@ -18,8 +18,8 @@
         // Initialization code
         
         [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        self.titleLabel.font = [UIFont fsFontWithSize:14.f];
-        self.layer.cornerRadius = 22.f;
+        self.titleLabel.font = kXHISIPAD?[UIFont fsFontWithSize:18.f]:[UIFont fsFontWithSize:14.f];
+        self.layer.cornerRadius = kXHISIPAD?44.f:22.f;
         self.layer.masksToBounds = YES;
         self.backgroundColor = [UIColor colorWithWhite:.2f alpha:.5f];
         self.layer.borderColor = [UIColor colorWithWhite:.8f alpha:.7f].CGColor;
