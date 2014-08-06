@@ -76,19 +76,11 @@
 //    }];
 //    
 	// Do any additional setup after loading the view, typically from a nib.
-}
-
-
-- (void)removeAds
-{
-    [[CJPAdController sharedManager] removeBanner:@"iAd" permanently:YES];
-    [[CJPAdController sharedManager] removeBanner:@"AdMob" permanently:YES];
     
-    // Or if this was from an in-app purchase, you could simply call the following
-    // which would save a boolean in UserDefaults so the app remembers not to create ads
-    // next time it starts up.
-    //[[CJPAdController sharedManager] removeAllAdsForever];
+    [[CJPAdController sharedInstance] removeAds];
 }
+
+
 
 
 -(void)setupLeftMenuButton{
@@ -174,6 +166,8 @@
 
     FSSubTypeViewController *subTypeVC = [[FSSubTypeViewController alloc] init];
     subTypeVC.fid = [NSNumber numberWithInt:(int)indexPath.row+1];
+    
+//    [[CJPAdController sharedInstance] startWithViewController:subTypeVC];
     [self.navigationController pushViewController:subTypeVC animated:YES];
 }
 

@@ -17,7 +17,7 @@
 {
     [PFPurchase addObserverForProduct:Product_NOiAd block:^(SKPaymentTransaction *transaction) {
         // Write business logic that should run once this product is purchased.
-        [[CJPAdController sharedManager] removeAllAdsForever];
+        [[CJPAdController sharedInstance] removeAdsAndMakePermanent:YES andRemember:YES];
         
     }];
 
