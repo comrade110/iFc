@@ -9,6 +9,8 @@
 #import "FSViewController.h"
 #import "MMDrawerBarButtonItem.h"
 #import "FSSubTypeViewController.h"
+#import "InstagramCollectionViewController.h"
+#import "InstagramThumbnailCollectionViewController.h"
 
 @interface FSViewController ()<UITableViewDelegate,UITableViewDataSource>{
     
@@ -163,12 +165,35 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    switch (indexPath.row) {
+        case 0:{
+        
+            FSSubTypeViewController *subTypeVC = [[FSSubTypeViewController alloc] init];
+            subTypeVC.fid = [NSNumber numberWithInt:(int)indexPath.row+1];
+            [self.navigationController pushViewController:subTypeVC animated:YES];
+        }
+            
+            break;
+        case 1:{
+            PFObject *object = _quaryArr[indexPath.row];
+            
+            InstagramCollectionViewController *instagramCollectionViewController = [InstagramThumbnailCollectionViewController sharedInstagramCollectionViewControllerWithObjectId:object.objectId];
+            NSString *titleStr = nil;
+            if ([[FSConfig getCurrentLanguage] isEqualToString:@"zh-Hans"]) {
+                titleStr = object[@"name_cn"];
+            }else if ([[FSConfig getCurrentLanguage] isEqualToString:@"zh-Hant"]){
+                titleStr = object[@"name_hk"];
+            }else{
+                titleStr= object[@"name_en"];
+            }
+            instagramCollectionViewController.title = titleStr;
+            [self.navigationController pushViewController:instagramCollectionViewController animated:YES];
+        }
+            break;
+        default:
+            break;
+    }
 
-    FSSubTypeViewController *subTypeVC = [[FSSubTypeViewController alloc] init];
-    subTypeVC.fid = [NSNumber numberWithInt:(int)indexPath.row+1];
-    
-//    [[CJPAdController sharedInstance] startWithViewController:subTypeVC];
-    [self.navigationController pushViewController:subTypeVC animated:YES];
 }
 
 
