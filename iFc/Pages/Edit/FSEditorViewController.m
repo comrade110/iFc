@@ -12,12 +12,13 @@
 #import "UIImage+Utility.h"
 #import "MBProgressHUD.h"
 #import "GADInterstitial.h"
+#import "GADBannerView.h"
 
 #define IMAGESIZE 2
 
 static const NSTimeInterval kAnimationIntervalTransform = 0.2;
 
-@interface FSEditorViewController ()<UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate,UIGestureRecognizerDelegate,GADInterstitialDelegate>{
+@interface FSEditorViewController ()<UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate,UIGestureRecognizerDelegate,GADInterstitialDelegate,GADBannerViewDelegate>{
 
     UIView *saveView;
     PFImageView *imageView;
@@ -25,6 +26,7 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     UIView *usershadowImageView;
     UIImage *thumnailImage;
     UIImageView *tempView;
+    UIView *toolsView;
     
     SEL showProgress;
     EditorButton *closeBtn;
@@ -37,8 +39,9 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     MBProgressHUD *hud;
     BOOL isBGDone;
     GADRequest *request;
-    
+    GADBannerView *adMobView;
      GADInterstitial *interstitial_;
+    BOOL  adsRemoved;
 }
 
 //@property(nonatomic,strong) UIView *saveView;   //For save
@@ -90,8 +93,11 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
 {
     [super viewDidLoad];
     
+    adsRemoved = [[NSUserDefaults standardUserDefaults] boolForKey:CJPAdsPurchasedKey];
+    
     // 初始化广告
     [self preLoadInterstitial];
+    [self buildAdView];
     
     self.view.backgroundColor = [UIColor whiteColor];
     
@@ -111,6 +117,8 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     progressView.progress=0.0f;
     progressView.hidden = YES;
     [imageView addSubview:progressView];
+    
+    
     
     WEAKSELF
 //
@@ -148,6 +156,7 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
         hud.progress = (float)percentDone/100;
         if (hud.progress == 1) {
             isBGDone = YES;
+            [self removeAdView];
         }
         
     }];
@@ -193,7 +202,7 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
 -(void)preLoadInterstitial{
     
     //AD
-    BOOL  adsRemoved = [[NSUserDefaults standardUserDefaults] boolForKey:kAdsPurchasedKey];
+    
     if (!adsRemoved) {
         interstitial_ = [[GADInterstitial alloc] init];
         interstitial_.adUnitID = MY_INTERSTITIAL_UNIT_ID;
@@ -231,6 +240,64 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     NSLog(@"full screen Fail To received, will try again decriptiom:%@",error.description);
     [NSTimer scheduledTimerWithTimeInterval:3.0f target:self selector:@selector(preLoadInterstitial) userInfo:nil repeats:NO];
     
+}
+#pragma mark - banner contorl
+
+-(void)buildAdView{
+    if (!adsRemoved) {
+        adMobView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait];
+        adMobView.adUnitID = MY_BANNER_UNIT_ID;
+        adMobView.delegate = self;
+        adMobView.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height, adMobView.width, adMobView.height);
+        adMobView.hidden = YES;
+        adMobView.rootViewController = self;
+        request =[GADRequest request];
+        request.testDevices = @[@"2DEA15FF-9698-505D-931C-68E2B9A3CEFF",
+                                @"f2751b6ab2923ef5171dfb289dc50c9678520ecd"];
+        [adMobView loadRequest:request];
+        [self.view addSubview:adMobView];
+    }
+
+}
+
+-(void)removeAdView{
+    if (adMobView) {
+        [UIView animateWithDuration:0.25
+                         animations:^{
+                             toolsView.frame = CGRectMake(0, self.view.frame.size.height-50, self.view.frame.size.width, 50);
+                             adMobView.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height, adMobView.width, adMobView.height);
+                         }
+                         completion:^(BOOL finished){
+                             
+                             [adMobView removeFromSuperview];
+                             adMobView.delegate = nil;
+                             adMobView = nil;
+                         }];
+    }
+
+
+}
+
+- (void)adViewDidReceiveAd:(GADBannerView *)view{
+    
+    if (isBGDone) {
+        [self removeAdView];
+        return;
+    }
+    adMobView.hidden = NO;
+    [UIView animateWithDuration:0.25
+                     animations:^{
+                         adMobView.frame = CGRectMake(0, self.view.frame.size.height-adMobView.height, adMobView.width, adMobView.height);
+                         adMobView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+                         toolsView.frame = CGRectMake(0, self.view.frame.size.height-100, self.view.frame.size.width, 50);
+                     }
+                     completion:^(BOOL finished){
+                     }];
+}
+
+- (void)adView:(GADBannerView *)view didFailToReceiveAdWithError:(GADRequestError *)error{
+
+    [self buildAdView];
 }
 
 #pragma mark - Build Views
@@ -273,7 +340,7 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
 -(void)bulidToolsView
 {
 
-    UIView *toolsView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-50, self.view.frame.size.width, 50)];
+    toolsView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-50, self.view.frame.size.width, 50)];
     toolsView.backgroundColor = [UIColor colorWithWhite:.1f alpha:.3f];
     toolsView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     [self.view addSubview:toolsView];
@@ -406,7 +473,7 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     if(userImageView.image){
         NSArray *excludedActivityTypes = @[UIActivityTypePostToVimeo,UIActivityTypeMessage];
 //        NSString *str = [NSString stringWithFormat:@"%@ http://itunes.apple.com/app/iface+/id904153091?mt=8",NSLocalizedString(@"iFace+ make your life more colorful", nil)];
-        NSString *str = [NSString stringWithFormat:@"%@ http://goo.gl/L9jNZw",NSLocalizedString(@"iFace+ make your life more colorful", nil)];
+        NSString *str = [NSString stringWithFormat:@"%@ http://itunes.apple.com/app/iface+/id904153091?mt=8",NSLocalizedString(@"iFace+ make your life more colorful", nil)];
         
         UIActivityViewController *activityView = [[UIActivityViewController alloc] initWithActivityItems:@[str,[self mergeImage]] applicationActivities:nil];
         activityView.excludedActivityTypes = excludedActivityTypes;

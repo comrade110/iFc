@@ -81,6 +81,7 @@
 		D3B33D20197E5B7A00BC5217 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B33D1F197E5B7A00BC5217 /* libiconv.dylib */; };
 		D3B33D22197E5B8900BC5217 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B33D21197E5B8900BC5217 /* libstdc++.dylib */; };
 		D3B33D24197E5B8F00BC5217 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B33D23197E5B8F00BC5217 /* libz.dylib */; };
+		D3B4907B1991D151006A4606 /* ADContorl.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B4907A1991D151006A4606 /* ADContorl.m */; };
 		D3B4FDF31974C7D20078B05E /* InstagramCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B4FDEE1974C7D20078B05E /* InstagramCollectionViewController.m */; };
 		D3B4FDF41974C7D20078B05E /* InstagramPictureCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B4FDF01974C7D20078B05E /* InstagramPictureCollectionViewController.m */; };
 		D3B4FDF51974C7D20078B05E /* InstagramThumbnailCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B4FDF21974C7D20078B05E /* InstagramThumbnailCollectionViewController.m */; };
@@ -300,6 +301,8 @@
 		D3B33D1F197E5B7A00BC5217 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		D3B33D21197E5B8900BC5217 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		D3B33D23197E5B8F00BC5217 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		D3B490791991D151006A4606 /* ADContorl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADContorl.h; sourceTree = "<group>"; };
+		D3B4907A1991D151006A4606 /* ADContorl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADContorl.m; sourceTree = "<group>"; };
 		D3B4FDED1974C7D20078B05E /* InstagramCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramCollectionViewController.h; sourceTree = "<group>"; };
 		D3B4FDEE1974C7D20078B05E /* InstagramCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramCollectionViewController.m; sourceTree = "<group>"; };
 		D3B4FDEF1974C7D20078B05E /* InstagramPictureCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramPictureCollectionViewController.h; sourceTree = "<group>"; };
@@ -644,6 +647,8 @@
 				D3A9626F19763F99007C561C /* SinglePicManager.m */,
 				D3B5C0E319888966002983F0 /* IAPContorl.h */,
 				D3B5C0E419888966002983F0 /* IAPContorl.m */,
+				D3B490791991D151006A4606 /* ADContorl.h */,
+				D3B4907A1991D151006A4606 /* ADContorl.m */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -1201,6 +1206,7 @@
 				D3DBBD0A198641C8001502E1 /* CJPAdController.m in Sources */,
 				D396F5741973B69300F21999 /* MMExampleDrawerVisualStateManager.m in Sources */,
 				D396F5611973B5C100F21999 /* UIButton+Block.m in Sources */,
+				D3B4907B1991D151006A4606 /* ADContorl.m in Sources */,
 				D3B2278D198B398B0048B436 /* FBMissingSymbols.m in Sources */,
 				BEE778DC197572B5000CB8AC /* UIViewController+ADFlipTransition.m in Sources */,
 				D396F5641973B5C100F21999 /* NSObject+Objects.m in Sources */,
@@ -1413,7 +1419,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "iFace+";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "BAB2B1BA-60AF-4AF7-9192-81C2EE02EDCF";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1452,7 +1458,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "iFace+";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "BAB2B1BA-60AF-4AF7-9192-81C2EE02EDCF";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -160,7 +160,7 @@
     id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:self.view arrowDirect:UIPopoverArrowDirectionAny];
     
-    NSString *str = [NSString stringWithFormat:@"%@ http://goo.gl/L9jNZw",NSLocalizedString(@"iFace+ make your life more colorful", nil)];
+    NSString *str = [NSString stringWithFormat:@"%@ http://itunes.apple.com/app/iface+/id904153091?mt=8",NSLocalizedString(@"iFace+ make your life more colorful", nil)];
     id<ISSContent> publishContent = [ShareSDK content:str
                                        defaultContent:@"默认分享内容，没内容时显示"
                                                 image:nil

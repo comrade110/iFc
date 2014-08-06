@@ -122,9 +122,16 @@
     [drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
     
 
-    _adController = [[CJPAdController sharedManager] initWithContentViewController:drawerController];
+    [CJPAdController sharedInstance].adNetworks = @[@(CJPAdNetworkAdMob)];
+    [CJPAdController sharedInstance].adPosition = CJPAdPositionBottom;
+    [CJPAdController sharedInstance].initialDelay = 2.0;
+    // AdMob specific
+    [CJPAdController sharedInstance].adMobUnitID = MY_BANNER_UNIT_ID;
+    [CJPAdController sharedInstance].useAdMobSmartSize = YES;
+    [CJPAdController sharedInstance].testDeviceIDs = @[@"2DEA15FF-9698-505D-931C-68E2B9A3CEFF",@"f2751b6ab2923ef5171dfb289dc50c9678520ecd"];
+    [[CJPAdController sharedInstance] startWithViewController:drawerController];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    [self.window setRootViewController:_adController];
+    [self.window setRootViewController:[CJPAdController sharedInstance]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

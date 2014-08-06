@@ -9,6 +9,8 @@
 #import "FSViewController.h"
 #import "MMDrawerBarButtonItem.h"
 #import "FSSubTypeViewController.h"
+#import "InstagramCollectionViewController.h"
+#import "InstagramThumbnailCollectionViewController.h"
 
 @interface FSViewController ()<UITableViewDelegate,UITableViewDataSource>{
     
@@ -76,19 +78,11 @@
 //    }];
 //    
 	// Do any additional setup after loading the view, typically from a nib.
-}
-
-
-- (void)removeAds
-{
-    [[CJPAdController sharedManager] removeBanner:@"iAd" permanently:YES];
-    [[CJPAdController sharedManager] removeBanner:@"AdMob" permanently:YES];
     
-    // Or if this was from an in-app purchase, you could simply call the following
-    // which would save a boolean in UserDefaults so the app remembers not to create ads
-    // next time it starts up.
-    //[[CJPAdController sharedManager] removeAllAdsForever];
+    [[CJPAdController sharedInstance] removeAds];
 }
+
+
 
 
 -(void)setupLeftMenuButton{
@@ -171,10 +165,35 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    switch (indexPath.row) {
+        case 0:{
+        
+            FSSubTypeViewController *subTypeVC = [[FSSubTypeViewController alloc] init];
+            subTypeVC.fid = [NSNumber numberWithInt:(int)indexPath.row+1];
+            [self.navigationController pushViewController:subTypeVC animated:YES];
+        }
+            
+            break;
+        case 1:{
+            PFObject *object = _quaryArr[indexPath.row];
+            
+            InstagramCollectionViewController *instagramCollectionViewController = [InstagramThumbnailCollectionViewController sharedInstagramCollectionViewControllerWithObjectId:object.objectId];
+            NSString *titleStr = nil;
+            if ([[FSConfig getCurrentLanguage] isEqualToString:@"zh-Hans"]) {
+                titleStr = object[@"name_cn"];
+            }else if ([[FSConfig getCurrentLanguage] isEqualToString:@"zh-Hant"]){
+                titleStr = object[@"name_hk"];
+            }else{
+                titleStr= object[@"name_en"];
+            }
+            instagramCollectionViewController.title = titleStr;
+            [self.navigationController pushViewController:instagramCollectionViewController animated:YES];
+        }
+            break;
+        default:
+            break;
+    }
 
-    FSSubTypeViewController *subTypeVC = [[FSSubTypeViewController alloc] init];
-    subTypeVC.fid = [NSNumber numberWithInt:(int)indexPath.row+1];
-    [self.navigationController pushViewController:subTypeVC animated:YES];
 }
 
 
