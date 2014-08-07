@@ -123,6 +123,9 @@
 		D3B80FD919739745005F0832 /* cellBg.png in Resources */ = {isa = PBXBuildFile; fileRef = D3B80FD819739745005F0832 /* cellBg.png */; };
 		D3B80FDB1973A048005F0832 /* placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3B80FDA1973A048005F0832 /* placeholder@2x.png */; };
 		D3B8EA9F1990842B00129579 /* FSCopyrightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3B8EA9E1990842B00129579 /* FSCopyrightViewController.m */; };
+		D3B954BC1993205A00D76865 /* jiaobiao_en@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3B954BA1993205A00D76865 /* jiaobiao_en@2x.png */; };
+		D3B954BD1993205A00D76865 /* jiaobiao_cn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3B954BB1993205A00D76865 /* jiaobiao_cn@2x.png */; };
+		D3B954BF19935CE400D76865 /* restore_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3B954BE19935CE400D76865 /* restore_icon@2x.png */; };
 		D3BB5ACB19876FAD00F06719 /* icon-57.png in Resources */ = {isa = PBXBuildFile; fileRef = D3BB5ACA19876FAD00F06719 /* icon-57.png */; };
 		D3BB5ACF1987704700F06719 /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = D3BB5ACC1987704700F06719 /* icon-72.png */; };
 		D3BB5AD01987704700F06719 /* icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = D3BB5ACD1987704700F06719 /* icon-76.png */; };
@@ -130,7 +133,6 @@
 		D3C39A7D198F204E0031E570 /* FSErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C39A7C198F204E0031E570 /* FSErrorView.m */; };
 		D3C39A7F198F21760031E570 /* noNetwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3C39A7E198F21760031E570 /* noNetwork@2x.png */; };
 		D3C7030D197F4A3A000079C8 /* CopyConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3C702E6197F4A3A000079C8 /* CopyConnection.framework */; };
-		D3C7030E197F4A3B000079C8 /* DouBanConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3C702E7197F4A3A000079C8 /* DouBanConnection.framework */; };
 		D3C7030F197F4A3B000079C8 /* FacebookConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3C702E8197F4A3A000079C8 /* FacebookConnection.framework */; };
 		D3C70310197F4A3B000079C8 /* FlickrConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3C702E9197F4A3A000079C8 /* FlickrConnection.framework */; };
 		D3C70311197F4A3B000079C8 /* InstagramConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3C702EA197F4A3A000079C8 /* InstagramConnection.framework */; };
@@ -366,6 +368,9 @@
 		D3B80FDA1973A048005F0832 /* placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placeholder@2x.png"; sourceTree = "<group>"; };
 		D3B8EA9D1990842B00129579 /* FSCopyrightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCopyrightViewController.h; sourceTree = "<group>"; };
 		D3B8EA9E1990842B00129579 /* FSCopyrightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCopyrightViewController.m; sourceTree = "<group>"; };
+		D3B954BA1993205A00D76865 /* jiaobiao_en@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jiaobiao_en@2x.png"; sourceTree = "<group>"; };
+		D3B954BB1993205A00D76865 /* jiaobiao_cn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jiaobiao_cn@2x.png"; sourceTree = "<group>"; };
+		D3B954BE19935CE400D76865 /* restore_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "restore_icon@2x.png"; sourceTree = "<group>"; };
 		D3BB5ACA19876FAD00F06719 /* icon-57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-57.png"; sourceTree = "<group>"; };
 		D3BB5ACC1987704700F06719 /* icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-72.png"; sourceTree = "<group>"; };
 		D3BB5ACD1987704700F06719 /* icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-76.png"; sourceTree = "<group>"; };
@@ -380,7 +385,6 @@
 		D3C39A84198F357B0031E570 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D3C39A85198F357B0031E570 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D3C702E6197F4A3A000079C8 /* CopyConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CopyConnection.framework; sourceTree = "<group>"; };
-		D3C702E7197F4A3A000079C8 /* DouBanConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DouBanConnection.framework; sourceTree = "<group>"; };
 		D3C702E8197F4A3A000079C8 /* FacebookConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookConnection.framework; sourceTree = "<group>"; };
 		D3C702E9197F4A3A000079C8 /* FlickrConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FlickrConnection.framework; sourceTree = "<group>"; };
 		D3C702EA197F4A3A000079C8 /* InstagramConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = InstagramConnection.framework; sourceTree = "<group>"; };
@@ -452,7 +456,6 @@
 				D3B80FC91973764B005F0832 /* MobileCoreServices.framework in Frameworks */,
 				D3C70317197F4A3B000079C8 /* WeChatConnection.framework in Frameworks */,
 				D3C70328197F4A3B000079C8 /* ShareSDKShareActionSheet.framework in Frameworks */,
-				D3C7030E197F4A3B000079C8 /* DouBanConnection.framework in Frameworks */,
 				D3C70325197F4A3B000079C8 /* ShareSDKiPadSimpleShareViewUI.framework in Frameworks */,
 				D3C70323197F4A3B000079C8 /* ShareSDKFlatShareViewUI.framework in Frameworks */,
 				D3B80FC719737645005F0832 /* libz.1.1.3.dylib in Frameworks */,
@@ -678,6 +681,7 @@
 		D3AF82541982586300B9A0A4 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				D3B954BE19935CE400D76865 /* restore_icon@2x.png */,
 				D3AF8263198259B800B9A0A4 /* upgrade_icon@2x.png */,
 				D3AF82551982586A00B9A0A4 /* tellFriends_icon@2x.png */,
 				D3AF82571982586A00B9A0A4 /* rate_icon@2x.png */,
@@ -848,6 +852,8 @@
 		D3B80FB4197374BF005F0832 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D3B954BA1993205A00D76865 /* jiaobiao_en@2x.png */,
+				D3B954BB1993205A00D76865 /* jiaobiao_cn@2x.png */,
 				D3C39A7E198F21760031E570 /* noNetwork@2x.png */,
 				BEC3EE84198937E600E14FF9 /* Default@2x.png */,
 				BEC3EE8219892E3300E14FF9 /* placeHolder3-hd@2x.png */,
@@ -918,7 +924,6 @@
 			isa = PBXGroup;
 			children = (
 				D3C702E6197F4A3A000079C8 /* CopyConnection.framework */,
-				D3C702E7197F4A3A000079C8 /* DouBanConnection.framework */,
 				D3C702E8197F4A3A000079C8 /* FacebookConnection.framework */,
 				D3C702E9197F4A3A000079C8 /* FlickrConnection.framework */,
 				D3C702EA197F4A3A000079C8 /* InstagramConnection.framework */,
@@ -1113,7 +1118,9 @@
 				D339D5DE1978FCB1002E1A4B /* edit_back@2x.png in Resources */,
 				BEC57FBA1982BD7400198B94 /* icon-58.png in Resources */,
 				D339D5F719790220002E1A4B /* contrast.png in Resources */,
+				D3B954BD1993205A00D76865 /* jiaobiao_cn@2x.png in Resources */,
 				D3B80FDB1973A048005F0832 /* placeholder@2x.png in Resources */,
+				D3B954BF19935CE400D76865 /* restore_icon@2x.png in Resources */,
 				D3AF825B1982586A00B9A0A4 /* tellFriends_icon@2x.png in Resources */,
 				D3C70324197F4A3B000079C8 /* ShareSDKiPadSimpleShareViewUI.bundle in Resources */,
 				D396F57B1973BD4600F21999 /* Localizable.strings in Resources */,
@@ -1142,6 +1149,7 @@
 				BEC57FBC1982BD7400198B94 /* icon-144.png in Resources */,
 				D3B2E58F197CF3DD007C3605 /* peple_bg@2x.png in Resources */,
 				D3C70326197F4A3B000079C8 /* ShareSDKiPhoneSimpleShareViewUI.bundle in Resources */,
+				D3B954BC1993205A00D76865 /* jiaobiao_en@2x.png in Resources */,
 				D339D5DA1978D30D002E1A4B /* tiaose@2x.png in Resources */,
 				D3C70319197F4A3B000079C8 /* ShareSDKLocalizable.strings in Resources */,
 				D3C7031A197F4A3B000079C8 /* Resource.bundle in Resources */,

@@ -6,6 +6,6 @@
   Copyright (c) 2014年 Fuleco studio. All rights reserved.
 */
 
-"normal" = "person";
-"animal" = "cat";
+"Human" = "Human";
+"Animals" = "Animals";
 "Choose Photo" = "Choose Photo";

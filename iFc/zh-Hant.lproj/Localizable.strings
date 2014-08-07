@@ -6,8 +6,8 @@
   Copyright (c) 2014年 Fuleco studio. All rights reserved.
 */
 
-"normal" = "普通";
-"animal" = "動物";
+"Human" = "人物";
+"Animals" = "動物";
 "Home" = "首頁";
 "Choose Photo" = "選擇照片";
 "Cancel" = "取消";
@@ -24,6 +24,7 @@
 "Continue" = "繼續";
 "Send Successfully" = "發送成功！";
 "Buy" = "購買";
+"Purchase failed" = "購買失敗";
 "Purchase successfully. Enjoy!" = "購買成功，祝你開心";
 "All images you downloaded will be cleared" = "之前您下載的圖片將會被清空，是否繼續？";
 "Saved successfully" = "保存成功";
@@ -37,10 +38,11 @@
 "Use Photo from Library" = "從相冊選取照片";
 "Take Photo with Camera" = "用相機拍照";
 "iFace+ make your life more colorful" = "大家來玩iFace+吧！超有趣！";
+"Restore" = "恢復";
 
 "Rate" = "打分";
 "Tell Friends" = "分享";
-"Upgrade" = "去廣告";
+"Upgrade" = "升級版本";
 "Clear Cached" = "緩存清理";
 "Choose Photo" = "選擇照片";
 "Need to add a photo first before editing" = "編輯前需要添加一張照片";

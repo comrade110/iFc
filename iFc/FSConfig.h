@@ -12,6 +12,7 @@
 #import "UIButton+Block.h"
 #import "CJPAdController.h"
 #import "FSErrorView.h"
+#import "IAPContorl.h"
 
 #define MY_BANNER_UNIT_ID @"ca-app-pub-4053211758441927/7334362495"
 #define MY_INTERSTITIAL_UNIT_ID @"ca-app-pub-4053211758441927/5166298497"
@@ -20,11 +21,14 @@
 #define FSWINDOW [[[UIApplication sharedApplication] delegate] window]
 
 
+
 //业务
 #define DELEGATEADCOUNT 3
 #define EDITVCADCOUNT 3
 #define LaunchMAXCount 5
 #define SAVEMAXCOUNT 5
+
+#define isPurchased [[NSUserDefaults standardUserDefaults] boolForKey:CJPAdsPurchasedKey]
 
 
 @interface FSConfig : NSObject

@@ -23,6 +23,7 @@ static NSString * const kXHInstagramFooter = @"InstagramFooter";
     UIView *bottomADView;
     NSDate *startDate;
     NSDate *endData;
+    UIAlertView *purchaseAlertView;
 }
 
 @property(nonatomic,assign) NSUInteger curPage;
@@ -225,23 +226,46 @@ static NSString * const kXHInstagramFooter = @"InstagramFooter";
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     
-    
-    switch (buttonIndex) {
-        case 0:
-            break;
-        case 1:
-            // 跳转到APP STORE
-            [self evaluate];
-            break;
-        case 2:
-            // 不再提示
-            [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"saveCount"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-            break;
-            
-        default:
-            break;
+    if (alertView == purchaseAlertView) {
+        switch (buttonIndex) {
+            case 0:
+                NSLog(@"cancel");
+                break;
+            case 1:{
+                // 购买
+                NSLog(@"case 1");
+                [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                [IAPContorl showAlertByID:Product_NOiAd withCompletionBlock:^{
+                    [MBProgressHUD hideHUDForView:self.view animated:YES];
+                }];
+            }
+
+                break;
+                
+            default:
+                break;
+        }
+        
+    }else{
+        switch (buttonIndex) {
+            case 0:
+                break;
+            case 1:
+                // 跳转到APP STORE
+                [self evaluate];
+                break;
+            case 2:
+                // 不再提示
+                [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"saveCount"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+                break;
+                
+            default:
+                break;
+        }
     }
+    
+
     
 }
 
@@ -302,11 +326,11 @@ static NSString * const kXHInstagramFooter = @"InstagramFooter";
 #pragma mark - UICollectionViewDelegate
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    InstagramCell *instagramCell =  [collectionView dequeueReusableCellWithReuseIdentifier:kXHInstagramCell forIndexPath:indexPath];
+    InstagramCell *instagramCell =  [collectionView dequeueReusableCellWithReuseIdentifier:kXHInstagramCell forIndexPath:indexPath];	
     
     if ([self.mediaArray count] > 0) {
          PFObject* entity = [self.mediaArray objectAtIndex:indexPath.row];
-        [instagramCell setEntity:entity andIndexPath:indexPath];
+        [instagramCell setEntity:entity andIndexPath:indexPath WithPurchased:isPurchased];
         
     }
     
@@ -347,6 +371,14 @@ static NSString * const kXHInstagramFooter = @"InstagramFooter";
     FSEditorViewController *editorVC = [[FSEditorViewController alloc] init];
     editorVC.bgImg = cell.imageView.image;
     [SinglePicManager manager].entity = cell.entity;
+    
+    if ([cell.entity[@"isVIP"] boolValue]) {
+        if (!isPurchased) {
+            purchaseAlertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Hi，Like this picture?", nil) message:NSLocalizedString(@"Upgrade to the full version you can use all the features, and all ads will be removed", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitles:NSLocalizedString(@"Upgrade", nil), nil];
+            [purchaseAlertView show];
+            return;
+        }
+    }
     [self flipToViewController:editorVC fromItemAtIndexPath:indexPath withSourceSnapshotImage:cell.imageView.image andDestinationSnapshot:cell.imageView.image withCompletion:^{
          [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
       }];

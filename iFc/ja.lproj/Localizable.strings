@@ -6,8 +6,8 @@
   Copyright (c) 2014年 Fuleco studio. All rights reserved.
 */
 
-"normal" = "normal";
-"animal" = "animal";
+"Human" = "人物";
+"Animals" = "動物";
 "Home" = "トップページ";
 "Choose Photo" = "选択する";
 "Cancel" = "キャンセル";
@@ -24,6 +24,7 @@
 "Continue" = "引き続き";
 "Send Successfully" = "送信するのに成功した！";
 "Buy" = "購買";
+"Purchase failed" = "失败を購入し";
 "Purchase successfully. Enjoy!" = "購入し！——楽しい";
 "All images you downloaded will be cleared" = "前にあなたにダウンロードした画像を空にされかねないと、継続するか?";
 "Saved successfully" = "保存するのに成功した";
@@ -37,6 +38,7 @@
 "Use Photo from Library" = "アルバムから選びの写真を見ている";
 "Take Photo with Camera" = "カメラで写真を撮るの";
 "iFace+ make your life more colorful" = "みんなが游びに来iface +でしょう!面白さのあまり!";
+"Restore" = "復元";
 
 "Rate" = "採点";
 "Tell Friends" = "分かち合い";

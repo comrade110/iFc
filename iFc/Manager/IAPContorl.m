@@ -17,20 +17,25 @@
 {
     [PFPurchase addObserverForProduct:Product_NOiAd block:^(SKPaymentTransaction *transaction) {
         // Write business logic that should run once this product is purchased.
+        if (transaction.transactionState == SKPaymentTransactionStateRestored) {
+            
+            NSLog(@"inter:");
+        }
         [[CJPAdController sharedInstance] removeAdsAndMakePermanent:YES andRemember:YES];
         
     }];
 
 }
 
-+(void)showAlertByID:(NSString*)productId{
++(void)showAlertByID:(NSString*)productId withCompletionBlock:(CompletionBlock)block{
     
     [PFPurchase buyProduct:productId block:^(NSError *error) {
         if (!error) {
             alert(NSLocalizedString(@"Purchase successfully. Enjoy!", nil));
         }else{
-            alert(error.description);
+            alert(NSLocalizedString(@"Purchase failed", nil));
         }
+        block();
     }];
 
     
@@ -38,12 +43,6 @@
 }
 
 
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
 
-    if (buttonIndex == 1) {
-        alert(@"buy");
-        
-    }
-}
 
 @end

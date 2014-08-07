@@ -18,6 +18,6 @@
 @property (nonatomic, assign) NSIndexPath *indexPath;
 @property (nonatomic, assign) BOOL showThumbnail;
 
-- (void)setEntity:(PFObject *)entity andIndexPath:(NSIndexPath *)index;
+- (void)setEntity:(PFObject *)entity andIndexPath:(NSIndexPath *)index WithPurchased:(BOOL)isVIP;
 
 @end

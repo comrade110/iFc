@@ -12,8 +12,9 @@
 #import "InstagramCollectionViewController.h"
 #import "InstagramThumbnailCollectionViewController.h"
 
-@interface FSViewController ()<UITableViewDelegate,UITableViewDataSource>{
+@interface FSViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>{
     
+    UIAlertView *purchaseAlertView;
 }
 
 @property(nonatomic,strong) UITableView *tableView;
@@ -42,7 +43,7 @@
     [self setupLeftMenuButton];
 
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStyleGrouped];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStylePlain];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -55,8 +56,8 @@
                       @"animal_bg"
                       ];
     self.quaryArr = @[
-                      NSLocalizedString(@"normal", nil),
-                      NSLocalizedString(@"animal", nil)
+                      NSLocalizedString(@"Human", nil),
+                      NSLocalizedString(@"Animals", nil)
                       ];
     
 //    [self removeAds];
@@ -85,6 +86,7 @@
 
 
 
+
 -(void)setupLeftMenuButton{
     MMDrawerBarButtonItem * leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
     [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
@@ -99,6 +101,43 @@
     return 1;
 }
 
+#pragma mark - alertview
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    if (alertView == purchaseAlertView) {
+        switch (buttonIndex) {
+            case 0:
+                NSLog(@"cancel");
+                break;
+            case 1:{
+                // 购买
+                NSLog(@"case 1");
+                [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                [IAPContorl showAlertByID:Product_NOiAd withCompletionBlock:^{
+                    [MBProgressHUD hideHUDForView:self.view animated:YES];
+                }];
+            }
+                
+                break;
+                
+            default:
+                break;
+        }
+        
+    }
+    
+    
+}
+-(void)viewWillLayoutSubviews{
+
+    [_tableView reloadData];
+
+}
+
+
+#pragma mark - tableview
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
 
 
@@ -107,8 +146,22 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    return 190.f;
+    return kXHISIPAD?270.f:180.f;
 
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+
+    return kXHISIPAD?30.f:25.f;
+}
+
+-(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+
+    if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1 ){
+        return [[UIView alloc] init];
+    }else{
+        return nil;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -117,37 +170,45 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }else{
+        while ([cell.contentView.subviews lastObject] != nil) {
+            [(UIView *)[cell.contentView.subviews lastObject] removeFromSuperview];
+        }
     }
     cell.backgroundColor = [UIColor clearColor];
 
     // Configure the cell
+    BOOL isPortrait = UIInterfaceOrientationIsPortrait(self.interfaceOrientation);
     
-    UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(cell.width/2-125, 0, 250, 150)];
+    CGFloat scale = kXHISIPAD?1.5:1;
+
+    UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(kXHISIPAD?isPortrait?_tableView.width/2-125*scale:_tableView.height/2-125*scale:_tableView.width/2-125*scale, 0, 250*scale, 150*scale)];
     backView.backgroundColor = [UIColor mainCellColor];
-    backView.layer.cornerRadius = 5.f;
-    backView.layer.borderWidth = .5f;
+    backView.layer.cornerRadius = 5.f*scale;
+    backView.layer.borderWidth = .5f*scale;
     backView.layer.borderColor = [[UIColor colorWithWhite:220./255. alpha:1.f] CGColor];
     backView.layer.shadowOffset = CGSizeMake(0, 3);
     backView.layer.shadowOpacity = .1f;
     backView.layer.shadowColor = [UIColor grayColor].CGColor;
     
-    UIView *boxView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 250, 150)];
-    boxView.layer.cornerRadius = 5.f;
-    boxView.layer.borderWidth = .5f;
+    UIView *boxView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 250*scale, 150*scale)];
+    boxView.layer.cornerRadius = 5.f*scale;
+    boxView.layer.borderWidth = .5f*scale;
     boxView.layer.borderColor = [[UIColor clearColor] CGColor];
     boxView.clipsToBounds = YES;
     boxView.layer.masksToBounds = YES;
     [backView addSubview:boxView];
     
     UIImageView *imageView = [[UIImageView alloc] init];
-    imageView.frame = CGRectMake(0, 0, backView.frame.size.width, backView.frame.size.height - 40);
+    imageView.frame = CGRectMake(0, 0, backView.frame.size.width, backView.frame.size.height - 40*scale);
     imageView.image = [UIImage imageNamed:_imageArr[indexPath.row]];
     [boxView addSubview:imageView];
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 110, 250, 40)];
-    label.font = [UIFont fontWithName:@"Avenir-LightOblique" size:16.f];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 110*scale, 250*scale, 40*scale)];
+    label.font = [UIFont fontWithName:@"Avenir-LightOblique" size:16.f*scale];
     label.textAlignment = NSTextAlignmentCenter;
     label.textColor = [UIColor grayColor];
+    label.backgroundColor = [UIColor clearColor];
     label.text = _quaryArr[indexPath.row];
 
     
@@ -158,6 +219,15 @@
     UIView *tempView = [[UIView alloc] init];
     [cell setBackgroundView:tempView];
     [cell setBackgroundColor:[UIColor clearColor]];
+    
+//    UIImageView *jiaobiaoView = [[UIImageView alloc] initWithFrame:CGRectMake(backView.left-3, backView.top-3, 151/2, 147/2)];
+//    NSString *curLang = [FSConfig getCurrentLanguage] ;
+//    if ([curLang isEqualToString:@"zh-Hans"]||[curLang isEqualToString:@"zh-Hant"]||[curLang isEqualToString:@"ja"]) {
+//        jiaobiaoView.image = [UIImage imageNamed:@"jiaobiao_cn"];
+//    }else{
+//        jiaobiaoView.image = [UIImage imageNamed:@"jiaobiao_en"];
+//    }
+//    [cell addSubview:jiaobiaoView];
     
     return cell;
 }
@@ -175,17 +245,8 @@
             
             break;
         case 1:{
-            PFObject *object = _quaryArr[indexPath.row];
-            
-            InstagramCollectionViewController *instagramCollectionViewController = [InstagramThumbnailCollectionViewController sharedInstagramCollectionViewControllerWithObjectId:object.objectId];
-            NSString *titleStr = nil;
-            if ([[FSConfig getCurrentLanguage] isEqualToString:@"zh-Hans"]) {
-                titleStr = object[@"name_cn"];
-            }else if ([[FSConfig getCurrentLanguage] isEqualToString:@"zh-Hant"]){
-                titleStr = object[@"name_hk"];
-            }else{
-                titleStr= object[@"name_en"];
-            }
+            InstagramCollectionViewController *instagramCollectionViewController = [InstagramThumbnailCollectionViewController sharedInstagramCollectionViewControllerWithObjectId:@"FaA6sJ2Avt"];
+            NSString *titleStr = NSLocalizedString(@"Animal", nil);
             instagramCollectionViewController.title = titleStr;
             [self.navigationController pushViewController:instagramCollectionViewController animated:YES];
         }

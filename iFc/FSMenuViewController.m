@@ -9,7 +9,6 @@
 #import "FSMenuViewController.h"
 #import <ShareSDK/ShareSDK.h>
 #import <StoreKit/StoreKit.h>
-#import "IAPContorl.h"
 
 @interface FSMenuViewController ()<UIAlertViewDelegate,SKStoreProductViewControllerDelegate>{
 
@@ -102,6 +101,7 @@
                            NSLocalizedString(@"Rate", nil),
                            NSLocalizedString(@"Tell Friends", nil),
                            NSLocalizedString(@"Upgrade", nil),
+                           NSLocalizedString(@"Restore", nil),
                            _cachedData,
                            ],
                        @[@"Copyright"],
@@ -112,6 +112,7 @@
                            @"rate_icon",
                            @"tellFriends_icon",
                            @"upgrade_icon",
+                           @"restore_icon",
                            @"clearCached_icon",
                            ],
                        @[@"copyright_icon"],
@@ -241,6 +242,8 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
 
     switch (indexPath.section) {
         case 0:{
@@ -280,17 +283,31 @@
                     
                     break;
                     // share
-                case 1:
+                case 1:{
+                    cell.userInteractionEnabled = NO;
+                    [cell performSelector:@selector(setUserInteractionEnabled:)  withObject:[NSNumber numberWithBool:YES]  afterDelay:0.5];
                     [self sharePressed];
+                }
+
                     break;
                 case 2:{
                  // iap
-                    [IAPContorl showAlertByID:Product_NOiAd];
+                    cell.userInteractionEnabled = NO;
+                    [IAPContorl showAlertByID:Product_NOiAd withCompletionBlock:^{
+                        cell.userInteractionEnabled = YES;
+                    }];
                 }
                     
                     break;
-                 // clean cached
                 case 3:{
+                    // restore
+                    [PFPurchase restore];
+                }
+                    
+                    break;
+                    
+                    // clean cached
+                case 4:{
                     if(![[NSUserDefaults standardUserDefaults] boolForKey:@"FirstCleanCached"]){
                         
                         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"FirstCleanCached"];
@@ -299,13 +316,10 @@
                         [alert show];
                         
                     }else{
-                     [self clearCache];
+                        [self clearCache];
                     }
 
                 }
-                    
-                    break;
-                case 4:
                     break;
                     
                 default:

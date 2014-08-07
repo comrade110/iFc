@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+typedef void (^ CompletionBlock)();
 
 #define Product_NOiAd @"01"
 
@@ -16,6 +17,6 @@
 
 +(void)createProducts;
 
-+(void)showAlertByID:(NSString*)productId;
++(void)showAlertByID:(NSString*)productId withCompletionBlock:(CompletionBlock)block;
 
 @end

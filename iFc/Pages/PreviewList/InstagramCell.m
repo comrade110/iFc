@@ -12,8 +12,8 @@
 
 @implementation InstagramCell
 
-- (void)setEntity:(PFObject *)entity andIndexPath:(NSIndexPath *)index {
-    [self setupCell];
+- (void)setEntity:(PFObject *)entity andIndexPath:(NSIndexPath *)index WithPurchased:(BOOL)isVIP {
+    [self setupCellWith:isVIP];
     _entity = entity;
     if (_entity[@"previewData"]) {
         self.imageView.file = _entity[@"previewData"];
@@ -31,6 +31,14 @@
             [indicatorView stopAnimating];
             [indicatorView removeFromSuperview];
         }];
+        
+        
+        UIImageView *imageVC = (UIImageView*)[self viewWithTag:9999];
+        if ([_entity[@"isVIP"] boolValue]) {
+            imageVC.hidden = NO;
+        }else{
+            imageVC.hidden = YES;
+        }
     }
 //    
 //    if (_entity.photo) {
@@ -71,7 +79,7 @@
     
 }
 
-- (void)setupCell {
+- (void)setupCellWith:(BOOL)isVIP {
     
     self.backgroundColor = [UIColor clearColor];
 
@@ -82,6 +90,18 @@
         
         [_imageView setImage:kXHISIPAD?[UIImage imageNamed:@"placeHolder3-hd"]:[UIImage imageNamed:@"placeHolder3"] borderWidth:5.0 shadowDepth:10.0 controlPointXOffset:30.0 controlPointYOffset:80.0];
         [self.contentView addSubview:_imageView];
+        
+        
+        UIImageView *jiaobiaoView = [[UIImageView alloc] initWithFrame:CGRectMake(self.imageView.left-3, self.imageView.top-3, 151/2, 147/2)];
+        jiaobiaoView.tag = 9999;
+        NSString *curLang = [FSConfig getCurrentLanguage];
+        if ([curLang isEqualToString:@"zh-Hans"]||[curLang isEqualToString:@"zh-Hant"]||[curLang isEqualToString:@"ja"]) {
+            jiaobiaoView.image = [UIImage imageNamed:@"jiaobiao_cn"];
+        }else{
+            jiaobiaoView.image = [UIImage imageNamed:@"jiaobiao_en"];
+        }
+        jiaobiaoView.hidden = YES;
+        [self addSubview:jiaobiaoView];
     }else{
         [_imageView setImage:kXHISIPAD?[UIImage imageNamed:@"placeHolder3-hd"]:[UIImage imageNamed:@"placeHolder3"] borderWidth:5.0 shadowDepth:10.0 controlPointXOffset:30.0 controlPointYOffset:80.0];
     }

@@ -158,7 +158,7 @@
     }
     [cell.contentView addSubview:label];
     PFImageView *imageView = [[PFImageView alloc] initWithFrame:CGRectMake(10, 10, 46.5f, 65.f)];
-    imageView.image = [UIImage imageNamed:@"placeholder"];
+//    imageView.image = [UIImage imageNamed:@"placeholder"];
     imageView.file = (PFFile*)object[@"imageFile"];
     [imageView loadInBackground:^(UIImage *image, NSError *error) {
     }];

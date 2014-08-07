@@ -442,20 +442,20 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
 
 -(void)adjustmentViewBulid{
 
-    saturationSlider = [[UISlider alloc] initWithFrame:CGRectMake(10, 0, 260, 35)];
+    saturationSlider = [[UISlider alloc] initWithFrame:CGRectMake(10, 0, kXHISIPAD?380:260, 35)];
     [self sliderWithValue:1 minimumValue:0 maximumValue:2 image:@"saturation.png" withSlider:saturationSlider action:@selector(sliderDidChange:)];
-    saturationSlider.superview.center = CGPointMake(self.view.width/2, self.view.bottom-80);
+    saturationSlider.superview.center = CGPointMake(self.view.width/2, kXHISIPAD?self.view.bottom-150:self.view.bottom-80);
     
     
-    brightnessSlider = [[UISlider alloc] initWithFrame:CGRectMake(10, 0, 260, 35)];
+    brightnessSlider = [[UISlider alloc] initWithFrame:CGRectMake(10, 0, kXHISIPAD?380:260, 35)];
     [self sliderWithValue:0 minimumValue:-1 maximumValue:1 image:@"brightness.png" withSlider:brightnessSlider action:@selector(sliderDidChange:)];
-    brightnessSlider.superview.center = CGPointMake(20, saturationSlider.superview.top - 150);
+    brightnessSlider.superview.center = CGPointMake(kXHISIPAD?40:20, kXHISIPAD?saturationSlider.superview.top - 200:saturationSlider.superview.top - 150);
     brightnessSlider.superview.transform = CGAffineTransformMakeRotation(-M_PI * 90 / 180.0f);
     
     
-    contrastSlider =[[UISlider alloc] initWithFrame:CGRectMake(10, 0, 260, 35)];
+    contrastSlider =[[UISlider alloc] initWithFrame:CGRectMake(10, 0, kXHISIPAD?380:260, 35)];
     [self sliderWithValue:1 minimumValue:0.5 maximumValue:1.5 image:@"contrast.png" withSlider:contrastSlider action:@selector(sliderDidChange:)];
-    contrastSlider.superview.center = CGPointMake(300, brightnessSlider.superview.center.y);
+    contrastSlider.superview.center = CGPointMake(kXHISIPAD?self.view.width - 40:self.view.width - 20, brightnessSlider.superview.center.y);
     contrastSlider.superview.transform = CGAffineTransformMakeRotation(-M_PI * 90 / 180.0f);
 
 }
@@ -548,7 +548,7 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
 {
     [slider setThumbImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
     [slider setThumbImage:[UIImage imageNamed:imageName] forState:UIControlStateHighlighted];
-    UIView *container = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 280, slider.height)];
+    UIView *container = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kXHISIPAD?400:280, slider.height)];
     container.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.3];
     container.layer.cornerRadius = slider.height/2;
     
