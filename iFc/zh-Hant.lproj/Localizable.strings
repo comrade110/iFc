@@ -42,7 +42,9 @@
 
 "Rate" = "打分";
 "Tell Friends" = "分享";
-"Upgrade" = "升級版本";
+"Upgrade" = "立刻升級";
 "Clear Cached" = "緩存清理";
 "Choose Photo" = "選擇照片";
 "Need to add a photo first before editing" = "編輯前需要添加一張照片";
+"Hi，Like this picture?" = "抱歉，您還不能使用";
+"Upgrade to the full version you can use all the features, and all ads will be removed" = "升級到完全版你可以解鎖所有圖片，同時所有廣告也會被移除";
