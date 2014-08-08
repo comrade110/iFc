@@ -163,12 +163,12 @@
     
     NSString *str = [NSString stringWithFormat:@"%@ http://itunes.apple.com/app/iface+/id904153091?mt=8",NSLocalizedString(@"iFace+ make your life more colorful", nil)];
     id<ISSContent> publishContent = [ShareSDK content:str
-                                       defaultContent:@"默认分享内容，没内容时显示"
+                                       defaultContent:str
                                                 image:nil
                                                 title:@"iFace+"
-                                                  url:@"http://goo.gl/L9jNZw"
+                                                  url:@"http://itunes.apple.com/app/iface+/id904153091?mt=8"
                                           description:@"iFace+"
-                                            mediaType:SSPublishContentMediaTypeNews];
+                                            mediaType:SSPublishContentMediaTypeText];
     
     [ShareSDK showShareActionSheet:kXHISIPAD?container:nil
                          shareList:nil

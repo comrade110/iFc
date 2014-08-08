@@ -15,7 +15,9 @@
 #import "MMExampleDrawerVisualStateManager.h"
 #import <ShareSDK/ShareSDK.h>
 #import "IAPContorl.h"
-
+#import <TencentOpenAPI/QQApiInterface.h>
+#import <TencentOpenAPI/TencentOAuth.h>
+#import "WeiboSDK.h"
 
 @implementation FSAppDelegate
 
@@ -41,7 +43,18 @@
     [ShareSDK connectTwitterWithConsumerKey:@"hB9ln89h4gsHYFa7yOxvRt33Y"
                              consumerSecret:@"PftAyFognU49j7PLKXtD2UDou3MboQJvVn6YApJPfi8FNtY9Mt"
                                 redirectUri:@"http://sharesdk.cn"];
-    [ShareSDK connectSinaWeiboWithAppKey:@"2270857739" appSecret:@"c409e0b39bab52b4fd6fad4f081c6856" redirectUri:@"http://baidu.com"];
+//    [ShareSDK connectSinaWeiboWithAppKey:@"2270857739" appSecret:@"c409e0b39bab52b4fd6fad4f081c6856" redirectUri:@"http://sharesdk.cn"];
+    [ShareSDK  connectSinaWeiboWithAppKey:@"2270857739"
+                                appSecret:@"c409e0b39bab52b4fd6fad4f081c6856"
+                              redirectUri:@"http://www.sharesdk.cn"
+                              weiboSDKCls:[WeiboSDK class]];
+
+    //添加QQ应用
+    [ShareSDK connectQQWithQZoneAppKey:@"1101989570"
+                     qqApiInterfaceCls:[QQApiInterface class]
+                       tencentOAuthCls:[TencentOAuth class]];
+    [ShareSDK importQQClass:[QQApiInterface class]
+            tencentOAuthCls:[TencentOAuth class]];
 //    [ShareSDK connectFlickrWithApiKey:@"3de37b66f2669f3ab8fa2b3314aec276" apiSecret:@"1cc23838602ed479"];
     
     [ShareSDK connectMail];

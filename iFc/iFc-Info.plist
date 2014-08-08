@@ -54,7 +54,10 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
+				<string>wb2270857739</string>
+				<string>QQ41AF06C2</string>
 				<string>fb1533652706857414</string>
+				<string>chxstudio2014</string>
 			</array>
 		</dict>
 	</array>
