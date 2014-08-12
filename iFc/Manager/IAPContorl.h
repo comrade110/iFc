@@ -10,7 +10,7 @@
 
 typedef void (^ CompletionBlock)();
 
-#define Product_NOiAd @"01"
+#define Product_NOiAd @"com.chxstudio.product01"
 
 @interface IAPContorl : NSObject<UIAlertViewDelegate>
 

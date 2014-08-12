@@ -157,14 +157,16 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
         if (hud.mode == MBProgressHUDModeIndeterminate) {
             hud.mode = MBProgressHUDModeDeterminate;
         }
-
-        hud.progress = (float)percentDone/100;
-        if (hud.progress == 1) {
+        if (percentDone/100 == 1) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"percentDone" object:nil];
             isBGDone = YES;
-            [self removeAdView];
         }
+        hud.progress = (float)percentDone/100;
+
         
     }];
+    //监控进度条是否完成
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeAdView) name:@"percentDone" object:nil];
     [saveView addSubview:imageView];
     
     //用户导入的图片

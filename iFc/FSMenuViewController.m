@@ -292,9 +292,9 @@
                     break;
                 case 2:{
                  // iap
-                    cell.userInteractionEnabled = NO;
+                    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
                     [IAPContorl showAlertByID:Product_NOiAd withCompletionBlock:^{
-                        cell.userInteractionEnabled = YES;
+                        [MBProgressHUD hideHUDForView:self.view animated:YES];
                     }];
                 }
                     
