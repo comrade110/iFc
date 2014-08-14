@@ -41,7 +41,6 @@
 //  rate control
     
     [self setupLeftMenuButton];
-
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStylePlain];
     _tableView.delegate = self;
@@ -237,7 +236,6 @@
 {
     switch (indexPath.row) {
         case 0:{
-        
             FSSubTypeViewController *subTypeVC = [[FSSubTypeViewController alloc] init];
             subTypeVC.fid = [NSNumber numberWithInt:(int)indexPath.row+1];
             [self.navigationController pushViewController:subTypeVC animated:YES];

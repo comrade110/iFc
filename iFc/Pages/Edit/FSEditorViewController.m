@@ -271,8 +271,13 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     if (adMobView) {
         [UIView animateWithDuration:0.25
                          animations:^{
+                             if (adMobView.mediatedAdView) {
+                                 
+                                 adMobView.frame = CGRectMake(0, self.view.height, adMobView.mediatedAdView.width, adMobView.mediatedAdView.height);
+                             }else{
+                                 adMobView.frame = CGRectMake(0, self.view.height, adMobView.width, adMobView.height);
+                             }
                              toolsView.frame = CGRectMake(0, self.view.frame.size.height-kheight, self.view.frame.size.width, kheight);
-                             adMobView.frame = CGRectMake(0, self.view.height, adMobView.width, adMobView.height);
                          }
                          completion:^(BOOL finished){
                              
@@ -294,9 +299,16 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     adMobView.hidden = NO;
     [UIView animateWithDuration:0.25
                      animations:^{
-                         adMobView.frame = CGRectMake(0, self.view.frame.size.height-adMobView.height, adMobView.width, adMobView.height);
+                         
                          adMobView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-                         toolsView.frame = CGRectMake(0, self.view.frame.size.height-kheight-adMobView.height, self.view.frame.size.width, kheight);
+                         if (adMobView.mediatedAdView) {
+                             adMobView.frame = CGRectMake(0, self.view.frame.size.height-adMobView.mediatedAdView.height, adMobView.mediatedAdView.width, adMobView.mediatedAdView.height);
+                             toolsView.frame = CGRectMake(0, self.view.frame.size.height-kheight-adMobView.mediatedAdView.height, self.view.frame.size.width, kheight);
+                         }else{
+                             adMobView.frame = CGRectMake(0, self.view.frame.size.height-adMobView.height, adMobView.width, adMobView.height);
+                             toolsView.frame = CGRectMake(0, self.view.frame.size.height-kheight-adMobView.height, self.view.frame.size.width, kheight);
+                         }
+
                      }
                      completion:^(BOOL finished){
                      }];
@@ -518,10 +530,15 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
             }
             
             if(completed && [activityType isEqualToString:UIActivityTypeSaveToCameraRoll]){
+                if (!completed) return;
+
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Saved successfully", nil) message:nil delegate:nil cancelButtonTitle:NSLocalizedString(@"OK",nil) otherButtonTitles:nil];
                 [alert show];
                 
             }else if ([activityType isEqualToString:UIActivityTypePostToFacebook]||[activityType isEqualToString:UIActivityTypePostToTwitter]||[activityType isEqualToString:UIActivityTypePostToWeibo]||[activityType isEqualToString:UIActivityTypePostToTencentWeibo]||[activityType isEqualToString:UIActivityTypePostToFlickr]){
+                
+                if (!completed) return;
+
                 alert(NSLocalizedString(@"Send Successfully",nil));
             }
         };

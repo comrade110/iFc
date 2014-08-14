@@ -17,7 +17,7 @@
 #import "IAPContorl.h"
 #import <TencentOpenAPI/QQApiInterface.h>
 #import <TencentOpenAPI/TencentOAuth.h>
-#import "WeiboSDK.h"
+//#import "WeiboSDK.h"
 
 @implementation FSAppDelegate
 
@@ -44,10 +44,10 @@
                              consumerSecret:@"PftAyFognU49j7PLKXtD2UDou3MboQJvVn6YApJPfi8FNtY9Mt"
                                 redirectUri:@"http://sharesdk.cn"];
 //    [ShareSDK connectSinaWeiboWithAppKey:@"2270857739" appSecret:@"c409e0b39bab52b4fd6fad4f081c6856" redirectUri:@"http://sharesdk.cn"];
-    [ShareSDK  connectSinaWeiboWithAppKey:@"2270857739"
-                                appSecret:@"c409e0b39bab52b4fd6fad4f081c6856"
-                              redirectUri:@"http://www.sharesdk.cn"
-                              weiboSDKCls:[WeiboSDK class]];
+//    [ShareSDK  connectSinaWeiboWithAppKey:@"2270857739"
+//                                appSecret:@"c409e0b39bab52b4fd6fad4f081c6856"
+//                              redirectUri:@"http://www.sharesdk.cn"
+//                              weiboSDKCls:[WeiboSDK class]];
 
     //添加QQ应用
     [ShareSDK connectQQWithQZoneAppKey:@"1101989570"
