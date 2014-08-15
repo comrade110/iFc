@@ -13,6 +13,7 @@
 #import "MBProgressHUD.h"
 #import "GADInterstitial.h"
 #import "GADBannerView.h"
+#import <RevMobAds/RevMobAds.h>
 
 #define IMAGESIZE 2
 #define ToolViewHeight 50.f
@@ -251,6 +252,7 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
 #pragma mark - banner contorl
 
 -(void)buildAdView{
+    
     if (!adsRemoved) {
         adMobView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait];
         adMobView.adUnitID = MY_BANNER_UNIT_ID;
@@ -504,14 +506,49 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
                 [[NSUserDefaults standardUserDefaults] setInteger:adnum forKey:@"EditerVCADControl"];
                 [[NSUserDefaults standardUserDefaults] synchronize];
             }else{
-                if (interstitial_) {
-                    if (interstitial_.isReady) {
+                int value = (arc4random() % 2) + 1;
+                NSString *curLang = [FSConfig getCurrentLanguage];
+                if ([curLang isEqualToString:@"zh-Hans"]||[curLang isEqualToString:@"zh-Hant"]) {
+                    value = (arc4random() % 4) + 1;
+                }
+                if (value == 1) {
+                    NSLog(@"revmob show");
+                    [[RevMobAds session] showFullscreen];
+                    RevMobFullscreen *ad = [[RevMobAds session] fullscreen];
+                    [ad loadWithSuccessHandler:^(RevMobFullscreen *fs) {
+                        [fs showAd];
                         [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"EditerVCADControl"];
                         [[NSUserDefaults standardUserDefaults] synchronize];
-                        [interstitial_ presentFromRootViewController:self];
-                        if (interstitial_.hasBeenUsed) {
-                            [self preLoadInterstitial];
+                        NSLog(@"Ad loaded");
+                    } andLoadFailHandler:^(RevMobFullscreen *fs, NSError *error) {
+                        if (interstitial_) {
+                            if (interstitial_.isReady) {
+                                [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"EditerVCADControl"];
+                                [[NSUserDefaults standardUserDefaults] synchronize];
+                                [interstitial_ presentFromRootViewController:self];
+                                if (interstitial_.hasBeenUsed) {
+                                    [self preLoadInterstitial];
+                                }
+                            }
+                            
                         }
+
+                    } onClickHandler:^{
+                        NSLog(@"Ad clicked");
+                    } onCloseHandler:^{
+                        NSLog(@"Ad closed");
+                    }];
+                }else{
+                    if (interstitial_) {
+                        if (interstitial_.isReady) {
+                            [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"EditerVCADControl"];
+                            [[NSUserDefaults standardUserDefaults] synchronize];
+                            [interstitial_ presentFromRootViewController:self];
+                            if (interstitial_.hasBeenUsed) {
+                                [self preLoadInterstitial];
+                            }
+                        }
+                        
                     }
 
                 }

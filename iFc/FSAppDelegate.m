@@ -17,6 +17,7 @@
 #import "IAPContorl.h"
 #import <TencentOpenAPI/QQApiInterface.h>
 #import <TencentOpenAPI/TencentOAuth.h>
+#import <RevMobAds/RevMobAds.h>
 //#import "WeiboSDK.h"
 
 @implementation FSAppDelegate
@@ -58,6 +59,14 @@
 //    [ShareSDK connectFlickrWithApiKey:@"3de37b66f2669f3ab8fa2b3314aec276" apiSecret:@"1cc23838602ed479"];
     
     [ShareSDK connectMail];
+    
+    //revmob ad
+    [RevMobAds startSessionWithAppID:@"53ed97374ee531d05984fb4e"];
+    [RevMobAds session].testingMode = RevMobAdsTestingModeWithAds;
+    [RevMobAds session].userInterests = @[@"games", @"mobile", @"app", @"photo"];
+    [RevMobAds session].userAgeRangeMax = 30;
+    [RevMobAds session].userAgeRangeMin = 10;
+    
     // ****************************************************************************
     // Uncomment and fill in with your Parse credentials:
     [Parse setApplicationId:@"vc9WStKb2rrh0dgDhyRy9yTyk37pMHtLhaaoGJv0"
