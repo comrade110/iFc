@@ -264,6 +264,7 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
         request.testDevices = @[@"2DEA15FF-9698-505D-931C-68E2B9A3CEFF",
                                 @"f2751b6ab2923ef5171dfb289dc50c9678520ecd"];
         [adMobView loadRequest:request];
+        adMobView.backgroundColor = [UIColor blackColor];
         [self.view addSubview:adMobView];
     }
 
