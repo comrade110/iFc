@@ -88,7 +88,7 @@
     // Override point for customization after application launch.
  
 //    //parse统计
-//    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
 //
 //    if (application.applicationState != UIApplicationStateBackground) {
 //        // Track an app open here if we launch with a push, unless
