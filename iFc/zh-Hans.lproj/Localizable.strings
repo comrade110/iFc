@@ -7,7 +7,7 @@
 */
 
 "Human" = "人物";
-"Animals" = "动物";
+"Animal" = "动物";
 "Home" = "首页";
 "Choose Photo" = "选择照片";
 "Cancel" = "取消";
@@ -28,7 +28,7 @@
 "Purchase successfully. Enjoy!" = "购买成功！祝你开心";
 "All images you downloaded will be cleared" = "之前您下载的图片将会被清空,是否继续?";
 "Saved successfully" = "保存成功";
-"Enjoying iFace+?" = "喜欢iFace+?";
+"Enjoying iFace" = "喜欢iFace";
 "If so, say it with stars on the App Store" = "喜欢它，就在App Store给它打分鼓励一下吧!";
 "OK,I give stars" = "好的,去打分";
 "Don't ask again" = "不再显示";
@@ -37,7 +37,7 @@
 "Need to add a photo first before editing" = "在编辑前需要先添加一张照片";
 "Use Photo from Library" = "从相册选取照片";
 "Take Photo with Camera" = "用相机拍照";
-"iFace+ make your life more colorful" = "来玩iFace+吧！还不错哦！";
+"iFace make your life more colorful" = "来玩iFace吧！还不错哦！";
 "Restore" = "恢复";
 
 "Rate" = "打分";

@@ -143,6 +143,7 @@
     return _quaryArr.count;
 }
 
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
     return kXHISIPAD?270.f:180.f;
@@ -155,12 +156,9 @@
 }
 
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-
-    if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1 ){
-        return [[UIView alloc] init];
-    }else{
-        return nil;
-    }
+    UIView *view = [[UIView alloc] init];
+    view.backgroundColor = [UIColor clearColor];
+    return view;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -206,7 +204,7 @@
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 110*scale, 250*scale, 40*scale)];
     label.font = [UIFont fontWithName:@"Avenir-LightOblique" size:16.f*scale];
     label.textAlignment = NSTextAlignmentCenter;
-    label.textColor = [UIColor grayColor];
+    label.textColor = [UIColor blackColor];
     label.backgroundColor = [UIColor clearColor];
     label.text = _quaryArr[indexPath.row];
 

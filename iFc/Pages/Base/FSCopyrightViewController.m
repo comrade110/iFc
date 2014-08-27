@@ -39,7 +39,7 @@
     titleL.textAlignment = NSTextAlignmentCenter;
     titleL.textColor = [UIColor colorWithWhite:160./255. alpha:1.f];
     titleL.font = [UIFont boldSystemFontOfSize:18.f];
-    titleL.text = NSLocalizedString(@"iFace+", nil);
+    titleL.text = NSLocalizedString(@"iFace", nil);
     titleL.backgroundColor = [UIColor clearColor];
     [self.view addSubview:titleL];
     
@@ -48,7 +48,7 @@
     textView.backgroundColor = [UIColor clearColor];
     textView.textColor = [UIColor colorWithWhite:160./255. alpha:1.f];
     textView.font = [UIFont systemFontOfSize:12.f];
-    textView.text = NSLocalizedString(@"  The App iFace+ is currently only available on iOS Device.We don't assume any responsibility that you use it on other phone models.\n\nWhen downloading and using the GPRS dataflow generated will be charged by your operator.\n\nSome of our images are from the Internet.and the copyright belongs to their original artists.Any unauthorized use will be prosecuted.We have no responsibility for any harm that you may cause to others and yourself.", nil);
+    textView.text = NSLocalizedString(@"  The App iFace is currently only available on iOS Device.We don't assume any responsibility that you use it on other phone models.\n\nWhen downloading and using the GPRS dataflow generated will be charged by your operator.\n\nSome of our images are from the Internet.and the copyright belongs to their original artists.Any unauthorized use will be prosecuted.We have no responsibility for any harm that you may cause to others and yourself.", nil);
     textView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     [self.view addSubview:textView];
     

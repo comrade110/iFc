@@ -54,7 +54,7 @@
 
 +(UIColor *)mainBgColor
 {
-    return [UIColor colorWithRed:231./255. green:235./255. blue:238./255. alpha:1];
+    return [UIColor colorWithRed:208./255. green:217./255. blue:226./255. alpha:1];
 }
 
 +(UIColor *)mainCellColor

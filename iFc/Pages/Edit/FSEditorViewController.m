@@ -222,10 +222,10 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
         [interstitial_ loadRequest:request];
         // 请求测试广告。填入模拟器
         // 以及接收测试广告的任何设备的标识符。
-        request.testDevices = [NSArray arrayWithObjects:
-                               @"2DEA15FF-9698-505D-931C-68E2B9A3CEFF",
-                               @"f2751b6ab2923ef5171dfb289dc50c9678520ecd",
-                               nil];
+//        request.testDevices = [NSArray arrayWithObjects:
+//                               @"2DEA15FF-9698-505D-931C-68E2B9A3CEFF",
+//                               @"f2751b6ab2923ef5171dfb289dc50c9678520ecd",
+//                               nil];
     }
 
 
@@ -495,7 +495,7 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     if(userImageView.image){
         NSArray *excludedActivityTypes = @[UIActivityTypePostToVimeo,UIActivityTypeMessage];
 //        NSString *str = [NSString stringWithFormat:@"%@ http://itunes.apple.com/app/iface+/id904153091?mt=8",NSLocalizedString(@"iFace+ make your life more colorful", nil)];
-        NSString *str = [NSString stringWithFormat:@"%@ http://itunes.apple.com/app/iface+/id904153091?mt=8",NSLocalizedString(@"iFace+ make your life more colorful", nil)];
+        NSString *str = [NSString stringWithFormat:@"%@ https://itunes.apple.com/us/app/iface-place-your-face/id904153091?mt=8",NSLocalizedString(@"iFace make your life more colorful", nil)];
         
         UIActivityViewController *activityView = [[UIActivityViewController alloc] initWithActivityItems:@[str,[self mergeImage]] applicationActivities:nil];
         activityView.excludedActivityTypes = excludedActivityTypes;

@@ -161,13 +161,13 @@
     id<ISSContainer> container = [ShareSDK container];
     [container setIPadContainerWithView:self.view arrowDirect:UIPopoverArrowDirectionAny];
     
-    NSString *str = [NSString stringWithFormat:@"%@ http://itunes.apple.com/app/iface+/id904153091?mt=8",NSLocalizedString(@"iFace+ make your life more colorful", nil)];
+    NSString *str = [NSString stringWithFormat:@"%@ https://itunes.apple.com/us/app/iface-place-your-face/id904153091?mt=8",NSLocalizedString(@"iFace make your life more colorful", nil)];
     id<ISSContent> publishContent = [ShareSDK content:str
                                        defaultContent:str
                                                 image:nil
-                                                title:@"iFace+"
-                                                  url:@"http://itunes.apple.com/app/iface+/id904153091?mt=8"
-                                          description:@"iFace+"
+                                                title:@"iFace"
+                                                  url:@"https://itunes.apple.com/us/app/iface-place-your-face/id904153091?mt=8"
+                                          description:@"iFace"
                                             mediaType:SSPublishContentMediaTypeText];
     
     [ShareSDK showShareActionSheet:kXHISIPAD?container:nil
