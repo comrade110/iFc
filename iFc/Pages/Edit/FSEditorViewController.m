@@ -88,8 +88,9 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
 }
 
 
--(void)viewDidDisappear:(BOOL)animated{
-    
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    self.screenName = @"Edit Screen";
 }
 
 
@@ -495,7 +496,7 @@ static const NSTimeInterval kAnimationIntervalTransform = 0.2;
     if(userImageView.image){
         NSArray *excludedActivityTypes = @[UIActivityTypePostToVimeo,UIActivityTypeMessage];
 //        NSString *str = [NSString stringWithFormat:@"%@ http://itunes.apple.com/app/iface+/id904153091?mt=8",NSLocalizedString(@"iFace+ make your life more colorful", nil)];
-        NSString *str = [NSString stringWithFormat:@"%@ https://itunes.apple.com/us/app/iface-place-your-face/id904153091?mt=8",NSLocalizedString(@"iFace make your life more colorful", nil)];
+        NSString *str = [NSString stringWithFormat:@"%@ http://itunes.apple.com/app/iface-hd/id904153091?l=zh&ls=1&mt=8",NSLocalizedString(@"iFace HD make your life more colorful", nil)];
         
         UIActivityViewController *activityView = [[UIActivityViewController alloc] initWithActivityItems:@[str,[self mergeImage]] applicationActivities:nil];
         activityView.excludedActivityTypes = excludedActivityTypes;

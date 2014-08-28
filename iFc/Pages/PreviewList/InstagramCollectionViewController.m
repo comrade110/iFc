@@ -13,7 +13,9 @@
 #import <StoreKit/StoreKit.h>
 #import "GADBannerView.h"
 #import "UIView+Frame.h"
-
+#import "GAI.h"
+#import "GAIDictionaryBuilder.h"
+#import "GAIFields.h"
 static NSString * const kXHInstagramFooter = @"InstagramFooter";
 
 @interface InstagramCollectionViewController ()<GADBannerViewDelegate,UIAlertViewDelegate,SKStoreProductViewControllerDelegate>{
@@ -87,6 +89,16 @@ static NSString * const kXHInstagramFooter = @"InstagramFooter";
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    id tracker = [[GAI sharedInstance] defaultTracker];
+    
+    // This screen name value will remain set on the tracker and sent with
+    // hits until it is set to a new value or to nil.
+    [tracker set:kGAIScreenName
+           value:@"Image List Screen"];
+    
+    // New SDK versions
+    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+    
     if ([UIApplication sharedApplication].statusBarHidden) {
         [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
     }
@@ -211,7 +223,7 @@ static NSString * const kXHInstagramFooter = @"InstagramFooter";
     }else if(saveCount == 0){
         // 用户选择了不再提示打分
     }else{
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Enjoying iFace?", nil)
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Enjoying iFace HD?", nil)
                                                             message:NSLocalizedString(@"If so, say it with stars on the App Store",nil)
                                                            delegate:self
                                                   cancelButtonTitle:NSLocalizedString(@"Remind me later", nil)

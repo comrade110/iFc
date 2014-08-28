@@ -32,6 +32,7 @@
     [query orderByDescending:@"updatedAt"];
     query.cachePolicy = kPFCachePolicyNetworkElseCache;
     [query whereKey:@"fid" equalTo:[PFObject objectWithoutDataWithClassName:@"Type" objectId:_objectId]];
+    [query whereKeyExists:@"isVIP"];
     query.limit = 10;
     query.skip = 10*page;
 //    if ((page+1)*10>query.countObjects && page!=0) {

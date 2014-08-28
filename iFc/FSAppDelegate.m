@@ -18,6 +18,7 @@
 #import <TencentOpenAPI/QQApiInterface.h>
 #import <TencentOpenAPI/TencentOAuth.h>
 #import <RevMobAds/RevMobAds.h>
+#import "GAI.h"
 //#import "WeiboSDK.h"
 
 @implementation FSAppDelegate
@@ -89,6 +90,23 @@
  
 //    //parse统计
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+//   google统计
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    
+    // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
+    [GAI sharedInstance].dispatchInterval = 20;
+    
+    // Optional: set Logger to VERBOSE for debug information.
+    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
+    
+    // Initialize tracker. Replace with your tracking ID.
+    [[GAI sharedInstance] trackerWithTrackingId:@"UA-53388064-2"];
+    
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    // Enable IDFA collection.
+    [tracker setAllowIDFACollection:YES];
+
 //
 //    if (application.applicationState != UIApplicationStateBackground) {
 //        // Track an app open here if we launch with a push, unless

@@ -28,6 +28,7 @@
 - (void)viewWillAppear:(BOOL)animated{
     
     [super viewWillAppear:YES];
+    self.screenName = @"Home Screen";
     if ([UIApplication sharedApplication].statusBarHidden) {
         [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
     }

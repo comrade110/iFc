@@ -32,6 +32,7 @@
 - (void)viewWillAppear:(BOOL)animated{
 
     [super viewWillAppear:YES];
+    self.screenName = @"SubType Screen";
     if ([UIApplication sharedApplication].statusBarHidden) {
         [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
     }
@@ -61,6 +62,7 @@
     WEAKSELF
     PFQuery *query = [PFQuery queryWithClassName:@"Type"];
     [query whereKey:@"fid" equalTo:self.fid];
+    [query whereKey:@"display" equalTo:[NSNumber numberWithBool:YES]];
     [query orderByAscending:@"priority"];
     MONActivityIndicatorView *indicatorView = [[MONActivityIndicatorView alloc] init];
     indicatorView.center = CGPointMake(self.view.center.x, self.view.center.y-64);
@@ -139,10 +141,9 @@
     
     PFObject *object = _quaryArr[indexPath.row];
     
-    if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {
-        // Load resources for iOS 6.1 or earlier
-        cell.selectedBackgroundView = [[UIView alloc] init];
-    }
+    UIView *view = [[UIView alloc] initWithFrame:cell.frame];
+    view.backgroundColor = [UIColor colorWithRed:185./255. green:198./255. blue:211./255.f alpha:1.f];
+    cell.selectedBackgroundView = view;
     
     UIView *boxView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height)];
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(60, 0, 179, 85)];
@@ -172,7 +173,7 @@
 
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     PFObject *object = _quaryArr[indexPath.row];
     
      InstagramCollectionViewController *instagramCollectionViewController = [InstagramThumbnailCollectionViewController sharedInstagramCollectionViewControllerWithObjectId:object.objectId];
